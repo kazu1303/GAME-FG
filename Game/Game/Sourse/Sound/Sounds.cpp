@@ -1,0 +1,7 @@
+#include "Sounds.h"
+
+//ì«Ç›çûÇﬁSE
+//std::string Sounds::SEDate[][2] = 
+//{
+//	{}
+//};
