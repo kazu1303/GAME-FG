@@ -91,15 +91,6 @@ void GameObjectManager::Draw()
 //ヒット処理
 void GameObjectManager::HitToObject()
 {
-	//ブロック内のプレイヤーの面積を求める
-	for (auto obj1 : gameObjects)
-	{
-		//プレイヤーの面積だけを求める
-		if (obj1->GetType() != player)
-		{
-			continue;
-		}
-	}
 	//ヒット判定
 	for (auto obj1 : gameObjects)
 	{

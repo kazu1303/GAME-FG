@@ -6,6 +6,8 @@
 #include "GameObjectManager.h"
 #include "MousePointer.h"
 #include "Clock.h"
+#include "Util.h"
+#include "Enemy1.h"
 
 GamePlay::GamePlay()
 {
@@ -16,26 +18,40 @@ GamePlay::~GamePlay()
 {
 }
 
-//‰Šú‰»ˆ—
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void GamePlay::Initialize()
 {
 	isEnd = false;
+	enemy1Summon = Timer(1.5f, true);
 	new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
 	new Clock(new Vector2(50, 50));
 }
 
-//–ˆƒtƒŒ[ƒ€ˆ—
+//ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void GamePlay::Update()
 {
-	//Ÿ‚ÌƒV[ƒ“‚Ö‚Ì•ÏXˆ—
+	//ï¿½ï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½Ö‚Ì•ÏXï¿½ï¿½ï¿½ï¿½
 	if (KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
 	}
+
 	GameObjectManager::Instance()->Update();
+
+	enemy1Summon.Update();
+	//ï¿½Gï¿½Ìï¿½ï¿½ï¿½
+	if (enemy1Summon.IsTime())
+	{
+		//ï¿½Gï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
+		float angle = (float)(GetRand(360));
+		float radian = Util::AngleToRadian(angle);
+		float spawnLength = Screen::WinHight;
+		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+		new Enemy1(&spawnPoint);
+	}
 }
 
-//•`‰æˆ—
+//ï¿½`ï¿½æˆï¿½ï¿½
 void GamePlay::Draw()
 {
 	DrawString(0, 0, "play", GetColor(255, 255, 255));
@@ -43,13 +59,13 @@ void GamePlay::Draw()
 	MousePointer::Instance()->Draw();
 }
 
-//Ÿ‚ÌƒV[ƒ“
+//ï¿½ï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½
 Scene GamePlay::Next()
 {
 	return gameOver;
 }
 
-//Œ»İ‚ÌƒV[ƒ“
+//ï¿½ï¿½ï¿½İ‚ÌƒVï¿½[ï¿½ï¿½
 Scene GamePlay::CurrentScene()
 {
 	return gamePlay;

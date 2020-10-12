@@ -1,6 +1,7 @@
 #include "PlayerBullet.h"
 #include "MousePointer.h"
 #include "DxLib.h"
+#include "Screen.h"
 
 PlayerBullet::PlayerBullet(Vector2 *position)
 	:GameObject(position,player_bullet,true)
@@ -10,6 +11,7 @@ PlayerBullet::PlayerBullet(Vector2 *position)
 	velocity->x = mouse.x - this->position->x;
 	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
+	size = 10;
 }
 
 
@@ -26,6 +28,13 @@ void PlayerBullet::Update()
 	float speed = 10;
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
+	if (0 > position->x ||
+		0 > position->y ||
+		Screen::WinHight < position->x ||
+		Screen::WinWidth < position->y)
+	{
+		isDead = true;
+	}
 }
 
 void PlayerBullet::Draw()

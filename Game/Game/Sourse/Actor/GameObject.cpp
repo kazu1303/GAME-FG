@@ -77,11 +77,11 @@ bool GameObject::Equal(GameObject* other)
 bool GameObject::IsCollision(GameObject * other)
 {
 	//現在の距離を求める
-	float lengthX = abs(this->position->x - other->position->x);
-	float lengthY = abs(this->position->y - other->position->y);
+	Vector2 lengthXY(abs(this->position->x - other->position->x), abs(this->position->y - other->position->y));
+	float length = lengthXY.Length();
 	//	オブジェクトの当たり判定
-	if ((lengthX <= (this->sizeX + other->sizeX) / 2) &&
-		(lengthY <= (this->sizeY + other->sizeY) / 2))
+	if ((length <= (this->size + other->size) / 2) &&
+		(length <= (this->size + other->size) / 2))
 	{
 		return true;
 	}
