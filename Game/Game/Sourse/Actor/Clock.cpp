@@ -3,7 +3,7 @@
 #include <math.h>
 
 Clock::Clock(Vector2* position)
-	:GameObject(position,clock,false,20,0)
+	:GameObject(position, clock, false, 20, 0)
 {
 	this->position = position;
 	dayTimer = Timer(5.0f, true);
@@ -16,7 +16,7 @@ Clock::~Clock()
 
 void Clock::Initialize()
 {
-	
+
 }
 
 void Clock::Update()
@@ -31,7 +31,7 @@ void Clock::Update()
 void Clock::Draw()
 {
 	DrawCircle(position->x, position->y, 40, GetColor(0, 0, 0), 0);
-	DrawLine(position->x, position->y, clockHand.x, clockHand.y,GetColor(0,0,0));
+	DrawLine(position->x, position->y, clockHand.x, clockHand.y, GetColor(0, 0, 0));
 }
 
 float Clock::GetTime()

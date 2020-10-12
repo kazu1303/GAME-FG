@@ -16,3 +16,4 @@ public:
 	void Draw();
 	float GetTime();
 };
+
