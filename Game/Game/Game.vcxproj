@@ -177,12 +177,12 @@
     <ClInclude Include="Header\Util\Display.h" />
     <ClInclude Include="Header\Util\Screen.h" />
     <ClInclude Include="Header\Util\Timer.h" />
-    <ClInclude Include="Header\Util\Util.h" />
     <ClInclude Include="Header\Util\Vector2.h" />
     <ClInclude Include="Header\Util\KeyBoard.h" />
     <ClInclude Include="Header\Util\MousePointer.h" />
     <ClInclude Include="Header\Actor\Player.h" />
     <ClInclude Include="Header\Actor\PlayerBullet.h" />
+    <ClInclude Include="Header\Util\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
