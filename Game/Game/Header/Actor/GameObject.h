@@ -17,6 +17,7 @@ enum CharaType
 	player,
 	player_bullet,
 	enemy,
+	clock,
 };
 
 //オブジェクトの基底クラス

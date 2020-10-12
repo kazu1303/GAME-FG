@@ -48,6 +48,11 @@ void Timer::Resetting(float maxTime)
 	this->maxtime = maxTime * 60;
 }
 
+float Timer::GetRate()
+{
+	return time / maxtime;
+}
+
 //–ˆƒtƒŒ[ƒ€ˆ—
 void Timer::Update()
 {	

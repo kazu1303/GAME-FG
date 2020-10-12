@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Actor\Clock.cpp" />
     <ClCompile Include="Sourse\Actor\PlayerBullet.cpp" />
     <ClCompile Include="Sourse\Actor\Player.cpp" />
     <ClCompile Include="Sourse\Util\MousePointer.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Sourse\Util\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Actor\Clock.h" />
     <ClInclude Include="Header\Actor\Entity.h" />
     <ClInclude Include="Header\Actor\GameObject.h" />
     <ClInclude Include="Header\Actor\GameObjectManager.h" />

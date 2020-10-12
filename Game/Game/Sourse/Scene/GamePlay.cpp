@@ -5,6 +5,7 @@
 #include "Screen.h"
 #include "GameObjectManager.h"
 #include "MousePointer.h"
+#include "Clock.h"
 
 GamePlay::GamePlay()
 {
@@ -20,6 +21,7 @@ void GamePlay::Initialize()
 {
 	isEnd = false;
 	new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
+	new Clock(new Vector2(50, 50));
 }
 
 //–ˆƒtƒŒ[ƒ€ˆ—
