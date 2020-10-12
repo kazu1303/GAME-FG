@@ -5,6 +5,8 @@
 #include "Screen.h"
 #include "GameObjectManager.h"
 #include "MousePointer.h"
+#include "Util.h"
+#include "Enemy1.h"
 
 GamePlay::GamePlay()
 {
@@ -19,6 +21,7 @@ GamePlay::~GamePlay()
 void GamePlay::Initialize()
 {
 	isEnd = false;
+	enemy1Summon = Timer(1.5f, true);
 	new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
 }
 
@@ -30,7 +33,20 @@ void GamePlay::Update()
 	{
 		isEnd = true;
 	}
+
 	GameObjectManager::Instance()->Update();
+
+	enemy1Summon.Update();
+	//“G‚Ì¶¬
+	if (enemy1Summon.IsTime())
+	{
+		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
+		float angle = (float)(GetRand(360));
+		float radian = Util::AngleToRadian(angle);
+		float spawnLength = Screen::WinHight;
+		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+		new Enemy1(&spawnPoint);
+	}
 }
 
 //•`‰æˆ—

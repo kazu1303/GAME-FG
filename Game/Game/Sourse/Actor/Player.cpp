@@ -61,6 +61,5 @@ void Player::BatteryDraw()
 	angle = angle * (180.0f / PI) + 90;
 	float radian1 = Util::AngleToRadian(angle + 25);
 	float radian2 = Util::AngleToRadian(angle - 25);
-	//‚à‚µnull‚Å‚È‚¢‚È‚çŽ©•ª‚Ì•Ï”‚É‘ã“ü‚·‚é
 	DrawTriangle(position->x, position->y, position->x + r * cos(radian1), position->y + r * -sin(radian1), position->x + r * cos(radian2), position->y + r * -sin(radian2), GetColor(0, 0, 0), 1);
 }

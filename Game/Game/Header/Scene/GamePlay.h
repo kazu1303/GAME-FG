@@ -7,6 +7,7 @@ class GamePlay:
 {
 private:
 	bool push;
+	Timer enemy1Summon;//ƒgƒ“ƒ{‚Ì¶¬ŠÔŠu
 public:
 	GamePlay();
 	~GamePlay();
