@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sourse\Actor\Clock.cpp" />
+    <ClCompile Include="Sourse\Actor\Enemy.cpp" />
+    <ClCompile Include="Sourse\Actor\Enemy1.cpp" />
     <ClCompile Include="Sourse\Actor\PlayerBullet.cpp" />
     <ClCompile Include="Sourse\Actor\Player.cpp" />
     <ClCompile Include="Sourse\Util\MousePointer.cpp" />
@@ -151,9 +153,12 @@
     <ClCompile Include="Sourse\Texture\Textures.cpp" />
     <ClCompile Include="Sourse\Util\Display.cpp" />
     <ClCompile Include="Sourse\Util\Timer.cpp" />
+    <ClCompile Include="Sourse\Util\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Actor\Clock.h" />
+    <ClInclude Include="Header\Actor\Enemy.h" />
+    <ClInclude Include="Header\Actor\Enemy1.h" />
     <ClInclude Include="Header\Actor\Entity.h" />
     <ClInclude Include="Header\Actor\GameObject.h" />
     <ClInclude Include="Header\Actor\GameObjectManager.h" />
@@ -172,6 +177,7 @@
     <ClInclude Include="Header\Util\Display.h" />
     <ClInclude Include="Header\Util\Screen.h" />
     <ClInclude Include="Header\Util\Timer.h" />
+    <ClInclude Include="Header\Util\Util.h" />
     <ClInclude Include="Header\Util\Vector2.h" />
     <ClInclude Include="Header\Util\KeyBoard.h" />
     <ClInclude Include="Header\Util\MousePointer.h" />
