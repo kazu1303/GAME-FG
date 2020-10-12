@@ -15,5 +15,6 @@ public:
 	void Update()override;
 	void Draw()override;
 	void Firing();
+	void BatteryDraw();
 };
 
