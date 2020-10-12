@@ -33,3 +33,8 @@ void Clock::Draw()
 	DrawCircle(position->x, position->y, 40, GetColor(0, 0, 0), 0);
 	DrawLine(position->x, position->y, clockHand.x, clockHand.y,GetColor(0,0,0));
 }
+
+float Clock::GetTime()
+{
+	return dayTimer.GetRate() * 24;
+}
