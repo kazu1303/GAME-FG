@@ -5,7 +5,7 @@
 
 using namespace std;
 
-GameObject::GameObject(string name, Vector2* position, CharaType type, bool entity, float scale, int hp)
+GameObject::GameObject(Vector2* position, CharaType type, bool entity, float scale, int hp,string name)
 {
 	this->Name = name;
 	this->position = new Vector2(position->x,position->y);
@@ -13,14 +13,17 @@ GameObject::GameObject(string name, Vector2* position, CharaType type, bool enti
 	this->entity = entity;
 	isDead = false;
 	this->hp = hp;
-
+	if (Name != " ")
+	{
 		//‰æ‘œƒTƒCƒY‚©‚ç‘å‚«‚³Œˆ‚ß
-		GetGraphSize(Renderer::Instance()->Texture(Name),&imageSizeX, &imageSizeY);
+		GetGraphSize(Renderer::Instance()->Texture(Name), &imageSizeX, &imageSizeY);
 		sizeX = imageSizeX * scale;
 		sizeY = imageSizeY * scale;
 		scaleX = scale;
 		scaleY = scale;
-		GameObjectManager::Instance()->Add(this);
+	}
+
+	GameObjectManager::Instance()->Add(this);
 	
 	Initialize();
 }

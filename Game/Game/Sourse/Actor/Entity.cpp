@@ -2,8 +2,8 @@
 
 
 
-Entity::Entity(std::string name, Vector2* position, CharaType type, bool entity, float scale, int hp)
-	:GameObject(name,position, type, entity, scale,hp )
+Entity::Entity(Vector2* position, CharaType type, bool entity, float scale, int hp, std::string name)
+	:GameObject(position, type, entity, scale,hp,name )
 {
 }
 

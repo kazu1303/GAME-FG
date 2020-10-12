@@ -5,7 +5,7 @@ class Entity :
 	public GameObject
 {
 public:
-	Entity(std::string name, Vector2* position, CharaType type, bool entity = true, float scale = 1, int hp = 1);
+	Entity(Vector2* position, CharaType type, bool entity = true, float scale = 1, int hp = 1, std::string name = " ");
 	~Entity();
 	//‰Šú‰»ˆ—
 	virtual void Initialize()override;

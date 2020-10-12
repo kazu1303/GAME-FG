@@ -15,7 +15,7 @@ enum Direction
 enum CharaType
 {
 	player,
-	bullet,
+	player_bullet,
 	enemy,
 };
 
@@ -37,7 +37,7 @@ protected:
 	std::string Name;//画像の名前
 	CharaType type;//キャラクターのタイプ
 public:
-	GameObject(std::string name,Vector2* position, CharaType type, bool entity, float scale = 1.0f,int hp = 1);
+	GameObject(Vector2* position, CharaType type, bool entity, float scale = 1.0f,int hp = 1,std::string name = " " );
 	virtual ~GameObject();
 	//初期化処理
 	virtual void Initialize();

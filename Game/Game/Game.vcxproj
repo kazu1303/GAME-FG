@@ -128,6 +128,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Actor\PlayerBullet.cpp" />
+    <ClCompile Include="Sourse\Actor\Player.cpp" />
+    <ClCompile Include="Sourse\Util\MousePointer.cpp" />
     <ClCompile Include="Sourse\Util\KeyBoard.cpp" />
     <ClCompile Include="Sourse\Actor\Entity.cpp" />
     <ClCompile Include="Sourse\Actor\GameObject.cpp" />
@@ -169,6 +172,9 @@
     <ClInclude Include="Header\Util\Timer.h" />
     <ClInclude Include="Header\Util\Vector2.h" />
     <ClInclude Include="Header\Util\KeyBoard.h" />
+    <ClInclude Include="Header\Util\MousePointer.h" />
+    <ClInclude Include="Header\Actor\Player.h" />
+    <ClInclude Include="Header\Actor\PlayerBullet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

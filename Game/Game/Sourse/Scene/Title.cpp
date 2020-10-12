@@ -5,6 +5,7 @@
 #include"DxLib.h"
 #include "Sound.h"
 #include "Renderer.h"
+#include "MousePointer.h"
 
 
 Title::Title()
@@ -22,7 +23,6 @@ Title::~Title()
 void Title::Initialize()
 {
 	isEnd = false;
-	push = true;
 	GameObjectManager::Instance()->Initialize();
 	ParticleManager::Instance()->Initialize();
 	Sound::Instance()->PlayBGM("fight.mp3");
@@ -35,16 +35,6 @@ void Title::Update()
 	if (KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
-		//前のフレームでキーが押されていない場合シーン終了
-		if (!push)
-		{
-			
-		}
-		push = true;
-	}
-	else//キーが押されてないときはpushをfalseに
-	{
-		push = false;
 	}
 }
 
@@ -54,6 +44,7 @@ void Title::Draw()
 	GameObjectManager::Instance()->Draw();
 	ParticleManager::Instance()->Draw();
 	DrawString(0, 0, "title", GetColor(255, 255, 255));
+	MousePointer::Instance()->Draw();
 }
 
 //次のシーン

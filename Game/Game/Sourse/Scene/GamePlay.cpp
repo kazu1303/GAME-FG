@@ -1,6 +1,10 @@
 #include "GamePlay.h"
 #include"DxLib.h"
 #include "KeyBoard.h"
+#include "Player.h"
+#include "Screen.h"
+#include "GameObjectManager.h"
+#include "MousePointer.h"
 
 GamePlay::GamePlay()
 {
@@ -15,7 +19,7 @@ GamePlay::~GamePlay()
 void GamePlay::Initialize()
 {
 	isEnd = false;
-	push = true;
+	new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
 }
 
 //毎フレーム処理
@@ -25,23 +29,16 @@ void GamePlay::Update()
 	if (KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
-		//前のフレームでキーが押されていない場合シーン終了
-		if (!push)
-		{
-
-		}
-		push = true;
 	}
-	else//キーが押されてないときはpushをfalseに
-	{
-		push = false;
-	}
+	GameObjectManager::Instance()->Update();
 }
 
 //描画処理
 void GamePlay::Draw()
 {
 	DrawString(0, 0, "play", GetColor(255, 255, 255));
+	GameObjectManager::Instance()->Draw();
+	MousePointer::Instance()->Draw();
 }
 
 //次のシーン

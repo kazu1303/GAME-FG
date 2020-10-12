@@ -12,6 +12,7 @@
 #include "Sound.h"
 #include "Display.h"
 #include "KeyBoard.h"
+#include "MousePointer.h"
 
 //const int WinWidth = 800;
 //const int WinHight = 600;
@@ -72,6 +73,9 @@ int WINAPI WinMain(
 
 	KeyBoard* keyBoard;
 	keyBoard = new KeyBoard();
+
+	MousePointer* mouse;
+	mouse = new MousePointer();
 	//ディスプレイの生成
 	Display* display;
 	display = new Display();
@@ -79,6 +83,7 @@ int WINAPI WinMain(
 	display->MakeDrawScreen();
 	while (1)
 	{
+		mouse->Update();
 		keyBoard->GetKeyState();
 		sceneManager->Update();
 
