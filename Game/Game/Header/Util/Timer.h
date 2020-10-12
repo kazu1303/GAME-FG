@@ -19,7 +19,6 @@ public:
 	void Initialize();
 	//タイマーの時間の再設定
 	void Resetting(float maxTime);
-	//タイマーの経過割合
 	float GetRate();
 	//毎フレーム処理
 	void Update();
