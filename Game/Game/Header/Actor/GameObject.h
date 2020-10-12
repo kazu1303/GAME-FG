@@ -27,6 +27,7 @@ protected:
 	Vector2* velocity = new Vector2(0,0);//移動量
 	Vector2* otherPos = new Vector2(0,0);//主にプレイヤーの座標
 	float sizeX, sizeY;//サイズ
+	float size;
 	int imageSizeX, imageSizeY;//画像のサイズ
 	float scaleX,scaleY;//拡縮率
 	float angle,drawAngle;//実際の角度、描画の際の角度

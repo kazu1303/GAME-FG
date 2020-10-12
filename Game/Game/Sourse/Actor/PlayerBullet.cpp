@@ -11,6 +11,7 @@ PlayerBullet::PlayerBullet(Vector2 *position)
 	velocity->x = mouse.x - this->position->x;
 	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
+	size = 10;
 }
 
 

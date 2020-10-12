@@ -27,3 +27,7 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 }
+
+void Enemy::Hit(GameObject * obj)
+{
+}

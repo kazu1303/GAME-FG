@@ -10,6 +10,8 @@ Player::Player(Vector2 *position)
 {
 	position = new Vector2(position->x, position->y);
 	bulletTimer = Timer(0.5f, true);
+	size = 40;
+	sizeY = 20;
 }
 
 
