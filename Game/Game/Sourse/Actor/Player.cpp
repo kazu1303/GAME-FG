@@ -4,6 +4,7 @@
 #include "PlayerBullet.h"
 #include "Util.h"
 #include "DisPlay.h"
+#include "Screen.h"
 
 
 Player::Player(Vector2 *position)
@@ -36,6 +37,15 @@ void Player::Draw()
 	DrawCircle(position->x, position->y, 20, GetColor(0, 0, 0), 0);
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
+	DrawDamageGauge();
+}
+
+void Player::Hit(GameObject * obj)
+{
+	if (obj->GetType() == enemy)
+	{
+		hp--;
+	}
 }
 
 void Player::Firing()
@@ -67,4 +77,17 @@ void Player::BatteryDraw()
 	float radian1 = Util::AngleToRadian(angle + 25);
 	float radian2 = Util::AngleToRadian(angle - 25);
 	DrawTriangle(position->x, position->y, position->x + r * cos(radian1), position->y + r * -sin(radian1), position->x + r * cos(radian2), position->y + r * -sin(radian2), GetColor(0, 0, 0), 1);
+}
+
+//HPƒQ[ƒW‚Ì•`‰æ
+void Player::DrawDamageGauge()
+{
+	//Å‘å‚Ì‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
+	float gaugesizex = 300;
+	int gaugesizey = 50;
+	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(0, 0, 0), 1);
+	//Œ»İ‚Ì‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
+	float rate = hp / 10.0f;
+	float currentGaugesizex = gaugesizex * 2 * rate;
+	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
 }

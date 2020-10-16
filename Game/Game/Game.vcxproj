@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Enemy2.cpp" />
+    <ClCompile Include="Sourse\Actor\Enemy2.cpp" />
     <ClCompile Include="Sourse\Actor\Clock.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy1.cpp" />
@@ -157,7 +157,7 @@
     <ClCompile Include="Sourse\Util\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy2.h" />
+    <ClInclude Include="Header\Actor\Enemy2.h" />
     <ClInclude Include="Header\Actor\Clock.h" />
     <ClInclude Include="Header\Actor\Enemy.h" />
     <ClInclude Include="Header\Actor\Enemy1.h" />

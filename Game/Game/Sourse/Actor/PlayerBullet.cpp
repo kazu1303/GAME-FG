@@ -32,8 +32,8 @@ void PlayerBullet::Update()
 	position->y += velocity->y * speed;
 	if (0 > position->x ||
 		0 > position->y ||
-		Screen::WinHight < position->x ||
-		Screen::WinWidth < position->y)
+		Screen::WinWidth < position->x ||
+		Screen::WinHight < position->y)
 	{
 		isDead = true;
 	}

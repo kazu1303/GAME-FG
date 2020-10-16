@@ -7,6 +7,7 @@
 #include "MousePointer.h"
 #include "Util.h"
 #include "Enemy1.h"
+#include "Enemy2.h"
 #include "Clock.h"
 
 GamePlay::GamePlay()
@@ -47,7 +48,7 @@ void GamePlay::Update()
 		float radian = Util::AngleToRadian(angle);
 		float spawnLength = Screen::WinHight;
 		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
-		new Enemy1(&spawnPoint);
+		new Enemy2(&spawnPoint);
 	}
 }
 
