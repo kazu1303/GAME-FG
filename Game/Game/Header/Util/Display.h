@@ -9,6 +9,8 @@ enum ScreenID
 	PlayerBattery_Screen,
 	PlayerBullet_Screen,
 	Enemy_Screen,
+	SkyColor_Screen,
+	ScreenID_Length,
 };
 
 class Display
@@ -16,7 +18,7 @@ class Display
 private:
 	std::map<ScreenID, int> screens;//作成したスクリーンを保存
 	static Display* instance;//インスタンス
-	int screenNum = 4;//作成するスクリーンの数
+	int screenNum = ScreenID_Length;//作成するスクリーンの数
 public:
 	Display();
 	~Display();
