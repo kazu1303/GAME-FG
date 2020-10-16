@@ -48,6 +48,10 @@ void Player::Hit(GameObject * obj)
 	if (obj->GetType() == enemy)
 	{
 		hp--;
+		if (hp <= 0)
+		{
+			hp = 0;
+		}
 	}
 }
 
