@@ -16,6 +16,7 @@ public:
 	void Draw()override;
 	void Hit(GameObject *obj)override;
 	void Firing();
+	void FiringPutBullet();
 	void BatteryDraw();
 	void DrawDamageGauge();
 };

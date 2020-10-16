@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Actor\PutBullet.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy2.cpp" />
     <ClCompile Include="Sourse\Actor\Clock.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Header\Actor\Player.h" />
     <ClInclude Include="Header\Actor\PlayerBullet.h" />
     <ClInclude Include="Header\Util\Util.h" />
+    <ClInclude Include="Header\Actor\PutBullet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

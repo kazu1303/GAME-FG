@@ -2,9 +2,11 @@
 #include "DxLib.h"
 #include "MousePointer.h"
 #include "PlayerBullet.h"
+#include "PutBullet.h"
 #include "Util.h"
 #include "DisPlay.h"
 #include "Screen.h"
+#include "KeyBoard.h"
 
 
 Player::Player(Vector2 *position)
@@ -29,6 +31,7 @@ void Player::Initialize()
 void Player::Update()
 {
 	Firing();
+	FiringPutBullet();
 }
 
 void Player::Draw()
@@ -65,6 +68,14 @@ void Player::Firing()
 	else
 	{
 		bulletTimer.Max();
+	}
+}
+
+void Player::FiringPutBullet()
+{
+	if (KeyBoard::GetKeyTrigger(KEY_INPUT_Z))
+	{
+		new PutBullet(position);
 	}
 }
 
