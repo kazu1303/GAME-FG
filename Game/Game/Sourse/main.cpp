@@ -42,7 +42,7 @@ int WINAPI WinMain(
 	SetWindowSizeExtendRate(1, 0);
 
 	//‰æ–Ê‚Ì”wŒiF‚ğİ’è
-	SetBackgroundColor(35, 120, 197);
+	SetBackgroundColor(0, 0, 0);
 
     //Dxƒ‰ƒCƒuƒ‰ƒŠ‚ğ‰Šú‰»
 
