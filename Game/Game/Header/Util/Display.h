@@ -5,19 +5,10 @@
 //スクリーン
 enum ScreenID
 {
-	BossLeg_Screen,
-	BossHead_Screen,
-	Enemy_Screen,
-	PlayerLeg_Screen,
-	PlayerHead_Screen,
-	Block_Screen,
+	Player_Screen,
+	PlayerBattery_Screen,
 	PlayerBullet_Screen,
-	BossAttack_Screen,
-	Firing_Screen,
-	Particle_Screen,
-	CloudofDust_Screen,
-	BossDust_Screen,
-	Item_Screen
+	Enemy_Screen,
 };
 
 class Display
@@ -25,7 +16,7 @@ class Display
 private:
 	std::map<ScreenID, int> screens;//作成したスクリーンを保存
 	static Display* instance;//インスタンス
-	int screenNum = 13;//作成するスクリーンの数
+	int screenNum = 4;//作成するスクリーンの数
 public:
 	Display();
 	~Display();

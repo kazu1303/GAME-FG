@@ -3,13 +3,14 @@
 #include "MousePointer.h"
 #include "PlayerBullet.h"
 #include "Util.h"
+#include "DisPlay.h"
 
 
 Player::Player(Vector2 *position)
 	:GameObject(position,player,true,10,10)
 {
 	position = new Vector2(position->x, position->y);
-	bulletTimer = Timer(0.5f, true);
+	bulletTimer = Timer(0.3f, true);
 	size = 40;
 	sizeY = 20;
 }
@@ -31,7 +32,9 @@ void Player::Update()
 
 void Player::Draw()
 {
+	Display::Instance()->SetScreen(Player_Screen);
 	DrawCircle(position->x, position->y, 20, GetColor(0, 0, 0), 0);
+	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
 }
 

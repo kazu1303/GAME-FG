@@ -2,6 +2,7 @@
 #include "MousePointer.h"
 #include "DxLib.h"
 #include "Screen.h"
+#include "Display.h"
 
 PlayerBullet::PlayerBullet(Vector2 *position)
 	:GameObject(position,player_bullet,true)
@@ -17,6 +18,7 @@ PlayerBullet::PlayerBullet(Vector2 *position)
 
 PlayerBullet::~PlayerBullet()
 {
+
 }
 
 void PlayerBullet::Initialize()
@@ -39,5 +41,6 @@ void PlayerBullet::Update()
 
 void PlayerBullet::Draw()
 {
+	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle(position->x, position->y, 5, GetColor(255, 255, 255), 0);
 }

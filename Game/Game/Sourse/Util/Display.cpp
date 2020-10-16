@@ -58,17 +58,8 @@ void Display::SetScreen(ScreenID id)
 void Display::DrawScreen()
 {
 	SetDrawScreen(DX_SCREEN_BACK);
-	DrawGraph(0, 0, screens[Block_Screen], true);
-	DrawGraph(0, 0, screens[CloudofDust_Screen], true);
-	DrawGraph(0, 0, screens[Item_Screen], true);
-	DrawGraph(0, 0, screens[PlayerLeg_Screen], true);
-	DrawGraph(0, 0, screens[Firing_Screen], true);
+	DrawGraph(0, 0, screens[Player_Screen], true);
 	DrawGraph(0, 0, screens[PlayerBullet_Screen], true);
-	DrawGraph(0, 0, screens[PlayerHead_Screen], true);
-	DrawGraph(0, 0, screens[BossLeg_Screen], true);
-	DrawGraph(0, 0, screens[BossDust_Screen], true);
-	DrawGraph(0, 0, screens[BossAttack_Screen], true);
-	DrawGraph(0, 0, screens[BossHead_Screen], true);
+	DrawGraph(0, 0, screens[PlayerBattery_Screen], true);
 	DrawGraph(0, 0, screens[Enemy_Screen], true);
-	DrawGraph(0, 0, screens[Particle_Screen], true);
 }
