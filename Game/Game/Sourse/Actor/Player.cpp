@@ -3,6 +3,7 @@
 #include "MousePointer.h"
 #include "PlayerBullet.h"
 #include "PutBullet.h"
+#include "SlowBullet.h"
 #include "Util.h"
 #include "DisPlay.h"
 #include "Screen.h"
@@ -31,6 +32,7 @@ void Player::Update()
 {
 	Firing();
 	FiringPutBullet();
+	FiringSlowBullet();
 }
 
 void Player::Draw()
@@ -79,6 +81,14 @@ void Player::FiringPutBullet()
 	if (KeyBoard::GetKeyTrigger(KEY_INPUT_Z))
 	{
 		new PutBullet(position);
+	}
+}
+
+void Player::FiringSlowBullet()
+{
+	if (KeyBoard::GetKeyTrigger(KEY_INPUT_X))
+	{
+		new SlowBullet(position);
 	}
 }
 

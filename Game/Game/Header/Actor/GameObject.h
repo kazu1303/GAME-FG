@@ -16,8 +16,10 @@ enum CharaType
 {
 	player,
 	player_bullet,
+	slow_bullet,
 	enemy,
 	clock,
+	slow_area,
 };
 
 //オブジェクトの基底クラス

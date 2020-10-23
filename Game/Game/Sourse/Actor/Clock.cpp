@@ -17,6 +17,7 @@ Clock::Clock(Vector2* position)
 	instance = this;
 	this->position = position;
 	dayTimer = Timer(30.0f, true);
+	timeZoneTrigger = false;
 }
 
 Clock::~Clock()
@@ -31,6 +32,7 @@ void Clock::Initialize()
 
 void Clock::Update()
 {
+	currentTimeZone = timeZone;
 	dayTimer.Update();
 	float rad = dayTimer.GetRate() * 2 * PI;
 	float handLength = 25;
@@ -44,6 +46,15 @@ void Clock::Update()
 	{
 		timeZone = morning;
 	}
+	if (prevTimeZone == currentTimeZone)
+	{
+		timeZoneTrigger = true;
+	}
+	else
+	{
+		timeZoneTrigger = false;
+	}
+	prevTimeZone = timeZone;
 }
 
 void Clock::Draw()
@@ -91,4 +102,9 @@ float Clock::GetTime()
 TimeZone Clock::GetTimeZone()
 {
 	return timeZone;
+}
+
+bool Clock::TimeZoneTrigger()
+{
+	return timeZoneTrigger;
 }
