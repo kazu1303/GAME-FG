@@ -12,8 +12,7 @@ private:
 protected:
 	bool hitslow = false;
 public:
-	Enemy(Vector2 *position,int hp);
-	Enemy(Vector2 *position, float transTime = 1.0f);
+	Enemy(Vector2 *position,int hp, float transTime = 1.0f);
 	~Enemy();
 	virtual void Initialize()override = 0;
 	virtual void Update()override = 0;

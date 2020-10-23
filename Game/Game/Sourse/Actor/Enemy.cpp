@@ -2,10 +2,8 @@
 #include "Screen.h"
 
 
-Enemy::Enemy(Vector2 *position,int hp)
+Enemy::Enemy(Vector2 *position,int hp, float transTime)
 	:GameObject(position,enemy,true,1,hp)
-Enemy::Enemy(Vector2 *position, float transTime)
-	:GameObject(position,enemy,true)
 {
 	transTimer = new Timer(transTime, false);
 	position = new Vector2(position->x, position->y);
