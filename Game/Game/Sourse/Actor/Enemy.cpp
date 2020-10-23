@@ -1,6 +1,6 @@
 #include "Enemy.h"
 #include "Screen.h"
-#include "..\..\Header\Actor\Enemy.h"
+#include "Enemy.h"
 
 
 Enemy::Enemy(Vector2* position,float maxRotate, float transTime, int hp)
@@ -43,7 +43,22 @@ void Enemy::Update()
 
 void Enemy::Transform(TimeZone timeZone, float rate)
 {
-	
+	if (timeZone == TimeZone::night)
+	{
+		if ((position->x >= Screen::WinWidth || position->x <= 0 || position->y >= Screen::WinHight || position->y <= 0))
+		{
+			transTimer->Max();
+		}
+		rotateAngle = maxRotate * transTimer->GetRate();
+	}
+	if (timeZone == TimeZone::morning)
+	{
+		if ((position->x >= Screen::WinWidth || position->x <= 0 || position->y >= Screen::WinHight || position->y <= 0))
+		{
+			transTimer->Max();
+		}
+		rotateAngle = maxRotate * (1.0f - transTimer->GetRate());
+	}
 };
 //
 //void Enemy::Draw()
