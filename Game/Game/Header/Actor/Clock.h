@@ -32,6 +32,9 @@ private:
 		{ 0, 0, 0 },
 	};
 	TimeZone timeZone;
+	TimeZone prevTimeZone;
+	TimeZone currentTimeZone;
+	bool timeZoneTrigger;
 public:
 	static Clock& Instance();
 	Clock(Vector2* position);
@@ -43,5 +46,6 @@ public:
 	void DrawSky();
 	float GetTime();
 	TimeZone GetTimeZone();
+	bool TimeZoneTrigger();
 };
 
