@@ -7,9 +7,10 @@ class Enemy :
 	public GameObject
 {
 private:
-	Timer* transTimer;
-	bool isTransform;
+
+	//bool isTransform;
 protected:
+	Timer transTimer;
 	float maxRotate = 0;
 	float rotateAngle = 0;
 	bool hitSlow = false;	

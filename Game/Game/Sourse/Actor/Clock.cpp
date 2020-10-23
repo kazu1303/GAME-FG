@@ -32,7 +32,7 @@ void Clock::Initialize()
 
 void Clock::Update()
 {
-	currentTimeZone = timeZone;
+	prevTimeZone = currentTimeZone;
 	dayTimer.Update();
 	float rad = dayTimer.GetRate() * 2 * PI;
 	float handLength = 25;
@@ -46,15 +46,8 @@ void Clock::Update()
 	{
 		timeZone = morning;
 	}
-	if (prevTimeZone == currentTimeZone)
-	{
-		timeZoneTrigger = true;
-	}
-	else
-	{
-		timeZoneTrigger = false;
-	}
-	prevTimeZone = timeZone;
+	currentTimeZone = timeZone;
+
 }
 
 void Clock::Draw()
@@ -107,5 +100,5 @@ TimeZone Clock::GetTimeZone()
 
 bool Clock::TimeZoneTrigger()
 {
-	return timeZoneTrigger;
+	return prevTimeZone != currentTimeZone;
 }

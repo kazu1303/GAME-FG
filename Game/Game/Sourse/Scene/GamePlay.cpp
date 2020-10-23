@@ -26,7 +26,7 @@ GamePlay::~GamePlay()
 void GamePlay::Initialize()
 {
 	isEnd = false;
-	enemy1Summon = Timer(1.5f, true);
+	enemy1Summon = Timer(0.5f, true);
 	enemy2Summon = Timer(0.8f, true);
 	enemy3Summon = Timer(1.0f, true);
 	new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
@@ -43,9 +43,10 @@ void GamePlay::Update()
 	}
 
 	GameObjectManager::Instance()->Update();
+	enemy1Summon.Update();
 	if (Clock::Instance().GetTimeZone() == morning)
 	{
-		enemy1Summon.Update();
+
 		enemy3Summon.Update();
 	}
 	else if (Clock::Instance().GetTimeZone() == night)
@@ -59,28 +60,28 @@ void GamePlay::Update()
 		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
 		float angle = (float)(GetRand(360));
 		float radian = Util::AngleToRadian(angle);
-		float spawnLength = Screen::WinHight;
+		float spawnLength = Screen::WinWidth;
 		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
 		new Enemy1(&spawnPoint);
 	}
-	if (enemy2Summon.IsTime())
-	{
-		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
-		float angle = (float)(GetRand(360));
-		float radian = Util::AngleToRadian(angle);
-		float spawnLength = Screen::WinHight;
-		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
-		new Enemy2(&spawnPoint);
-	}
-	if (enemy3Summon.IsTime())
-	{
-		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
-		float angle = (float)(GetRand(360));
-		float radian = Util::AngleToRadian(angle);
-		float spawnLength = Screen::WinHight;
-		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
-		new Enemy3(&spawnPoint);
-	}
+	//if (enemy2Summon.IsTime())
+	//{
+	//	//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
+	//	float angle = (float)(GetRand(360));
+	//	float radian = Util::AngleToRadian(angle);
+	//	float spawnLength = Screen::WinHight;
+	//	Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+	//	new Enemy2(&spawnPoint);
+	//}
+	//if (enemy3Summon.IsTime())
+	//{
+	//	//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
+	//	float angle = (float)(GetRand(360));
+	//	float radian = Util::AngleToRadian(angle);
+	//	float spawnLength = Screen::WinHight;
+	//	Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+	//	new Enemy3(&spawnPoint);
+	//}
 }
 
 //•`‰æˆ—
