@@ -23,13 +23,13 @@ void Enemy1::Initialize()
 void Enemy1::Update()
 {
 	float speed = 3;
-	if (hitslow)
+	if (hitSlow)
 	{
 		speed = 1;
 	}
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
-	hitslow = false;
+	hitSlow = false;
 }
 
 void Enemy1::Draw()

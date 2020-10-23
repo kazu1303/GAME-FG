@@ -23,7 +23,7 @@ void Enemy2::Initialize()
 void Enemy2::Update()
 {
 	float speed = 3;
-	if (hitslow)
+	if (hitSlow)
 	{
 		speed = 1;
 	}

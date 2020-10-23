@@ -1,10 +1,12 @@
 #include "Enemy.h"
 #include "Screen.h"
+#include "..\..\Header\Actor\Enemy.h"
 
 
-Enemy::Enemy(Vector2 *position,int hp, float transTime)
+Enemy::Enemy(Vector2* position,float maxRotate, float transTime, int hp)
 	:GameObject(position,enemy,true,1,hp)
 {
+	this->maxRotate = maxRotate;
 	transTimer = new Timer(transTime, false);
 	position = new Vector2(position->x, position->y);
 	velocity->x = Screen::WinWidth / 2- this->position->x;
@@ -57,6 +59,6 @@ void Enemy::Hit(GameObject * obj)
 	}
 	if (obj->GetType() == slow_area)
 	{
-		hitslow = true;
+		hitSlow = true;
 	}
 }
