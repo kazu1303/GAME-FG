@@ -106,6 +106,7 @@ void Player::BatteryDraw()
 //HPƒQ[ƒW‚Ì•`‰æ
 void Player::DrawDamageGauge()
 {
+	Display::Instance()->SetScreen(UI_Screen);
 	//Å‘å‚Ì‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
 	float gaugesizex = 300;
 	int gaugesizey = 50;

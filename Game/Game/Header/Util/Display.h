@@ -10,7 +10,9 @@ enum ScreenID
 	PlayerBullet_Screen,
 	Enemy_Screen,
 	SkyColor_Screen,
+	UI_Screen,
 	ScreenID_Length,
+	
 };
 
 class Display
