@@ -23,6 +23,10 @@ void Enemy2::Initialize()
 void Enemy2::Update()
 {
 	float speed = 3;
+	if (hitslow)
+	{
+		speed = 1;
+	}
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
 }
@@ -40,9 +44,5 @@ void Enemy2::Draw()
 
 void Enemy2::Hit(GameObject * obj)
 {
-	if (obj->GetType() == player ||
-		obj->GetType() == player_bullet)
-	{
-		isDead = true;
-	}
+	Enemy::Hit(obj);
 }

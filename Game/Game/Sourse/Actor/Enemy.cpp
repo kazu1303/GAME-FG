@@ -50,6 +50,11 @@ void Enemy::Transform(TimeZone timeZone, float rate)
 //
 void Enemy::Hit(GameObject * obj)
 {
+	if (obj->GetType() == player ||
+		obj->GetType() == player_bullet)
+	{
+		isDead = true;
+	}
 	if (obj->GetType() == slow_area)
 	{
 		hitslow = true;
