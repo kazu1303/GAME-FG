@@ -4,6 +4,8 @@
 class Enemy :
 	public GameObject
 {
+protected:
+	bool hitslow = false;
 public:
 	Enemy(Vector2 *position);
 	~Enemy();

@@ -6,7 +6,7 @@ using namespace std;
 vector<shared_ptr<GameObject>> GameObjectManager::gameObjects;
 vector<shared_ptr<GameObject>> GameObjectManager::addgameObjects;
 
-vector<GameObject*>::iterator itr;
+//vector<GameObject*>::iterator itr;
 
 GameObjectManager* GameObjectManager::instance = nullptr;
 

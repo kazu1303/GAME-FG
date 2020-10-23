@@ -28,6 +28,10 @@ void Enemy::Update()
 //{
 //}
 //
-//void Enemy::Hit(GameObject * obj)
-//{
-//}
+void Enemy::Hit(GameObject * obj)
+{
+	if (obj->GetType() == slow_area)
+	{
+		hitslow = true;
+	}
+}
