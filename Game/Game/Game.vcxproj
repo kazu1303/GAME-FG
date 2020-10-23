@@ -161,9 +161,9 @@
     <ClCompile Include="Sourse\Util\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Actor\Enemy.h" />
     <ClInclude Include="Header\Actor\Enemy2.h" />
     <ClInclude Include="Header\Actor\Clock.h" />
-    <ClInclude Include="Header\Actor\Enemy.h" />
     <ClInclude Include="Header\Actor\Enemy1.h" />
     <ClInclude Include="Header\Actor\Enemy3.h" />
     <ClInclude Include="Header\Actor\Entity.h" />
