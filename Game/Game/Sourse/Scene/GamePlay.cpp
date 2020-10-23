@@ -8,6 +8,7 @@
 #include "Util.h"
 #include "Enemy1.h"
 #include "Enemy2.h"
+#include "Enemy3.h"
 #include "Clock.h"
 
 
@@ -27,6 +28,7 @@ void GamePlay::Initialize()
 	isEnd = false;
 	enemy1Summon = Timer(1.5f, true);
 	enemy2Summon = Timer(0.8f, true);
+	enemy3Summon = Timer(1.0f, true);
 	new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
 	new Clock(new Vector2(50, 50));
 }
@@ -44,6 +46,7 @@ void GamePlay::Update()
 	if (Clock::Instance().GetTimeZone() == morning)
 	{
 		enemy1Summon.Update();
+		enemy3Summon.Update();
 	}
 	else if (Clock::Instance().GetTimeZone() == night)
 	{
@@ -68,6 +71,15 @@ void GamePlay::Update()
 		float spawnLength = Screen::WinHight;
 		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
 		new Enemy2(&spawnPoint);
+	}
+	if (enemy3Summon.IsTime())
+	{
+		//ìGÇ™èoåªÇ∑ÇÈï˚å¸ÇåàÇﬂÇÈ
+		float angle = (float)(GetRand(360));
+		float radian = Util::AngleToRadian(angle);
+		float spawnLength = Screen::WinHight;
+		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+		new Enemy3(&spawnPoint);
 	}
 }
 

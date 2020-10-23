@@ -39,6 +39,14 @@ void PlayerBullet::Update()
 	}
 }
 
+void PlayerBullet::Hit(GameObject * obj)
+{
+	if (obj->GetType() == enemy)
+	{
+		isDead = true;
+	}
+}
+
 void PlayerBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
