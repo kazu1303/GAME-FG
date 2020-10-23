@@ -5,7 +5,7 @@ class Enemy :
 	public GameObject
 {
 public:
-	Enemy(Vector2 *position);
+	Enemy(Vector2 *position,int hp);
 	~Enemy();
 	virtual void Initialize()override = 0;
 	virtual void Update()override = 0;

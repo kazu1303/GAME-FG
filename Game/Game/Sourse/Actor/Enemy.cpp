@@ -2,8 +2,8 @@
 #include "Screen.h"
 
 
-Enemy::Enemy(Vector2 *position)
-	:GameObject(position,enemy,true)
+Enemy::Enemy(Vector2 *position,int hp)
+	:GameObject(position,enemy,true,1,hp)
 {
 	position = new Vector2(position->x, position->y);
 	velocity->x = Screen::WinWidth / 2- this->position->x;

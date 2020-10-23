@@ -1,48 +1,48 @@
-#include "Enemy1.h"
+#include "Enemy3.h"
 #include "Screen.h"
 #include "Util.h"
-#include "DxLib.h"
 #include "Display.h"
+#include "DxLib.h"
 
-Enemy1::Enemy1(Vector2 *position)
-	:Enemy(position,1)
+Enemy3::Enemy3(Vector2 *position)
+	:Enemy(position,3)
 {
 	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
 	size = 40;
 }
 
 
-Enemy1::~Enemy1()
+Enemy3::~Enemy3()
 {
 }
 
-void Enemy1::Initialize()
+void Enemy3::Initialize()
 {
 }
 
-void Enemy1::Update()
+void Enemy3::Update()
 {
-	float speed = 3;
+	float speed = 1.5f;
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
 }
 
-void Enemy1::Draw()
+void Enemy3::Draw()
 {
-
-	float r = 20;
+	float r = size / 2;
 	//float radian1 = Util::AngleToRadian(angle);
 	float radian2 = angle + Util::AngleToRadian(-120);
 	float radian3 = angle + Util::AngleToRadian(120);
 	Display::Instance()->SetScreen(Enemy_Screen);
-	DrawTriangle(position->x + r * cos(angle), position->y + r * -sin(angle), position->x + r * cos(radian2), position->y + r * -sin(radian2), position->x + r * cos(radian3), position->y + r * -sin(radian3), GetColor(255, 255, 255), 0);
+	DrawBox(position->x + r * cos(angle), position->y + r * -sin(angle), position->x + r * cos(radian2), position->y + r * -sin(radian2),GetColor(255, 255, 255), 0);
 }
 
-void Enemy1::Hit(GameObject * obj)
+void Enemy3::Hit(GameObject * obj)
 {
 	if (obj->GetType() == player ||
 		obj->GetType() == player_bullet)
 	{
-		isDead = true;
+		hp--;
+		if (hp <= 0)isDead = true;
 	}
 }

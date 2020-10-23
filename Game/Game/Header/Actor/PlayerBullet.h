@@ -9,6 +9,7 @@ public:
 	~PlayerBullet();
 	void Initialize()override;
 	void Update()override;
+	void Hit(GameObject* obj) override;
 	void Draw()override;
 };
 

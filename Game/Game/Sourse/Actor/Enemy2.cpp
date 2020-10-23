@@ -5,7 +5,7 @@
 #include "DxLib.h"
 
 Enemy2::Enemy2(Vector2 *position)
-	:Enemy(position)
+	:Enemy(position,1)
 {
 	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
 	size = 40;
