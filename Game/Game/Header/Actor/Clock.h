@@ -10,6 +10,12 @@ struct Color
 	int b;
 };
 
+enum TimeZone
+{
+	morning,
+	night
+};
+
 class Clock : public GameObject
 {
 private:
@@ -25,8 +31,9 @@ private:
 		{ 42, 12, 0 },
 		{ 0, 0, 0 },
 	};
+	TimeZone timeZone;
 public:
-	static Clock& GetInstance();
+	static Clock& Instance();
 	Clock(Vector2* position);
 	~Clock();
 	void Initialize();
@@ -35,5 +42,6 @@ public:
 	Color GetSkyColor();
 	void DrawSky();
 	float GetTime();
+	TimeZone GetTimeZone();
 };
 

@@ -1,4 +1,5 @@
 #include "GameObjectManager.h"
+#include "Clock.h"
 
 using namespace std;
 
@@ -8,6 +9,8 @@ vector<shared_ptr<GameObject>> GameObjectManager::addgameObjects;
 vector<GameObject*>::iterator itr;
 
 GameObjectManager* GameObjectManager::instance = nullptr;
+
+
 
 GameObjectManager::GameObjectManager()
 {
@@ -58,6 +61,7 @@ void GameObjectManager::Update()
 	{
 		itr->Update();
 	}
+
 	HitToObject();
 	//死亡判定
 	//キャラクターの死亡処理

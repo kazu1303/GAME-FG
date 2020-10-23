@@ -16,18 +16,18 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::Initialize()
-{
-}
-
+//void Enemy::Initialize()
+//{
+//}
+//
 void Enemy::Update()
 {
 }
-
-void Enemy::Draw()
-{
-}
-
-void Enemy::Hit(GameObject * obj)
-{
-}
+//
+//void Enemy::Draw()
+//{
+//}
+//
+//void Enemy::Hit(GameObject * obj)
+//{
+//}

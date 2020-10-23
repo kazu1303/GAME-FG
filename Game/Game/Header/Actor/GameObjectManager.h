@@ -4,6 +4,9 @@
 
 #include "GameObject.h"
 
+
+
+
 //オブジェクトを管理するクラス
 class GameObjectManager
 {
@@ -12,6 +15,7 @@ private:
 	//ブロック以外のオブジェクトを入れるよう
 	static std::vector<std::shared_ptr<GameObject>> gameObjects;//キャラを格納
 	static std::vector<std::shared_ptr<GameObject>> addgameObjects;//新しく生成したキャラを格納
+
 public:
 	GameObjectManager();
 	//インスタンス
@@ -34,5 +38,7 @@ public:
 	bool GameClear();
 	//クリアしたか
 	bool ClearFlag();
+
+
 	~GameObjectManager();
 };

@@ -8,6 +8,7 @@ class GamePlay:
 private:
 	bool push;
 	Timer enemy1Summon;//トンボの生成間隔
+	Timer enemy2Summon;//トンボの生成間隔
 public:
 	GamePlay();
 	~GamePlay();

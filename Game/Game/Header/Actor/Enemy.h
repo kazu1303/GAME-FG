@@ -7,9 +7,10 @@ class Enemy :
 public:
 	Enemy(Vector2 *position);
 	~Enemy();
-	virtual void Initialize()override;
-	virtual void Update()override;
-	virtual void Draw()override;
-	virtual void Hit(GameObject *obj)override;
+	virtual void Initialize()override = 0;
+	virtual void Update()override = 0;
+	virtual void Draw()override = 0;
+	virtual void Hit(GameObject *obj)override = 0;
+
 };
 

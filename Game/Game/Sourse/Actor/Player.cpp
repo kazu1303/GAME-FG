@@ -15,7 +15,6 @@ Player::Player(Vector2 *position)
 	position = new Vector2(position->x, position->y);
 	bulletTimer = Timer(0.3f, true);
 	size = 40;
-	sizeY = 20;
 }
 
 
@@ -37,7 +36,7 @@ void Player::Update()
 void Player::Draw()
 {
 	Display::Instance()->SetScreen(Player_Screen);
-	DrawCircle(position->x, position->y, 20, GetColor(0, 0, 0), 0);
+	DrawCircle(position->x, position->y, 20, GetColor(255, 255, 255), 0);
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
 	DrawDamageGauge();
@@ -85,13 +84,13 @@ void Player::FiringPutBullet()
 
 void Player::BatteryDraw()
 {
-	DrawCircle(position->x, position->y, 10, GetColor(0, 0, 0), 1);
+	DrawCircle(position->x, position->y, 10, GetColor(255, 255, 255), 1);
 	angle = atan2(position->x - MousePointer::Instance()->GetPosition().x , position->y - MousePointer::Instance()->GetPosition().y);
 	float r = 30;
 	angle = angle * (180.0f / PI) + 90;
 	float radian1 = Util::AngleToRadian(angle + 25);
 	float radian2 = Util::AngleToRadian(angle - 25);
-	DrawTriangle(position->x, position->y, position->x + r * cos(radian1), position->y + r * -sin(radian1), position->x + r * cos(radian2), position->y + r * -sin(radian2), GetColor(0, 0, 0), 1);
+	DrawTriangle(position->x, position->y, position->x + r * cos(radian1), position->y + r * -sin(radian1), position->x + r * cos(radian2), position->y + r * -sin(radian2), GetColor(255, 255, 255), 1);
 }
 
 //HPƒQ[ƒW‚Ì•`‰æ
@@ -100,7 +99,7 @@ void Player::DrawDamageGauge()
 	//Å‘å‚Ì‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
 	float gaugesizex = 300;
 	int gaugesizey = 50;
-	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(0, 0, 0), 1);
+	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(255, 255, 255), 1);
 	//Œ»İ‚Ì‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
 	float rate = hp / 10.0f;
 	float currentGaugesizex = gaugesizex * 2 * rate;

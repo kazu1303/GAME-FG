@@ -6,7 +6,7 @@
 
 Clock* Clock::instance = nullptr;
 
-Clock& Clock::GetInstance()
+Clock& Clock::Instance()
 {
 	return *instance;
 }
@@ -36,6 +36,14 @@ void Clock::Update()
 	float handLength = 25;
 	clockHand.x = std::cosf(rad) * 0 - std::sinf(rad) * -handLength + position->x;
 	clockHand.y = std::sinf(rad) * 0 + std::cosf(rad) * -handLength + position->y;
+	if (GetTime() > 12)
+	{
+		timeZone = night;
+	}
+	else
+	{
+		timeZone = morning;
+	}
 }
 
 void Clock::Draw()
@@ -78,4 +86,9 @@ void Clock::DrawSky()
 float Clock::GetTime()
 {
 	return dayTimer.GetRate() * 24;
+}
+
+TimeZone Clock::GetTimeZone()
+{
+	return timeZone;
 }

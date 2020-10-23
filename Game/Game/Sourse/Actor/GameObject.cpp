@@ -7,22 +7,11 @@ using namespace std;
 
 GameObject::GameObject(Vector2* position, CharaType type, bool entity, float scale, int hp,string name)
 {
-	this->Name = name;
 	this->position = new Vector2(position->x,position->y);
 	this->type = type;
 	this->entity = entity;
 	isDead = false;
 	this->hp = hp;
-	if (Name != " ")
-	{
-		//画像サイズから大きさ決め
-		GetGraphSize(Renderer::Instance()->Texture(Name), &imageSizeX, &imageSizeY);
-		sizeX = imageSizeX * scale;
-		sizeY = imageSizeY * scale;
-		scaleX = scale;
-		scaleY = scale;
-	}
-
 	GameObjectManager::Instance()->Add(this);
 	
 	Initialize();
@@ -82,20 +71,6 @@ bool GameObject::IsCollision(GameObject * other)
 	//	オブジェクトの当たり判定
 	if ((length <= (this->size + other->size) / 2) &&
 		(length <= (this->size + other->size) / 2))
-	{
-		return true;
-	}
-	return false;
-}
-
-//ブロック同士の当たり判定
-bool GameObject::BBCollision(GameObject * other)
-{
-	float lengthX = abs(this->position->x - other->position->x);
-	float lengthY = abs(this->position->y - other->position->y);
-	//XY距離が自分と相手のサイズ/２を足した値より小さい場合はヒットしているのでtrueを返す
-	if ((lengthX < (this->sizeX + other->sizeX) / 2 - 1) &&
-		(lengthY < (this->sizeY + other->sizeY) / 2 - 1))
 	{
 		return true;
 	}

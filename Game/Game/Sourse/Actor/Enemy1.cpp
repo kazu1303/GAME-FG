@@ -9,7 +9,6 @@ Enemy1::Enemy1(Vector2 *position)
 {
 	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
 	size = 40;
-	sizeY = 30;
 }
 
 
@@ -36,7 +35,7 @@ void Enemy1::Draw()
 	float radian2 = angle + Util::AngleToRadian(-120);
 	float radian3 = angle + Util::AngleToRadian(120);
 	Display::Instance()->SetScreen(Enemy_Screen);
-	DrawTriangle(position->x + r * cos(angle), position->y + r * -sin(angle), position->x + r * cos(radian2), position->y + r * -sin(radian2), position->x + r * cos(radian3), position->y + r * -sin(radian3), GetColor(0, 0, 0), 0);
+	DrawTriangle(position->x + r * cos(angle), position->y + r * -sin(angle), position->x + r * cos(radian2), position->y + r * -sin(radian2), position->x + r * cos(radian3), position->y + r * -sin(radian3), GetColor(255, 255, 255), 0);
 }
 
 void Enemy1::Hit(GameObject * obj)

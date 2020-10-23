@@ -27,16 +27,11 @@ protected:
 	Vector2* position = new Vector2(0,0);//座標
 	Vector2* velocity = new Vector2(0,0);//移動量
 	Vector2* otherPos = new Vector2(0,0);//主にプレイヤーの座標
-	float sizeX, sizeY;//サイズ
 	float size;
-	int imageSizeX, imageSizeY;//画像のサイズ
-	float scaleX,scaleY;//拡縮率
-	float angle,drawAngle;//実際の角度、描画の際の角度
-	float allarea;//島内のプレイヤー面積
+	float angle;//実際の角度、描画の際の角度
 	int hp;//体力
     bool isDead;//死亡真偽
 	bool entity;//当たり判定真偽
-	std::string Name;//画像の名前
 	CharaType type;//キャラクターのタイプ
 public:
 	GameObject(Vector2* position, CharaType type, bool entity, float scale = 1.0f,int hp = 1,std::string name = " " );
@@ -55,8 +50,6 @@ public:
 	bool Equal( GameObject* other);
 	//基本的な当たり判定（四角形）
 	bool IsCollision(GameObject* other);
-	//ブロック同士の当たり判定
-	bool BBCollision(GameObject* other);
 	//ヒットした方向を返す
 	Direction CheckDirection( GameObject* other);
 	//キャラタイプを返す
