@@ -2,6 +2,7 @@
 //#include "Screen.h"
 #include "DxLib.h"
 //#include "Renderer.h"
+#include "KeyBoard.h"
 
 GameOver::GameOver()
 {
@@ -25,18 +26,9 @@ void GameOver::Initialize()
 void GameOver::Update()
 {
 	//次のシーンへの変更処理
-	if (CheckHitKey(KEY_INPUT_RETURN))
+	if (KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
-		//前のフレームでキーが押されていない場合シーン終了
-		if (!push)
-		{
-			isEnd = true;
-		}
-		push = true;
-	}
-	else//キーが押されてないときはpushをfalseに
-	{
-		push = false;
+		isEnd = true;
 	}
 }
 
@@ -46,6 +38,7 @@ void GameOver::Draw()
 	//Renderer::Instance()->DrawTexture1("gameover", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight / 2.0f)), 0.0f, 6.0f);
 	//Renderer::Instance()->DrawTexture1("enter", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight - 200.0f)), 0);
 	DrawString(0, 0, "over", GetColor(255, 255, 255));
+	DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
 }
 
 //次のシーン

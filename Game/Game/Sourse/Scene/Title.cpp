@@ -44,6 +44,7 @@ void Title::Draw()
 	GameObjectManager::Instance()->Draw();
 	ParticleManager::Instance()->Draw();
 	DrawString(0, 0, "title", GetColor(255, 255, 255));
+	DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
 	MousePointer::Instance()->Draw();
 }
 
