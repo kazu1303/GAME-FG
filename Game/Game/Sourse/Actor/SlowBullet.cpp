@@ -51,3 +51,12 @@ void SlowBullet::Draw()
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle(position->x, position->y, 5, GetColor(255, 255, 255), 0);
 }
+
+void SlowBullet::Hit(GameObject * obj)
+{
+	if (obj->GetType() == enemy)
+	{
+		isDead = true;
+		new SlowArea(position);
+	}
+}

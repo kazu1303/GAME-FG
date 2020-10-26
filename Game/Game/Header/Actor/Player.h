@@ -8,6 +8,8 @@ class Player :
 {
 private:
 	Timer bulletTimer;
+	int maxSlowBullet = 10;
+	int maxPutBullet = 10;
 public:
 	Player(Vector2 *position);
 	~Player();

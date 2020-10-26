@@ -8,6 +8,7 @@
 #include "DisPlay.h"
 #include "Screen.h"
 #include "KeyBoard.h"
+#include "Clock.h"
 
 
 Player::Player(Vector2 *position)
@@ -30,6 +31,11 @@ void Player::Initialize()
 
 void Player::Update()
 {
+	if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
+	{
+		maxPutBullet = 10;
+		maxSlowBullet = 10;
+	}
 	Firing();
 	FiringPutBullet();
 	FiringSlowBullet();
@@ -78,17 +84,19 @@ void Player::Firing()
 
 void Player::FiringPutBullet()
 {
-	if (KeyBoard::GetKeyTrigger(KEY_INPUT_Z))
+	if (maxPutBullet > 0 && KeyBoard::GetKeyTrigger(KEY_INPUT_Z))
 	{
 		new PutBullet(position);
+		maxPutBullet--;
 	}
 }
 
 void Player::FiringSlowBullet()
 {
-	if (KeyBoard::GetKeyTrigger(KEY_INPUT_X))
+	if (maxSlowBullet > 0 && KeyBoard::GetKeyTrigger(KEY_INPUT_X))
 	{
 		new SlowBullet(position);
+		maxSlowBullet--;
 	}
 }
 

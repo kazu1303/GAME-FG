@@ -14,7 +14,7 @@ PutBullet::PutBullet(Vector2 *position)
 	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
 	size = 10;
-	speed = 0.5f;
+	speed = 0.2f;
 }
 
 
@@ -48,4 +48,12 @@ void PutBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle(position->x, position->y, 5, GetColor(135, 206, 250), 0);
+}
+
+void PutBullet::Hit(GameObject * obj)
+{
+	if (obj->GetType() == enemy)
+	{
+		isDead = true;
+	}
 }
