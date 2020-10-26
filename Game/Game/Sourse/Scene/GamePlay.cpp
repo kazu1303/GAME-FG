@@ -26,7 +26,7 @@ GamePlay::~GamePlay()
 void GamePlay::Initialize()
 {
 	isEnd = false;
-	enemy1Summon = Timer(0.5f, true);
+	enemy1Summon = Timer(2.0f, true);
 	enemy2Summon = Timer(0.8f, true);
 	enemy3Summon = Timer(1.0f, true);
 	new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
@@ -43,27 +43,43 @@ void GamePlay::Update()
 	}
 
 	GameObjectManager::Instance()->Update();
+	if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
+	{
+		enemy1Summon.Resetting(1.0f);
+	}
+	else if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
+	{
+		enemy1Summon.Resetting(2.0f);
+	}
 	enemy1Summon.Update();
 	if (Clock::Instance().GetTimeZone() == morning)
 	{
-
-		enemy3Summon.Update();
+		//“G‚Ì¶¬
+		if (enemy1Summon.IsTime())
+		{
+			//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
+			float angle = (float)(GetRand(360));
+			float radian = Util::AngleToRadian(angle);
+			float spawnLength = Screen::WinWidth;
+			Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+			new Enemy1(&spawnPoint, 1);
+		}
 	}
 	else if (Clock::Instance().GetTimeZone() == night)
 	{
-		enemy2Summon.Update();
+		//“G‚Ì¶¬
+		if (enemy1Summon.IsTime())
+		{
+			//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
+			float angle = (float)(GetRand(360));
+			float radian = Util::AngleToRadian(angle);
+			float spawnLength = Screen::WinWidth;
+			Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+			new Enemy1(&spawnPoint, 2);
+		}
 	}
 
-	//“G‚Ì¶¬
-	if (enemy1Summon.IsTime())
-	{
-		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
-		float angle = (float)(GetRand(360));
-		float radian = Util::AngleToRadian(angle);
-		float spawnLength = Screen::WinWidth;
-		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
-		new Enemy1(&spawnPoint);
-	}
+
 	//if (enemy2Summon.IsTime())
 	//{
 	//	//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é

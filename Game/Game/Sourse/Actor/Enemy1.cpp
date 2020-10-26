@@ -4,8 +4,8 @@
 #include "DxLib.h"
 #include "Display.h"
 
-Enemy1::Enemy1(Vector2 *position)
-	:Enemy(position,60.0f,1.0f)
+Enemy1::Enemy1(Vector2 *position,int hp)
+	:Enemy(position,60.0f,1.0f,hp)
 {
 	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
 	size = 40;
@@ -30,6 +30,7 @@ void Enemy1::Update()
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
 	hitSlow = false;
+
 	Enemy::Update();
 }
 
@@ -48,10 +49,5 @@ void Enemy1::Draw()
 
 void Enemy1::Hit(GameObject * obj)
 {
-	if (obj->GetType() == player ||
-		obj->GetType() == player_bullet)
-	{
-		isDead = true;
-	}
 	Enemy::Hit(obj);
 }

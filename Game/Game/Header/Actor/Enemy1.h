@@ -7,7 +7,7 @@ class Enemy1 :
 private:
 
 public:
-	Enemy1(Vector2 *position);
+	Enemy1(Vector2 *position,int hp);
 	~Enemy1();
 	void Initialize()override;
 	void Update()override;
