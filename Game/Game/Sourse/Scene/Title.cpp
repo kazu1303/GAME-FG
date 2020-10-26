@@ -45,6 +45,13 @@ void Title::Draw()
 	ParticleManager::Instance()->Draw();
 	DrawString(0, 0, "title", GetColor(255, 255, 255));
 	DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
+	DrawString(330, 100, "‘€ì", GetColor(255, 255, 255));
+	DrawString(300, 120, "ƒ}ƒEƒX¶F’e‚Ì”­ŽË", GetColor(255, 255, 255));
+	DrawString(300, 140, "ZF“ÁŽê’e‚P‚Ì”­ŽË", GetColor(255, 255, 255));
+	DrawString(300, 160, "ƒXƒy[ƒXF“ÁŽê’e‚P‚Ì‰Á‘¬", GetColor(255, 255, 255));
+	DrawString(300, 180, "XF“ÁŽê’e‚Q‚Ì”­ŽË", GetColor(255, 255, 255));
+	DrawString(300, 200, "“ÁŽê’e‚Í10”­‚¸‚Â‚Å’©‚É‚È‚é‚Æ•â[‚³‚ê‚Ü‚·", GetColor(255, 255, 255));
+	DrawBox(290, 90, 700, 230, GetColor(255, 0, 0),0);
 	MousePointer::Instance()->Draw();
 }
 
