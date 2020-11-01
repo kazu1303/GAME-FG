@@ -12,6 +12,7 @@ Enemy::Enemy(Vector2* position,float maxRotate, float transTime, int hp)
 	velocity->x = Screen::WinWidth / 2- this->position->x;
 	velocity->y = Screen::WinHight  / 2- this->position->y;
 	velocity->Normalize();
+	attack = 1;
 }
 
 
@@ -43,6 +44,10 @@ void Enemy::Update()
 		Transform(TimeZone::morning, transTimer.GetRate());
 		transTimer.Update();
 	}
+	if (hp <= 0)
+	{
+		isDead = true;
+	}
 }
 
 void Enemy::Transform(TimeZone timeZone, float rate)
@@ -60,27 +65,15 @@ void Enemy::Transform(TimeZone timeZone, float rate)
 		rotateAngle = maxRotate * (1.0f - transTimer.GetRate());
 	}
 };
-//
-//void Enemy::Draw()
-//{
-//}
-//
+
 void Enemy::Hit(GameObject * obj)
 {
 	if (obj->GetType() == player_bullet)
 	{
-		hp--;
+		obj->Damege(attack);
 	}
 	if (obj->GetType() == player)
 	{
-		isDead = true;
-	}
-	if (obj->GetType() == slow_area)
-	{
-		hitSlow = true;
-	}
-	if (hp <= 0)
-	{
-		isDead = true;
+		obj->Damege(attack);
 	}
 }

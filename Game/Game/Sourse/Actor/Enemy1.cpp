@@ -9,6 +9,8 @@ Enemy1::Enemy1(Vector2 *position,int hp)
 {
 	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
 	size = 40;
+	defaultSpeed = 3;
+	speed = defaultSpeed;
 }
 
 
@@ -22,14 +24,9 @@ void Enemy1::Initialize()
 
 void Enemy1::Update()
 {
-	float speed = 3;
-	if (hitSlow)
-	{
-		speed = 1;
-	}
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
-	hitSlow = false;
+	speed = defaultSpeed;
 
 	Enemy::Update();
 }
@@ -38,7 +35,6 @@ void Enemy1::Draw()
 {
 
 	float r = 20;
-	//float radian1 = Util::AngleToRadian(angle);
 	float radian2 = angle + Util::AngleToRadian(-120);
 	float radian3 = angle + Util::AngleToRadian(120);
 	float rotateRadian = Util::AngleToRadian(rotateAngle);
@@ -50,4 +46,5 @@ void Enemy1::Draw()
 void Enemy1::Hit(GameObject * obj)
 {
 	Enemy::Hit(obj);
+
 }

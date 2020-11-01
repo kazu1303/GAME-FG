@@ -9,6 +9,8 @@ Enemy2::Enemy2(Vector2 *position)
 {
 	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
 	size = 40;
+	defaultSpeed = 3;
+	speed = defaultSpeed;
 }
 
 
@@ -22,19 +24,14 @@ void Enemy2::Initialize()
 
 void Enemy2::Update()
 {
-	float speed = 3;
-	if (hitSlow)
-	{
-		speed = 1;
-	}
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
+	speed = defaultSpeed;
 }
 
 void Enemy2::Draw()
 {
 	float r = size / 2;
-	//float radian1 = Util::AngleToRadian(angle);
 	float radian2 = angle + Util::AngleToRadian(-120);
 	float radian3 = angle + Util::AngleToRadian(120);
 	Display::Instance()->SetScreen(Enemy_Screen);

@@ -157,6 +157,16 @@ void GameObject::SetPlayerPos(Vector2* position, CharaType type)
 
 }
 
+void GameObject::Damege(int attack)
+{
+	hp -= attack;
+}
+
+void GameObject::SpeedDown(int percentage)
+{
+	speed = defaultSpeed / percentage;
+}
+
 
 
 

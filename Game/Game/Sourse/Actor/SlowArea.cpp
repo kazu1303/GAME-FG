@@ -38,3 +38,11 @@ void SlowArea::Draw()
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle(position->x, position->y, size / 2, GetColor(255, 255, 255), 0);
 }
+
+void SlowArea::Hit(GameObject * obj)
+{
+	if (obj->GetType() == enemy)
+	{
+		obj->SpeedDown(5);
+	}
+}

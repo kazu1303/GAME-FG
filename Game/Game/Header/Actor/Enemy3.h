@@ -5,7 +5,7 @@ class Enemy3 :
 	public Enemy
 {
 public:
-	Enemy3(Vector2 *position);
+	Enemy3(Vector2 *position,int hp);
 	~Enemy3();
 	void Initialize()override;
 	void Update()override;

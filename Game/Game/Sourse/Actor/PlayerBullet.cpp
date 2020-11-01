@@ -13,6 +13,7 @@ PlayerBullet::PlayerBullet(Vector2 *position)
 	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
 	size = 10;
+	attack = 1;
 }
 
 
@@ -30,10 +31,11 @@ void PlayerBullet::Update()
 	float speed = 10;
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
-	if (0 > position->x ||
+	if ((0 > position->x ||
 		0 > position->y ||
 		Screen::WinWidth < position->x ||
-		Screen::WinHight < position->y)
+		Screen::WinHight < position->y) ||
+		hp <= 0)
 	{
 		isDead = true;
 	}
@@ -43,7 +45,7 @@ void PlayerBullet::Hit(GameObject * obj)
 {
 	if (obj->GetType() == enemy)
 	{
-		isDead = true;
+		obj->Damege(attack);
 	}
 }
 

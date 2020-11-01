@@ -32,6 +32,8 @@ protected:
 	float size;
 	float angle;//実際の角度、描画の際の角度
 	int hp;//体力
+	int attack;
+	float defaultSpeed, speed;
     bool isDead;//死亡真偽
 	bool entity;//当たり判定真偽
 	CharaType type;//キャラクターのタイプ
@@ -62,6 +64,10 @@ public:
 	Vector2* GetPos();
 	//主にプレイヤーの座標を設定する用
 	virtual void SetPlayerPos(Vector2* position,CharaType type);
+
+	virtual void Damege(int attack);
+
+	virtual void SpeedDown(int percentage);
 };
 
 
