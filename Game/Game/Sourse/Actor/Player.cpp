@@ -44,15 +44,20 @@ void Player::Update()
 		if (healTimer.IsTime())
 		{
 			hp++;
+			if (hp > maxHp)
+			{
+				hp = maxHp;
+			}
 		}
-	}
-	if (hp <= 0)
-	{
-		isDead = true;
 	}
 	Firing();
 	FiringPutBullet();
 	FiringSlowBullet();
+	if (hp <= 0)
+	{
+		isDead = true;
+	}
+
 }
 
 void Player::Draw()

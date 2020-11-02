@@ -99,7 +99,8 @@ void GameObjectManager::HitToObject()
 	for (auto obj1 : gameObjects)
 	{
 		//“–‚½‚è”»’è‚ª‚È‚¢ê‡ˆ—‚µ‚È‚¢
-		if (!obj1->EntityObject())
+		if (!obj1->EntityObject() ||
+			obj1->IsDead())
 		{
 			continue;
 		}
@@ -107,7 +108,8 @@ void GameObjectManager::HitToObject()
 		{
 			//“¯‚¶‚à‚Ì‚Æ“–‚½‚è”»’è‚ª‚È‚¢‚à‚Ì‚Íˆ—‚µ‚È‚¢
 			if (obj1->Equal(obj2.get()) ||
-				!obj2->EntityObject())
+				!obj2->EntityObject() ||
+				obj2->IsDead())
 			{
 				continue;
 			}

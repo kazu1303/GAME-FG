@@ -11,6 +11,7 @@ private:
 	Timer healTimer;
 	int maxSlowBullet = 10;
 	int maxPutBullet = 10;
+	int maxHp = 10;
 public:
 	Player(Vector2 *position);
 	~Player();
