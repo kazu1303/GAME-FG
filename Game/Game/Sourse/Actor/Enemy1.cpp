@@ -46,5 +46,4 @@ void Enemy1::Draw()
 void Enemy1::Hit(GameObject * obj)
 {
 	Enemy::Hit(obj);
-
 }

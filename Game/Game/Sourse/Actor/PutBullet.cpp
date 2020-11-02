@@ -15,6 +15,8 @@ PutBullet::PutBullet(Vector2 *position)
 	velocity->Normalize();
 	size = 10;
 	speed = 0.2f;
+	idelTimer = Timer(0.5f, false);
+	attack = 1;
 }
 
 
@@ -42,6 +44,14 @@ void PutBullet::Update()
 	{
 		isDead = true;
 	}
+	if (idel)
+	{
+		idelTimer.Update();
+		if (idelTimer.IsTime())
+		{
+			idel = false;
+		}
+	}
 }
 
 void PutBullet::Draw()
@@ -54,6 +64,19 @@ void PutBullet::Hit(GameObject * obj)
 {
 	if (obj->GetType() == enemy)
 	{
-		isDead = true;
+		if (!idel)
+		{
+			idel = true;
+			idelTimer.Reset();
+			obj->Damege(attack);
+		}
+	}
+}
+
+void PutBullet::Damege(int attack)
+{
+	if (speed <= 1.0f)
+	{
+		hp -= attack;
 	}
 }

@@ -15,6 +15,7 @@ SlowBullet::SlowBullet(Vector2 *position)
 	velocity->y = destination.y - this->position->y;
 	velocity->Normalize();
 	size = 10;
+	attack = 0;
 }
 
 
