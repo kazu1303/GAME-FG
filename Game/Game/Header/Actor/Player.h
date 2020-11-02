@@ -8,6 +8,7 @@ class Player :
 {
 private:
 	Timer bulletTimer;
+	Timer healTimer;
 	int maxSlowBullet = 10;
 	int maxPutBullet = 10;
 public:

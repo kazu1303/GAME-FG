@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Actor\EnemyBullet.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy3.cpp" />
     <ClCompile Include="Sourse\Actor\SlowArea.cpp" />
     <ClCompile Include="Sourse\Actor\SlowBullet.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Sourse\Util\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Actor\EnemyBullet.h" />
     <ClInclude Include="Header\Actor\Enemy.h" />
     <ClInclude Include="Header\Actor\Enemy2.h" />
     <ClInclude Include="Header\Actor\Clock.h" />

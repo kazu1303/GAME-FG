@@ -16,6 +16,7 @@ Player::Player(Vector2 *position)
 {
 	position = new Vector2(position->x, position->y);
 	bulletTimer = Timer(0.3f, true);
+	healTimer = Timer(3.0f, true);
 	size = 40;
 }
 
@@ -35,6 +36,15 @@ void Player::Update()
 	{
 		maxPutBullet = 10;
 		maxSlowBullet = 10;
+		healTimer.Reset();
+	}
+	if (Clock::Instance().GetTimeZone() == morning)
+	{
+		healTimer.Update();
+		if (healTimer.IsTime())
+		{
+			hp++;
+		}
 	}
 	Firing();
 	FiringPutBullet();
@@ -52,7 +62,8 @@ void Player::Draw()
 
 void Player::Hit(GameObject * obj)
 {
-	if (obj->GetType() == enemy)
+	if (obj->GetType() == enemy ||
+		obj->GetType() == enemy_bullet)
 	{
 		obj->Damege(500);
 	}

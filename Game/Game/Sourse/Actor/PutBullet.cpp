@@ -15,7 +15,7 @@ PutBullet::PutBullet(Vector2 *position)
 	velocity->Normalize();
 	size = 10;
 	speed = 0.2f;
-	idelTimer = Timer(0.5f, false);
+	idelTimer = Timer(0.1f, false);
 	attack = 1;
 }
 

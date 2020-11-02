@@ -18,6 +18,7 @@ enum CharaType
 	player_bullet,
 	slow_bullet,
 	enemy,
+	enemy_bullet,
 	clock,
 	slow_area,
 };
