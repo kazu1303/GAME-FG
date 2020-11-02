@@ -46,6 +46,10 @@ void Player::Update()
 			hp++;
 		}
 	}
+	if (hp <= 0)
+	{
+		isDead = true;
+	}
 	Firing();
 	FiringPutBullet();
 	FiringSlowBullet();

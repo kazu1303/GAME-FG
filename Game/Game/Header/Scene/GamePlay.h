@@ -1,12 +1,14 @@
 #pragma once
 #include "GameScene.h"
 #include "Timer.h"
+#include "Player.h"
 
 class GamePlay:
 	public GameScene
 {
 private:
 	bool push;
+	Player* player;
 	Timer enemy1Summon;//トンボの生成間隔
 	Timer enemy2Summon;//トンボの生成間隔
 	Timer enemy3Summon;//トンボの生成間隔
