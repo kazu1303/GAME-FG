@@ -41,6 +41,10 @@ void GamePlay::Update()
 	{
 		isEnd = true;
 	}
+	if (Clock::Instance().GetElapsedTime() >= 5)
+	{
+		isEnd = true;
+	}
 
 	GameObjectManager::Instance()->Update();
 	if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
@@ -102,6 +106,10 @@ void GamePlay::Draw()
 //ŽŸ‚ÌƒV[ƒ“
 Scene GamePlay::Next()
 {
+	if (Clock::Instance().GetElapsedTime() >= 5)
+	{
+		return gameClear;
+	}
 	return gameOver;
 }
 

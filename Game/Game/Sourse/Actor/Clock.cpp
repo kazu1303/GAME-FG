@@ -18,6 +18,7 @@ Clock::Clock(Vector2* position)
 	this->position = position;
 	dayTimer = Timer(30.0f, true);
 	timeZoneTrigger = false;
+	day = 0;
 }
 
 Clock::~Clock()
@@ -47,7 +48,10 @@ void Clock::Update()
 		timeZone = morning;
 	}
 	currentTimeZone = timeZone;
-
+	if (dayTimer.IsTime())
+	{
+		day++;
+	}
 }
 
 void Clock::Draw()
@@ -102,4 +106,9 @@ TimeZone Clock::GetTimeZone()
 bool Clock::TimeZoneTrigger()
 {
 	return prevTimeZone != currentTimeZone;
+}
+
+int Clock::GetElapsedTime()
+{
+	return day;
 }

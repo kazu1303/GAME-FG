@@ -35,6 +35,7 @@ private:
 	TimeZone prevTimeZone;
 	TimeZone currentTimeZone;
 	bool timeZoneTrigger;
+	int day;
 public:
 	static Clock& Instance();
 	Clock(Vector2* position);
@@ -47,5 +48,6 @@ public:
 	float GetTime();
 	TimeZone GetTimeZone();
 	bool TimeZoneTrigger();
+	int GetElapsedTime();
 };
 
