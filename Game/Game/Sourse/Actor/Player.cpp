@@ -70,8 +70,8 @@ void Player::Draw()
 	BatteryDraw();
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(34, 734),"z", "“ÁŽê’e‚P", GetColor(135, 206, 250), maxPutBullet);
-	BulletIcon(Vector2(102, 734), "x", "“ÁŽê’e2", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(34, 734),"X", "“ÁŽê’e‚P", GetColor(135, 206, 250), maxPutBullet);
+	BulletIcon(Vector2(102, 734), "Y", "“ÁŽê’e2", GetColor(255, 255, 255), maxSlowBullet);
 }
 
 void Player::Hit(GameObject * obj)
@@ -86,7 +86,7 @@ void Player::Hit(GameObject * obj)
 void Player::Firing()
 {
 	//’e‚Ì”­ŽË
-	if (Controller::Instance()->GetKey(PAD_INPUT_2))
+	if (Controller::Instance()->GetKey(PAD_INPUT_1))
 	{
 		bulletTimer.Update();
 		//bullettimer‚ªtrue‚ÌŽž’e‚Ì”­ŽË‚Æ‰‰o
@@ -105,7 +105,7 @@ void Player::Firing()
 
 void Player::FiringPutBullet()
 {
-	if (maxPutBullet > 0 && KeyBoard::GetKeyTrigger(KEY_INPUT_Z))
+	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_3))))
 	{
 		new PutBullet(position);
 		maxPutBullet--;
@@ -114,7 +114,7 @@ void Player::FiringPutBullet()
 
 void Player::FiringSlowBullet()
 {
-	if (maxSlowBullet > 0 && KeyBoard::GetKeyTrigger(KEY_INPUT_X))
+	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_4))))
 	{
 		new SlowBullet(position);
 		maxSlowBullet--;

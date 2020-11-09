@@ -16,6 +16,7 @@ SlowBullet::SlowBullet(Vector2 *position)
 	velocity->Normalize();
 	size = 10;
 	attack = 0;
+	deadTimer = Timer(0.5f, false);
 }
 
 
@@ -29,21 +30,14 @@ void SlowBullet::Initialize()
 
 void SlowBullet::Update()
 {
+	deadTimer.Update();
 	float speed = 10;
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
-	if (abs(position->x - destination.x) <= 5.0f &&
-		abs(position->y - destination.y) <= 5.0f)
+	if (deadTimer.IsTime())
 	{
 		isDead = true;
 		new SlowArea(position);
-	}
-	if (0 > position->x ||
-		0 > position->y ||
-		Screen::WinWidth < position->x ||
-		Screen::WinHight < position->y)
-	{
-		isDead = true;
 	}
 }
 

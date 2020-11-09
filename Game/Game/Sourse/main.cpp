@@ -98,6 +98,7 @@ int WINAPI WinMain(
 		display->DrawScreen();
 		DrawString(100, 400, std::to_string(controller->DirectionCoordinate().x).c_str(), GetColor(255, 255, 255));
 		DrawString(100, 420, std::to_string(controller->DirectionCoordinate().y).c_str(), GetColor(255, 255, 255));
+		controller->Draw();
 		ScreenFlip();
 		WaitTimer(20);
 		if (ProcessMessage() == -1)break;

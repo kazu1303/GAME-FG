@@ -48,3 +48,13 @@ float Util::Ratio(float value1, float value2)
 	//1‚Ì•û‚Ì”ä—¦‚ğ‹‚ß‚é
 	return value1 / (value1 + value2);
 }
+
+int Util::Index(float num)
+{
+	//int i = num / 2;
+	if (num < 2)
+	{
+		return 0;
+	}
+	return 1 + Index(num / 2);
+}
