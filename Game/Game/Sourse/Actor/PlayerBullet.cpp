@@ -58,5 +58,5 @@ void PlayerBullet::Hit(GameObject * obj)
 void PlayerBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
-	DrawCircle(position->x, position->y, 5, GetColor(255, 255, 255), 0);
+	DrawCircle((int)(position->x), (int)(position->y), 5, GetColor(255, 255, 255), 0);
 }

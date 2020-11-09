@@ -88,17 +88,17 @@ void Enemy2::Draw()
 	float radian4 = angle + Util::AngleToRadian(216);
 	float radian5 = angle + Util::AngleToRadian(288);
 	Display::Instance()->SetScreen(Enemy_Screen);
-	DrawLine(position->x + r * cos(angle), position->y + r * -sin(angle), position->x + r * cos(radian2), position->y + r * -sin(radian2), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian2), position->y + r * -sin(radian2), position->x + r * cos(radian3), position->y + r * -sin(radian3), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian3), position->y + r * -sin(radian3), position->x + r * cos(radian4), position->y + r * -sin(radian4), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian4), position->y + r * -sin(radian4), position->x + r * cos(radian5), position->y + r * -sin(radian5), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian5), position->y + r * -sin(radian5), position->x + r * cos(angle), position->y + r * -sin(angle), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(angle)), (int)(position->y + r * -sin(angle)), (int)(position->x + r * cos(radian2)), (int)(position->y + r * -sin(radian2)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian2)), (int)(position->y + r * -sin(radian2)), (int)(position->x + r * cos(radian3)), (int)(position->y + r * -sin(radian3)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian3)), (int)(position->y + r * -sin(radian3)), (int)(position->x + r * cos(radian4)), (int)(position->y + r * -sin(radian4)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian4)), (int)(position->y + r * -sin(radian4)), (int)(position->x + r * cos(radian5)), (int)(position->y + r * -sin(radian5)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian5)), (int)(position->y + r * -sin(radian5)), (int)(position->x + r * cos(angle)), (int)(position->y + r * -sin(angle)), GetColor(255, 255, 255));
 	float rotateRadian = Util::AngleToRadian(rotateAngle);
-	DrawLine(position->x + r * cos(angle + rotateRadian), position->y + r * -sin(angle + rotateRadian), position->x + r * cos(radian2 + rotateRadian), position->y + r * -sin(radian2 + rotateRadian), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian2 + rotateRadian), position->y + r * -sin(radian2 + rotateRadian), position->x + r * cos(radian3 + rotateRadian), position->y + r * -sin(radian3 + rotateRadian), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian3 + rotateRadian), position->y + r * -sin(radian3 + rotateRadian), position->x + r * cos(radian4 + rotateRadian), position->y + r * -sin(radian4 + rotateRadian), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian4 + rotateRadian), position->y + r * -sin(radian4 + rotateRadian), position->x + r * cos(radian5 + rotateRadian), position->y + r * -sin(radian5 + rotateRadian), GetColor(255, 255, 255));
-	DrawLine(position->x + r * cos(radian5 + rotateRadian), position->y + r * -sin(radian5 + rotateRadian), position->x + r * cos(angle + rotateRadian), position->y + r * -sin(angle + rotateRadian), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(angle + rotateRadian)), (int)(position->y + r * -sin(angle + rotateRadian)), (int)(position->x + r * cos(radian2 + rotateRadian)), (int)(position->y + r * -sin(radian2 + rotateRadian)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian2 + rotateRadian)), (int)(position->y + r * -sin(radian2 + rotateRadian)), (int)(position->x + r * cos(radian3 + rotateRadian)), (int)(position->y + r * -sin(radian3 + rotateRadian)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian3 + rotateRadian)), (int)(position->y + r * -sin(radian3 + rotateRadian)), (int)(position->x + r * cos(radian4 + rotateRadian)), (int)(position->y + r * -sin(radian4 + rotateRadian)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian4 + rotateRadian)), (int)(position->y + r * -sin(radian4 + rotateRadian)), (int)(position->x + r * cos(radian5 + rotateRadian)), (int)(position->y + r * -sin(radian5 + rotateRadian)), GetColor(255, 255, 255));
+	DrawLine((int)(position->x + r * cos(radian5 + rotateRadian)), (int)(position->y + r * -sin(radian5 + rotateRadian)), (int)(position->x + r * cos(angle + rotateRadian)), (int)(position->y + r * -sin(angle + rotateRadian)), GetColor(255, 255, 255));
 }
 
 void Enemy2::Hit(GameObject * obj)

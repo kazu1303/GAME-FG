@@ -27,7 +27,6 @@ void Enemy1::Update()
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
 	speed = defaultSpeed;
-
 	Enemy::Update();
 }
 
@@ -35,12 +34,12 @@ void Enemy1::Draw()
 {
 
 	float r = 20;
-	float radian2 = angle + Util::AngleToRadian(-120);
-	float radian3 = angle + Util::AngleToRadian(120);
+	float radian2 = angle + Util::AngleToRadian(-120.0f);
+	float radian3 = angle + Util::AngleToRadian(120.0f);
 	float rotateRadian = Util::AngleToRadian(rotateAngle);
 	Display::Instance()->SetScreen(Enemy_Screen);
-	DrawTriangle(position->x + r * cos(angle), position->y + r * -sin(angle), position->x + r * cos(radian2), position->y + r * -sin(radian2), position->x + r * cos(radian3), position->y + r * -sin(radian3), GetColor(255, 255, 255), 0);
-	DrawTriangle(position->x + r * cos(angle + rotateRadian), position->y + r * -sin(angle + rotateRadian), position->x + r * cos(radian2 + rotateRadian), position->y + r * -sin(radian2 + rotateRadian), position->x + r * cos(radian3 + rotateRadian), position->y + r * -sin(radian3 + rotateRadian), GetColor(255, 255, 255), 0);
+	DrawTriangle((int)(position->x + r * cos(angle)), (int)(position->y + r * -sin(angle)), (int)(position->x + r * cos(radian2)), (int)(position->y + r * -sin(radian2)), (int)(position->x + r * cos(radian3)), (int)(position->y + r * -sin(radian3)), GetColor(255, 255, 255), 0);
+	DrawTriangle((int)(position->x + r * cos(angle + rotateRadian)), (int)(position->y + r * -sin(angle + rotateRadian)), (int)(position->x + r * cos(radian2 + rotateRadian)), (int)(position->y + r * -sin(radian2 + rotateRadian)), (int)(position->x + r * cos(radian3 + rotateRadian)), (int)(position->y + r * -sin(radian3 + rotateRadian)), GetColor(255, 255, 255), 0);
 }
 
 void Enemy1::Hit(GameObject * obj)

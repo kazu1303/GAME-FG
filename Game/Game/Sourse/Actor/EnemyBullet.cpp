@@ -36,7 +36,7 @@ void EnemyBullet::Update()
 void EnemyBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
-	DrawCircle(position->x, position->y, 5, GetColor(255, 255, 255), 0);
+	DrawCircle((int)(position->x), (int)(position->y), 5, GetColor(255, 255, 255), 0);
 }
 
 void EnemyBullet::Hit(GameObject * obj)

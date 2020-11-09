@@ -29,8 +29,8 @@ void GamePlay::Initialize()
 	enemy1Summon = Timer(0.8f, true);
 	enemy2Summon = Timer(1.5f, true);
 	enemy3Summon = Timer(2.0f, true);
-	player = new Player(new Vector2(Screen::WinWidth / 2, Screen::WinHight / 2));
-	new Clock(new Vector2(50, 50));
+	player = new Player(new Vector2((float)(Screen::WinWidth / 2), (float)(Screen::WinHight / 2)));
+	new Clock(new Vector2(40.0f, 40.0f));
 }
 
 //–ˆƒtƒŒ[ƒ€ˆ—

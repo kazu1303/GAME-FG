@@ -65,13 +65,13 @@ void Player::Update()
 void Player::Draw()
 {
 	Display::Instance()->SetScreen(Player_Screen);
-	DrawCircle(position->x, position->y, 20, GetColor(255, 255, 255), 0);
+	DrawCircle((int)(position->x), (int)(position->y), 20, GetColor(255, 255, 255), 0);
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(34, 734),"X", "ì¡éÍíeÇP", GetColor(135, 206, 250), maxPutBullet);
-	BulletIcon(Vector2(102, 734), "Y", "ì¡éÍíe2", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(666, 34),"X", "ì¡éÍíeÇP", GetColor(135, 206, 250), maxPutBullet);
+	BulletIcon(Vector2(734, 34), "Y", "ì¡éÍíe2", GetColor(255, 255, 255), maxSlowBullet);
 }
 
 void Player::Hit(GameObject * obj)
@@ -126,13 +126,13 @@ void Player::FiringSlowBullet()
 
 void Player::BatteryDraw()
 {
-	DrawCircle(position->x, position->y, 10, GetColor(255, 255, 255), 1);
+	DrawCircle((int)(position->x), (int)(position->y), 10, GetColor(255, 255, 255), 1);
 	//angle = atan2(position->x - MousePointer::Instance()->GetPosition().x , position->y - MousePointer::Instance()->GetPosition().y);
 	float r = 30;
 	angle = angle * (180.0f / PI) + 90;
 	float radian1 = Util::AngleToRadian(angle + 25);
 	float radian2 = Util::AngleToRadian(angle - 25);
-	DrawTriangle(position->x, position->y, position->x + r * cos(radian1), position->y + r * -sin(radian1), position->x + r * cos(radian2), position->y + r * -sin(radian2), GetColor(255, 255, 255), 1);
+	DrawTriangle((int)(position->x), (int)(position->y), (int)(position->x + r * cos(radian1)), (int)(position->y + r * -sin(radian1)), (int)(position->x + r * cos(radian2)), (int)(position->y + r * -sin(radian2)), GetColor(255, 255, 255), 1);
 }
 
 //HPÉQÅ[ÉWÇÃï`âÊ
@@ -144,8 +144,8 @@ void Player::DrawDamageGauge()
 	}
 	Display::Instance()->SetScreen(UI_Screen);
 	//ç≈ëÂÇÃëÃóÕÉQÅ[ÉWÇÃï`âÊ
-	float gaugesizex = 300;
-	int gaugesizey = 50;
+	float gaugesizex = 248;
+	int gaugesizey = 68;
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(255, 255, 255), 1);
 	//åªç›ÇÃëÃóÕÉQÅ[ÉWÇÃï`âÊ
 	float rate = hp / 10.0f;
@@ -156,11 +156,12 @@ void Player::DrawDamageGauge()
 void Player::BulletIcon(Vector2 pos, const char* key,const char * name, int Color, int num)
 {
 	int iconSize = 68;
-	DrawBox(pos.x- iconSize / 2, pos.y - iconSize / 2, pos.x+ iconSize / 2, pos.y + iconSize / 2, GetColor(255,255,255), 0);
-	DrawBox(pos.x - iconSize / 2, pos.y - iconSize / 2, pos.x - 17, pos.y - 17, GetColor(255, 255, 255), 0);
-	DrawString(pos.x - 30, pos.y - iconSize / 2, key, GetColor(255, 255, 255));
-	DrawString(pos.x - iconSize / 2, pos.y + 19, name, GetColor(255, 255, 255));
-	DrawCircle(pos.x, pos.y, 5, Color, 0);
-	DrawString(pos.x + 3, pos.y + 3, "Å~", GetColor(255, 255, 255));
-	DrawString(pos.x + 15, pos.y + 3, std::to_string(num).c_str(), GetColor(255, 255, 255));
+	DrawBox((int)(pos.x - iconSize / 2), (int)(pos.y - iconSize / 2), (int)(pos.x + iconSize / 2), (int)(pos.y + iconSize / 2), GetColor(0, 0, 0), 1);
+	DrawBox((int)(pos.x- iconSize / 2), (int)(pos.y - iconSize / 2), (int)(pos.x+ iconSize / 2), (int)(pos.y + iconSize / 2), GetColor(255,255,255), 0);
+	DrawBox((int)(pos.x - iconSize / 2), (int)(pos.y - iconSize / 2), (int)(pos.x - 17), (int)(pos.y - 17), GetColor(255, 255, 255), 0);
+	DrawString((int)(pos.x - 30), (int)(pos.y - iconSize / 2), key, GetColor(255, 255, 255));
+	DrawString((int)(pos.x - iconSize / 2), (int)(pos.y + 19), name, GetColor(255, 255, 255));
+	DrawCircle((int)(pos.x), (int)(pos.y), 5, Color, 0);
+	DrawString((int)(pos.x + 3), (int)(pos.y + 3), "Å~", GetColor(255, 255, 255));
+	DrawString((int)(pos.x + 15), (int)(pos.y + 3), std::to_string(num).c_str(), GetColor(255, 255, 255));
 }
