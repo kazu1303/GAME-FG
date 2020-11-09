@@ -24,5 +24,6 @@ public:
 	void FiringSlowBullet();
 	void BatteryDraw();
 	void DrawDamageGauge();
+	void BulletIcon(Vector2 pos,const char* key, const char* name, int Color, int num);
 };
 

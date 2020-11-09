@@ -69,6 +69,9 @@ void Player::Draw()
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
 	DrawDamageGauge();
+	Display::Instance()->SetScreen(UI_Screen);
+	BulletIcon(Vector2(34, 734),"z", "ì¡éÍíeÇP", GetColor(135, 206, 250), maxPutBullet);
+	BulletIcon(Vector2(102, 734), "x", "ì¡éÍíe2", GetColor(255, 255, 255), maxSlowBullet);
 }
 
 void Player::Hit(GameObject * obj)
@@ -145,4 +148,16 @@ void Player::DrawDamageGauge()
 	float rate = hp / 10.0f;
 	float currentGaugesizex = gaugesizex * 2 * rate;
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
+}
+
+void Player::BulletIcon(Vector2 pos, const char* key,const char * name, int Color, int num)
+{
+	int iconSize = 68;
+	DrawBox(pos.x- iconSize / 2, pos.y - iconSize / 2, pos.x+ iconSize / 2, pos.y + iconSize / 2, GetColor(255,255,255), 0);
+	DrawBox(pos.x - iconSize / 2, pos.y - iconSize / 2, pos.x - 17, pos.y - 17, GetColor(255, 255, 255), 0);
+	DrawString(pos.x - 30, pos.y - iconSize / 2, key, GetColor(255, 255, 255));
+	DrawString(pos.x - iconSize / 2, pos.y + 19, name, GetColor(255, 255, 255));
+	DrawCircle(pos.x, pos.y, 5, Color, 0);
+	DrawString(pos.x + 3, pos.y + 3, "Å~", GetColor(255, 255, 255));
+	DrawString(pos.x + 15, pos.y + 3, std::to_string(num).c_str(), GetColor(255, 255, 255));
 }
