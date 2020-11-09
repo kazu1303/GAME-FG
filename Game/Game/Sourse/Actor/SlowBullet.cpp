@@ -4,15 +4,15 @@
 #include "MousePointer.h"
 #include "Screen.h"
 #include "SlowArea.h"
-
+#include "Controller.h"
 
 
 SlowBullet::SlowBullet(Vector2 *position)
 	:GameObject(position,slow_bullet,true)
 {
-	destination = MousePointer::Instance()->GetPosition();
-	velocity->x = destination.x - this->position->x;
-	velocity->y = destination.y - this->position->y;
+	Vector2 mouse = Controller::Instance()->DirectionCoordinate();
+	velocity->x = mouse.x - this->position->x;
+	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
 	size = 10;
 	attack = 0;

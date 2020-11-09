@@ -8,7 +8,7 @@
 PlayerBullet::PlayerBullet(Vector2 *position)
 	:GameObject(position,player_bullet,true)
 {
-	position = new Vector2(position->x, position->y);
+	//position = new Vector2(position->x, position->y);
 	Vector2 mouse = Controller::Instance()->DirectionCoordinate();
 	velocity->x = mouse.x - this->position->x;
 	velocity->y = mouse.y - this->position->y;
@@ -44,7 +44,8 @@ void PlayerBullet::Update()
 
 void PlayerBullet::Hit(GameObject * obj)
 {
-	if (obj->GetType() == enemy)
+	if (obj->GetType() == enemy ||
+		obj->GetType() == enemy_bullet)
 	{
 		obj->Damege(attack);
 	}

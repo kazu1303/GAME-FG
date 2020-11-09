@@ -4,12 +4,13 @@
 #include "Screen.h"
 #include "Display.h"
 #include "KeyBoard.h"
+#include "Controller.h"
 
 PutBullet::PutBullet(Vector2 *position)
 	:GameObject(position, player_bullet, true)
 {
-	position = new Vector2(position->x, position->y);
-	Vector2 mouse = MousePointer::Instance()->GetPosition();
+	//position = new Vector2(position->x, position->y);
+	Vector2 mouse = Controller::Instance()->DirectionCoordinate();
 	velocity->x = mouse.x - this->position->x;
 	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
@@ -30,7 +31,7 @@ void PutBullet::Initialize()
 
 void PutBullet::Update()
 {
-	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE))
+	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE) || Controller::Instance()->GetKey(PAD_INPUT_8))
 	{
 		speed = 20;
 	}
@@ -62,7 +63,8 @@ void PutBullet::Draw()
 
 void PutBullet::Hit(GameObject * obj)
 {
-	if (obj->GetType() == enemy)
+	if (obj->GetType() == enemy ||
+		obj->GetType() == enemy_bullet)
 	{
 		if (!idel)
 		{
@@ -78,5 +80,9 @@ void PutBullet::Damege(int attack)
 	if (speed <= 1.0f)
 	{
 		hp -= attack;
+		if (hp <= 0)
+		{
+			isDead = true;
+		}
 	}
 }

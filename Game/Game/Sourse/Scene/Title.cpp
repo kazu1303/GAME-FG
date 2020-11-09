@@ -6,6 +6,7 @@
 #include "Sound.h"
 #include "Renderer.h"
 #include "MousePointer.h"
+#include "Controller.h"
 
 
 Title::Title()
@@ -32,7 +33,7 @@ void Title::Initialize()
 void Title::Update()
 {
 	//ŽŸ‚ÌƒV[ƒ“‚Ö‚Ì•ÏXˆ—
-	if (KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
+	if (Controller::Instance()->GetKey(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
 	}
