@@ -70,10 +70,10 @@ void Player::Draw()
 	BatteryDraw();
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(666, 34),"X", "����e�P", GetColor(135, 206, 250), maxPutBullet);
-	BulletIcon(Vector2(734, 34), "Y", "����e2", GetColor(255, 255, 255), maxSlowBullet);
-	BulletIcon(Vector2(0, 700),"ZR", "����e�P", GetColor(135, 206, 250), maxPutBullet);
-	BulletIcon(Vector2(68, 700), "X", "����e2", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(666,34),"ZR","特殊弾１",GetColor(255,255,255),maxPutBullet);
+	BulletIcon(Vector2(734, 34), "X", "特殊弾２", GetColor(255, 255, 255), maxSlowBullet);
+	//BulletIcon(Vector2(0, 700),"ZR", "", GetColor(135, 206, 250), maxPutBullet);
+	//BulletIcon(Vector2(68, 700), "X", "", GetColor(255, 255, 255), maxSlowBullet);
 }
 
 void Player::Hit(GameObject * obj)
@@ -87,11 +87,9 @@ void Player::Hit(GameObject * obj)
 
 void Player::Firing()
 {
-	//�e�̔���
 	if (Controller::Instance()->GetKey(PAD_INPUT_4))
 	{
 		bulletTimer.Update();
-		//bullettimer��true�̎��e�̔��˂Ɖ��o
 		if (bulletTimer.IsTime())
 		{
 			//Sound::Instance()->PlaySE("firing");
@@ -99,7 +97,6 @@ void Player::Firing()
 			new PlayerBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
 		}
 	}
-	//�}�E�X��������ĂȂ��Ƃ������ɔ��˂ł���悤��
 	else
 	{
 		bulletTimer.Max();
@@ -137,7 +134,6 @@ void Player::BatteryDraw()
 	DrawTriangle((int)(position->x), (int)(position->y), (int)(position->x + r * cos(radian1)), (int)(position->y + r * -sin(radian1)), (int)(position->x + r * cos(radian2)), (int)(position->y + r * -sin(radian2)), GetColor(255, 255, 255), 1);
 }
 
-//HP�Q�[�W�̕`��
 void Player::DrawDamageGauge()
 {
 	if (hp < 0)
@@ -145,11 +141,9 @@ void Player::DrawDamageGauge()
 		hp = 0;
 	}
 	Display::Instance()->SetScreen(UI_Screen);
-	//�ő�̗̑̓Q�[�W�̕`��
 	float gaugesizex = 248;
 	int gaugesizey = 68;
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(255, 255, 255), 1);
-	//���݂̗̑̓Q�[�W�̕`��
 	float rate = hp / 10.0f;
 	float currentGaugesizex = gaugesizex * 2 * rate;
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
@@ -160,11 +154,12 @@ void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Colo
 	int length = key.length();
 	int charXsize = 10;
 	int iconSize = 68;
-	DrawBox(pos.x- iconSize / 2, pos.y - iconSize / 2, pos.x+ iconSize / 2, pos.y + iconSize / 2, GetColor(255,255,255), 0);
-	DrawBox(pos.x - iconSize / 2, pos.y - iconSize / 2, pos.x - 17, pos.y - 17, GetColor(255, 255, 255), 0);
-	DrawString(pos.x - 30, pos.y - iconSize / 2, key, GetColor(255, 255, 255));
-	DrawString(pos.x - iconSize / 2, pos.y + 19, name, GetColor(255, 255, 255));
-	DrawCircle(pos.x, pos.y, 5, Color, 0);
-	DrawString(pos.x + 3, pos.y + 3, "�~", GetColor(255, 255, 255));
-	DrawString(pos.x + 15, pos.y + 3, std::to_string(num).c_str(), GetColor(255, 255, 255));
+	int centering = 2;
+	DrawBox(pos.x, pos.y, pos.x + iconSize, pos.y + iconSize / 2, GetColor(255,255,255), 0);
+	DrawBox(pos.x, pos.y, pos.x + charXsize * length + centering, pos.y - 17, GetColor(255, 255, 255), 0);
+	DrawString(pos.x + centering, pos.y - iconSize / 2, key.c_str(), GetColor(255, 255, 255));
+	DrawString(pos.x + centering, pos.y + iconSize / 4 * 3, name.c_str(), GetColor(255, 255, 255));
+	DrawCircle(pos.x + iconSize / 2, pos.y + iconSize / 2, 5, Color, 0);
+	DrawString(pos.x + iconSize / 2 + 3, pos.y + iconSize / 2, "X", GetColor(255, 255, 255));
+	DrawString(pos.x + iconSize / 2+ 15, pos.y + iconSize / 2, std::to_string(num).c_str(), GetColor(255, 255, 255));
 }
