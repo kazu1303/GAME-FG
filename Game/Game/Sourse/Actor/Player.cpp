@@ -165,5 +165,5 @@ void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Colo
 	DrawString(pos.x + centering, pos.y + iconSize / 4 * 3, name.c_str(), GetColor(255, 255, 255));
 	DrawCircle(pos.x + iconSize / 2, pos.y + iconSize / 2, 5, Color, 0);
 	DrawString(pos.x + iconSize / 2 + 3, pos.y + iconSize / 2, "Å~", GetColor(255, 255, 255));
-	DrawString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, std::to_string(num).c_str(), GetColor(255, 255, 255));
+	DrawFormatString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2,GetColor(255, 255, 255), "%2d" ,num);
 }
