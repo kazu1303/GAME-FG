@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Vector2.h"
 #include "Timer.h"
+#include <string>
 
 class Player :
 	public GameObject
@@ -24,6 +25,6 @@ public:
 	void FiringSlowBullet();
 	void BatteryDraw();
 	void DrawDamageGauge();
-	void BulletIcon(Vector2 pos,const char* key, const char* name, int Color, int num);
+	void BulletIcon(Vector2 pos,std::string key, std::string name, int Color, int num);
 };
 

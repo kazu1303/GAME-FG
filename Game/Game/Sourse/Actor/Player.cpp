@@ -70,8 +70,8 @@ void Player::Draw()
 	BatteryDraw();
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(34, 734),"X", "ì¡éÍíeÇP", GetColor(135, 206, 250), maxPutBullet);
-	BulletIcon(Vector2(102, 734), "Y", "ì¡éÍíe2", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(0, 700),"ZR", "ì¡éÍíeÇP", GetColor(135, 206, 250), maxPutBullet);
+	BulletIcon(Vector2(68, 700), "X", "ì¡éÍíe2", GetColor(255, 255, 255), maxSlowBullet);
 }
 
 void Player::Hit(GameObject * obj)
@@ -105,7 +105,7 @@ void Player::Firing()
 
 void Player::FiringPutBullet()
 {
-	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_1))))
+	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_8))))
 	{
 		new PutBullet(position);
 		maxPutBullet--;
@@ -114,7 +114,7 @@ void Player::FiringPutBullet()
 
 void Player::FiringSlowBullet()
 {
-	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_2))))
+	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_1))))
 	{
 		new SlowBullet(position);
 		maxSlowBullet--;
@@ -150,14 +150,17 @@ void Player::DrawDamageGauge()
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
 }
 
-void Player::BulletIcon(Vector2 pos, const char* key,const char * name, int Color, int num)
+void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Color, int num)
 {
+	int length = key.length();
+	int charXsize = 10;
 	int iconSize = 68;
-	DrawBox(pos.x- iconSize / 2, pos.y - iconSize / 2, pos.x+ iconSize / 2, pos.y + iconSize / 2, GetColor(255,255,255), 0);
-	DrawBox(pos.x - iconSize / 2, pos.y - iconSize / 2, pos.x - 17, pos.y - 17, GetColor(255, 255, 255), 0);
-	DrawString(pos.x - 30, pos.y - iconSize / 2, key, GetColor(255, 255, 255));
-	DrawString(pos.x - iconSize / 2, pos.y + 19, name, GetColor(255, 255, 255));
-	DrawCircle(pos.x, pos.y, 5, Color, 0);
-	DrawString(pos.x + 3, pos.y + 3, "Å~", GetColor(255, 255, 255));
-	DrawString(pos.x + 15, pos.y + 3, std::to_string(num).c_str(), GetColor(255, 255, 255));
+	int centering = 2; //ï∂éöÇÃà íuÇíÜâõÇ…ï‚ê≥
+	DrawBox(pos.x, pos.y, pos.x + iconSize, pos.y + iconSize, GetColor(255, 255, 255), 0);
+	DrawBox(pos.x, pos.y, pos.x + charXsize * length + centering, pos.y + iconSize / 4 + centering, GetColor(255, 255, 255), 0);
+	DrawString(pos.x + centering, pos.y + centering, key.c_str(), GetColor(255, 255, 255));
+	DrawString(pos.x + centering, pos.y + iconSize / 4 * 3, name.c_str(), GetColor(255, 255, 255));
+	DrawCircle(pos.x + iconSize / 2, pos.y + iconSize / 2, 5, Color, 0);
+	DrawString(pos.x + iconSize / 2 + 3, pos.y + iconSize / 2, "Å~", GetColor(255, 255, 255));
+	DrawString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, std::to_string(num).c_str(), GetColor(255, 255, 255));
 }
