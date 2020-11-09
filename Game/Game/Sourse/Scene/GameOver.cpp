@@ -3,6 +3,7 @@
 #include "DxLib.h"
 //#include "Renderer.h"
 #include "KeyBoard.h"
+#include "Controller.h"
 
 GameOver::GameOver()
 {
@@ -26,7 +27,7 @@ void GameOver::Initialize()
 void GameOver::Update()
 {
 	//ŽŸ‚ÌƒV[ƒ“‚Ö‚Ì•ÏXˆ—
-	if (KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
+	if (Controller::Instance()->GetKey(PAD_INPUT_12))
 	{
 		isEnd = true;
 	}
