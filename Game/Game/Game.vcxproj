@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Actor\Player.cpp" />
     <ClCompile Include="Sourse\Util\Controller.cpp" />
     <ClCompile Include="Sourse\Actor\EnemyBullet.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy3.cpp" />
@@ -139,7 +140,6 @@
     <ClCompile Include="Sourse\Actor\Enemy.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy1.cpp" />
     <ClCompile Include="Sourse\Actor\PlayerBullet.cpp" />
-    <ClCompile Include="Sourse\Actor\Player.cpp" />
     <ClCompile Include="Sourse\Util\MousePointer.cpp" />
     <ClCompile Include="Sourse\Util\KeyBoard.cpp" />
     <ClCompile Include="Sourse\Actor\Entity.cpp" />

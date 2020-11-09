@@ -13,7 +13,7 @@
 
 
 Player::Player(Vector2 *position)
-	:GameObject(position,player,true,10,10)
+	:GameObject(position, player, true, 10, 10)
 {
 	position = new Vector2(position->x, position->y);
 	bulletTimer = Timer(0.3f, true);
@@ -70,8 +70,8 @@ void Player::Draw()
 	BatteryDraw();
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(666,34),"ZR","ÁâπÊÆäÂºæÔºë",GetColor(255,255,255),maxPutBullet);
-	BulletIcon(Vector2(734, 34), "X", "ÁâπÊÆäÂºæÔºí", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(632, 0), "ZR", "ì¡éÍíeÇP", GetColor(255, 255, 255), maxPutBullet);
+	BulletIcon(Vector2(700, 0), "X", "ì¡éÍíeÇQ", GetColor(255, 255, 255), maxSlowBullet);
 	//BulletIcon(Vector2(0, 700),"ZR", "", GetColor(135, 206, 250), maxPutBullet);
 	//BulletIcon(Vector2(68, 700), "X", "", GetColor(255, 255, 255), maxSlowBullet);
 }
@@ -155,11 +155,12 @@ void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Colo
 	int charXsize = 10;
 	int iconSize = 68;
 	int centering = 2;
-	DrawBox(pos.x, pos.y, pos.x + iconSize, pos.y + iconSize / 2, GetColor(255,255,255), 0);
-	DrawBox(pos.x, pos.y, pos.x + charXsize * length + centering, pos.y - 17, GetColor(255, 255, 255), 0);
-	DrawString(pos.x + centering, pos.y - iconSize / 2, key.c_str(), GetColor(255, 255, 255));
+	DrawBox(pos.x, pos.y, pos.x + iconSize, pos.y + iconSize, GetColor(255, 255, 255), 0);
+	DrawBox(pos.x, pos.y, pos.x + charXsize * length + centering, pos.y + iconSize / 4 + centering, GetColor(255, 255, 255), 0);
+	DrawString(pos.x + centering, pos.y + centering, key.c_str(), GetColor(255, 255, 255));
 	DrawString(pos.x + centering, pos.y + iconSize / 4 * 3, name.c_str(), GetColor(255, 255, 255));
 	DrawCircle(pos.x + iconSize / 2, pos.y + iconSize / 2, 5, Color, 0);
-	DrawString(pos.x + iconSize / 2 + 3, pos.y + iconSize / 2, "X", GetColor(255, 255, 255));
-	DrawString(pos.x + iconSize / 2+ 15, pos.y + iconSize / 2, std::to_string(num).c_str(), GetColor(255, 255, 255));
+	DrawString(pos.x + iconSize / 2 + 3, pos.y + iconSize / 2, "Å~", GetColor(255, 255, 255));
+	//DrawString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, std::to_string(num).c_str(), GetColor(255, 255, 255));
+	DrawFormatString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, GetColor(255, 255, 255), "%2d", num);
 }
