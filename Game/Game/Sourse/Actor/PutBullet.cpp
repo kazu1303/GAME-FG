@@ -4,6 +4,7 @@
 #include "Screen.h"
 #include "Display.h"
 #include "KeyBoard.h"
+#include "Controller.h"
 
 PutBullet::PutBullet(Vector2 *position)
 	:GameObject(position, player_bullet, true)
@@ -30,7 +31,7 @@ void PutBullet::Initialize()
 
 void PutBullet::Update()
 {
-	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE))
+	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE) || Controller::Instance()->GetKey(PAD_INPUT_8))
 	{
 		speed = 20;
 	}

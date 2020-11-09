@@ -86,7 +86,7 @@ void Player::Hit(GameObject * obj)
 void Player::Firing()
 {
 	//’e‚Ì”­ŽË
-	if (Controller::Instance()->GetKey(PAD_INPUT_1))
+	if (Controller::Instance()->GetKey(PAD_INPUT_4))
 	{
 		bulletTimer.Update();
 		//bullettimer‚ªtrue‚ÌŽž’e‚Ì”­ŽË‚Æ‰‰o
@@ -105,7 +105,7 @@ void Player::Firing()
 
 void Player::FiringPutBullet()
 {
-	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_3))))
+	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_1))))
 	{
 		new PutBullet(position);
 		maxPutBullet--;
@@ -114,7 +114,7 @@ void Player::FiringPutBullet()
 
 void Player::FiringSlowBullet()
 {
-	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_4))))
+	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_2))))
 	{
 		new SlowBullet(position);
 		maxSlowBullet--;
