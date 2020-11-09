@@ -13,6 +13,7 @@
 #include "Display.h"
 #include "KeyBoard.h"
 #include "MousePointer.h"
+#include "Controller.h"
 
 //const int WinWidth = 800;
 //const int WinHight = 600;
@@ -76,6 +77,9 @@ int WINAPI WinMain(
 
 	MousePointer* mouse;
 	mouse = new MousePointer();
+
+	Controller* controller;
+	controller = new Controller();
 	//ディスプレイの生成
 	Display* display;
 	display = new Display();
@@ -85,13 +89,15 @@ int WINAPI WinMain(
 	{
 		mouse->Update();
 		keyBoard->GetKeyState();
+		controller->Update();
 		sceneManager->Update();
 
 		keyBoard->Update();
 		display->ClearScreen();
 		sceneManager->Draw();
 		display->DrawScreen();
-
+		DrawString(100, 400, std::to_string(controller->DirectionCoordinate().x).c_str(), GetColor(255, 255, 255));
+		DrawString(100, 420, std::to_string(controller->DirectionCoordinate().y).c_str(), GetColor(255, 255, 255));
 		ScreenFlip();
 		WaitTimer(20);
 		if (ProcessMessage() == -1)break;

@@ -3,12 +3,13 @@
 #include "DxLib.h"
 #include "Screen.h"
 #include "Display.h"
+#include "Controller.h"
 
 PlayerBullet::PlayerBullet(Vector2 *position)
 	:GameObject(position,player_bullet,true)
 {
 	position = new Vector2(position->x, position->y);
-	Vector2 mouse = MousePointer::Instance()->GetPosition();
+	Vector2 mouse = Controller::Instance()->DirectionCoordinate();
 	velocity->x = mouse.x - this->position->x;
 	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
@@ -46,6 +47,10 @@ void PlayerBullet::Hit(GameObject * obj)
 	if (obj->GetType() == enemy)
 	{
 		obj->Damege(attack);
+	}
+	if (hp <= 0)
+	{
+		isDead = true;
 	}
 }
 

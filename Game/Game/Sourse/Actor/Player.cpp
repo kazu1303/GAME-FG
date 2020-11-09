@@ -9,6 +9,7 @@
 #include "Screen.h"
 #include "KeyBoard.h"
 #include "Clock.h"
+#include "Controller.h"
 
 
 Player::Player(Vector2 *position)
@@ -50,6 +51,7 @@ void Player::Update()
 			}
 		}
 	}
+	angle = atan2(position->x - Controller::Instance()->DirectionCoordinate().x, position->y - Controller::Instance()->DirectionCoordinate().y);
 	Firing();
 	FiringPutBullet();
 	FiringSlowBullet();
@@ -81,7 +83,7 @@ void Player::Hit(GameObject * obj)
 void Player::Firing()
 {
 	//’e‚Ì”­ŽË
-	if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
+	if (Controller::Instance()->GetKey(PAD_INPUT_2))
 	{
 		bulletTimer.Update();
 		//bullettimer‚ªtrue‚ÌŽž’e‚Ì”­ŽË‚Æ‰‰o
@@ -119,7 +121,7 @@ void Player::FiringSlowBullet()
 void Player::BatteryDraw()
 {
 	DrawCircle(position->x, position->y, 10, GetColor(255, 255, 255), 1);
-	angle = atan2(position->x - MousePointer::Instance()->GetPosition().x , position->y - MousePointer::Instance()->GetPosition().y);
+	//angle = atan2(position->x - MousePointer::Instance()->GetPosition().x , position->y - MousePointer::Instance()->GetPosition().y);
 	float r = 30;
 	angle = angle * (180.0f / PI) + 90;
 	float radian1 = Util::AngleToRadian(angle + 25);

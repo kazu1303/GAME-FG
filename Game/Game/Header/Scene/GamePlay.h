@@ -9,9 +9,9 @@ class GamePlay:
 private:
 	bool push;
 	Player* player;
-	Timer enemy1Summon;//ƒgƒ“ƒ{‚Ì¶¬ŠÔŠu
-	Timer enemy2Summon;//ƒgƒ“ƒ{‚Ì¶¬ŠÔŠu
-	Timer enemy3Summon;//ƒgƒ“ƒ{‚Ì¶¬ŠÔŠu
+	Timer enemy1Summon;//¶¬ŠÔŠu
+	Timer enemy2Summon;//¶¬ŠÔŠu
+	Timer enemy3Summon;//¶¬ŠÔŠu
 public:
 	GamePlay();
 	~GamePlay();
