@@ -31,7 +31,7 @@ void PutBullet::Initialize()
 
 void PutBullet::Update()
 {
-	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE) || Controller::Instance()->GetKey(PAD_INPUT_8))
+	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE) || Controller::Instance()->GetKey(PAD_INPUT_7))
 	{
 		speed = 20;
 	}

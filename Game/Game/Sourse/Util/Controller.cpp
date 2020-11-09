@@ -9,7 +9,7 @@ Controller* Controller::instance;
 
 Controller::Controller()
 {
-	SetJoypadDeadZone(DX_INPUT_PAD1, 0.5f);
+	SetJoypadDeadZone(DX_INPUT_PAD1, 0.05f);
 	GetJoypadDirectInputState(DX_INPUT_KEY_PAD1, &current);
 	int x, y;
 	GetJoypadAnalogInput(&x, &y, DX_INPUT_KEY_PAD1);

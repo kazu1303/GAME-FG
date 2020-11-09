@@ -70,8 +70,10 @@ void Player::Draw()
 	BatteryDraw();
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(666, 34),"X", "“Áê’e‚P", GetColor(135, 206, 250), maxPutBullet);
-	BulletIcon(Vector2(734, 34), "Y", "“Áê’e2", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(666, 34),"X", "ï¿½ï¿½ï¿½ï¿½eï¿½P", GetColor(135, 206, 250), maxPutBullet);
+	BulletIcon(Vector2(734, 34), "Y", "ï¿½ï¿½ï¿½ï¿½e2", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(0, 700),"ZR", "ï¿½ï¿½ï¿½ï¿½eï¿½P", GetColor(135, 206, 250), maxPutBullet);
+	BulletIcon(Vector2(68, 700), "X", "ï¿½ï¿½ï¿½ï¿½e2", GetColor(255, 255, 255), maxSlowBullet);
 }
 
 void Player::Hit(GameObject * obj)
@@ -85,11 +87,11 @@ void Player::Hit(GameObject * obj)
 
 void Player::Firing()
 {
-	//’e‚Ì”­Ë
+	//ï¿½eï¿½Ì”ï¿½ï¿½ï¿½
 	if (Controller::Instance()->GetKey(PAD_INPUT_4))
 	{
 		bulletTimer.Update();
-		//bullettimer‚ªtrue‚Ì’e‚Ì”­Ë‚Æ‰‰o
+		//bullettimerï¿½ï¿½trueï¿½Ìï¿½ï¿½eï¿½Ì”ï¿½ï¿½Ë‚Æ‰ï¿½ï¿½o
 		if (bulletTimer.IsTime())
 		{
 			//Sound::Instance()->PlaySE("firing");
@@ -97,7 +99,7 @@ void Player::Firing()
 			new PlayerBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
 		}
 	}
-	//ƒ}ƒEƒX‚ª‰Ÿ‚³‚ê‚Ä‚È‚¢‚Æ‚«‚·‚®‚É”­Ë‚Å‚«‚é‚æ‚¤‚É
+	//ï¿½}ï¿½Eï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚È‚ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É”ï¿½ï¿½Ë‚Å‚ï¿½ï¿½ï¿½æ‚¤ï¿½ï¿½
 	else
 	{
 		bulletTimer.Max();
@@ -106,7 +108,7 @@ void Player::Firing()
 
 void Player::FiringPutBullet()
 {
-	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_1))))
+	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_8))))
 	{
 		float r = 30;
 		new PutBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
@@ -116,7 +118,7 @@ void Player::FiringPutBullet()
 
 void Player::FiringSlowBullet()
 {
-	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_2))))
+	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_1))))
 	{
 		float r = 30;
 		new SlowBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
@@ -135,7 +137,7 @@ void Player::BatteryDraw()
 	DrawTriangle((int)(position->x), (int)(position->y), (int)(position->x + r * cos(radian1)), (int)(position->y + r * -sin(radian1)), (int)(position->x + r * cos(radian2)), (int)(position->y + r * -sin(radian2)), GetColor(255, 255, 255), 1);
 }
 
-//HPƒQ[ƒW‚Ì•`‰æ
+//HPï¿½Qï¿½[ï¿½Wï¿½Ì•`ï¿½ï¿½
 void Player::DrawDamageGauge()
 {
 	if (hp < 0)
@@ -143,25 +145,26 @@ void Player::DrawDamageGauge()
 		hp = 0;
 	}
 	Display::Instance()->SetScreen(UI_Screen);
-	//Å‘å‚Ì‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
+	//ï¿½Å‘ï¿½Ì‘Ì—ÍƒQï¿½[ï¿½Wï¿½Ì•`ï¿½ï¿½
 	float gaugesizex = 248;
 	int gaugesizey = 68;
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(255, 255, 255), 1);
-	//Œ»İ‚Ì‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
+	//ï¿½ï¿½ï¿½İ‚Ì‘Ì—ÍƒQï¿½[ï¿½Wï¿½Ì•`ï¿½ï¿½
 	float rate = hp / 10.0f;
 	float currentGaugesizex = gaugesizex * 2 * rate;
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
 }
 
-void Player::BulletIcon(Vector2 pos, const char* key,const char * name, int Color, int num)
+void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Color, int num)
 {
+	int length = key.length();
+	int charXsize = 10;
 	int iconSize = 68;
-	DrawBox((int)(pos.x - iconSize / 2), (int)(pos.y - iconSize / 2), (int)(pos.x + iconSize / 2), (int)(pos.y + iconSize / 2), GetColor(0, 0, 0), 1);
-	DrawBox((int)(pos.x- iconSize / 2), (int)(pos.y - iconSize / 2), (int)(pos.x+ iconSize / 2), (int)(pos.y + iconSize / 2), GetColor(255,255,255), 0);
-	DrawBox((int)(pos.x - iconSize / 2), (int)(pos.y - iconSize / 2), (int)(pos.x - 17), (int)(pos.y - 17), GetColor(255, 255, 255), 0);
-	DrawString((int)(pos.x - 30), (int)(pos.y - iconSize / 2), key, GetColor(255, 255, 255));
-	DrawString((int)(pos.x - iconSize / 2), (int)(pos.y + 19), name, GetColor(255, 255, 255));
-	DrawCircle((int)(pos.x), (int)(pos.y), 5, Color, 0);
-	DrawString((int)(pos.x + 3), (int)(pos.y + 3), "~", GetColor(255, 255, 255));
-	DrawString((int)(pos.x + 15), (int)(pos.y + 3), std::to_string(num).c_str(), GetColor(255, 255, 255));
+	DrawBox(pos.x- iconSize / 2, pos.y - iconSize / 2, pos.x+ iconSize / 2, pos.y + iconSize / 2, GetColor(255,255,255), 0);
+	DrawBox(pos.x - iconSize / 2, pos.y - iconSize / 2, pos.x - 17, pos.y - 17, GetColor(255, 255, 255), 0);
+	DrawString(pos.x - 30, pos.y - iconSize / 2, key, GetColor(255, 255, 255));
+	DrawString(pos.x - iconSize / 2, pos.y + 19, name, GetColor(255, 255, 255));
+	DrawCircle(pos.x, pos.y, 5, Color, 0);
+	DrawString(pos.x + 3, pos.y + 3, "ï¿½~", GetColor(255, 255, 255));
+	DrawString(pos.x + 15, pos.y + 3, std::to_string(num).c_str(), GetColor(255, 255, 255));
 }
