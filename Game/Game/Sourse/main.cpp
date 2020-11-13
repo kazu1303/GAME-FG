@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "SceneManager.h"
 #include "GameObjectManager.h"
+#include "ParticleManager.h"
 #include "GameScene.h"
 #include "Title.h"
 #include "GamePlay.h"
@@ -71,6 +72,9 @@ int WINAPI WinMain(
 	sceneManager->Add(gameClear, new GameClear());
 	sceneManager->Add(gameOver, new GameOver());
 	sceneManager->Change(title);
+
+	ParticleManager* particleManager;
+	particleManager = new ParticleManager();
 
 	KeyBoard* keyBoard;
 	keyBoard = new KeyBoard();

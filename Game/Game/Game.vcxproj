@@ -128,6 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Particle\GreenPlus.cpp" />
+    <ClCompile Include="Sourse\Particle\HealParticle.cpp" />
     <ClCompile Include="Sourse\Actor\Player.cpp" />
     <ClCompile Include="Sourse\Util\Controller.cpp" />
     <ClCompile Include="Sourse\Actor\EnemyBullet.cpp" />
@@ -142,7 +144,6 @@
     <ClCompile Include="Sourse\Actor\PlayerBullet.cpp" />
     <ClCompile Include="Sourse\Util\MousePointer.cpp" />
     <ClCompile Include="Sourse\Util\KeyBoard.cpp" />
-    <ClCompile Include="Sourse\Actor\Entity.cpp" />
     <ClCompile Include="Sourse\Actor\GameObject.cpp" />
     <ClCompile Include="Sourse\Actor\GameObjectManager.cpp" />
     <ClCompile Include="Sourse\main.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Sourse\Util\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Particle\GreenPlus.h" />
     <ClInclude Include="Header\Util\Controller.h" />
     <ClInclude Include="Header\Actor\EnemyBullet.h" />
     <ClInclude Include="Header\Actor\Enemy.h" />
@@ -170,7 +172,6 @@
     <ClInclude Include="Header\Actor\Clock.h" />
     <ClInclude Include="Header\Actor\Enemy1.h" />
     <ClInclude Include="Header\Actor\Enemy3.h" />
-    <ClInclude Include="Header\Actor\Entity.h" />
     <ClInclude Include="Header\Actor\GameObject.h" />
     <ClInclude Include="Header\Actor\GameObjectManager.h" />
     <ClInclude Include="Header\Particle\Particle.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Header\Actor\PutBullet.h" />
     <ClInclude Include="Header\Actor\SlowBullet.h" />
     <ClInclude Include="Header\Actor\SlowArea.h" />
+    <ClInclude Include="Header\Particle\HealParticle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

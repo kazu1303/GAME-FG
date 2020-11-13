@@ -11,6 +11,7 @@ enum ScreenID
 	Enemy_Screen,
 	SkyColor_Screen,
 	UI_Screen,
+	Particle_Screen,
 	ScreenID_Length,
 	
 };

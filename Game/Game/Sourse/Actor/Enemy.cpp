@@ -8,7 +8,6 @@ Enemy::Enemy(Vector2* position,float maxRotate, float transTime, int hp)
 {
 	this->maxRotate = maxRotate;
 	transTimer = Timer(transTime, false);
-	position = new Vector2(position->x, position->y);
 	velocity->x = Screen::WinWidth / 2- this->position->x;
 	velocity->y = Screen::WinHight  / 2- this->position->y;
 	velocity->Normalize();
@@ -24,6 +23,8 @@ Enemy::~Enemy()
 //{
 //}
 //
+
+//毎フレーム処理
 void Enemy::Update()
 {
 	if (Clock::Instance().TimeZoneTrigger())
@@ -50,6 +51,7 @@ void Enemy::Update()
 	}
 }
 
+//変形処理
 void Enemy::Transform(TimeZone timeZone, float rate)
 {
 	if (position->x >= Screen::WinWidth || position->x <= 0 || position->y >= Screen::WinHight || position->y <= 0)
@@ -66,6 +68,7 @@ void Enemy::Transform(TimeZone timeZone, float rate)
 	}
 };
 
+//ヒット時処理
 void Enemy::Hit(GameObject * obj)
 {
 	if (obj->GetType() == player_bullet)

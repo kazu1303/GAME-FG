@@ -10,15 +10,15 @@
 #include "KeyBoard.h"
 #include "Clock.h"
 #include "Controller.h"
+#include "HealParticle.h"
 
 
 Player::Player(Vector2 *position)
 	:GameObject(position, player, true, 10, 10)
 {
-	position = new Vector2(position->x, position->y);
-	bulletTimer = Timer(0.3f, true);
+	bulletTimer = Timer(0.1f, true);
 	healTimer = Timer(3.0f, true);
-	size = 40;
+	size = 60;
 }
 
 
@@ -35,23 +35,13 @@ void Player::Update()
 {
 	if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 	{
-		maxPutBullet = 10;
-		maxSlowBullet = 10;
+		int MaxBullet = 10;
+		putBulletNum = MaxBullet;
+		slowBulletNum = MaxBullet;
 		healTimer.Reset();
 	}
-	if (Clock::Instance().GetTimeZone() == morning)
-	{
-		healTimer.Update();
-		if (healTimer.IsTime())
-		{
-			hp++;
-			if (hp > maxHp)
-			{
-				hp = maxHp;
-			}
-		}
-	}
 	angle = atan2(position->x - Controller::Instance()->DirectionCoordinate().x, position->y - Controller::Instance()->DirectionCoordinate().y);
+	Heal();
 	Firing();
 	FiringPutBullet();
 	FiringSlowBullet();
@@ -65,13 +55,13 @@ void Player::Update()
 void Player::Draw()
 {
 	Display::Instance()->SetScreen(Player_Screen);
-	DrawCircle((int)(position->x), (int)(position->y), 20, GetColor(255, 255, 255), 0);
+	DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 255, 255), 0);
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(632, 0), "ZR", "“ÁŽê’e‚P", GetColor(255, 255, 255), maxPutBullet);
-	BulletIcon(Vector2(700, 0), "X", "“ÁŽê’e‚Q", GetColor(255, 255, 255), maxSlowBullet);
+	BulletIcon(Vector2(632, 0), "ZR", "“ÁŽê’e‚P", GetColor(255, 255, 255), putBulletNum);
+	BulletIcon(Vector2(700, 0), "X", "“ÁŽê’e‚Q", GetColor(255, 255, 255), slowBulletNum);
 	//BulletIcon(Vector2(0, 700),"ZR", "", GetColor(135, 206, 250), maxPutBullet);
 	//BulletIcon(Vector2(68, 700), "X", "", GetColor(255, 255, 255), maxSlowBullet);
 }
@@ -105,29 +95,29 @@ void Player::Firing()
 
 void Player::FiringPutBullet()
 {
-	if (maxPutBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_8))))
+	if (putBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_8))))
 	{
 		float r = 30;
 		new PutBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
-		maxPutBullet--;
+		putBulletNum--;
 	}
 }
 
 void Player::FiringSlowBullet()
 {
-	if (maxSlowBullet > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_1))))
+	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_1))))
 	{
 		float r = 30;
 		new SlowBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
-		maxSlowBullet--;
+		slowBulletNum--;
 	}
 }
 
 void Player::BatteryDraw()
 {
-	DrawCircle((int)(position->x), (int)(position->y), 10, GetColor(255, 255, 255), 1);
+	DrawCircle((int)(position->x), (int)(position->y), size / 2 -15, GetColor(255, 255, 255), 1);
 	//angle = atan2(position->x - MousePointer::Instance()->GetPosition().x , position->y - MousePointer::Instance()->GetPosition().y);
-	float r = 30;
+	float r = 40;
 	angle = angle * (180.0f / PI) + 90;
 	float radian1 = Util::AngleToRadian(angle + 25);
 	float radian2 = Util::AngleToRadian(angle - 25);
@@ -163,4 +153,21 @@ void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Colo
 	DrawString(pos.x + iconSize / 2 + 3, pos.y + iconSize / 2, "~", GetColor(255, 255, 255));
 	//DrawString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, std::to_string(num).c_str(), GetColor(255, 255, 255));
 	DrawFormatString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, GetColor(255, 255, 255), "%2d", num);
+}
+
+void Player::Heal()
+{
+	if (Clock::Instance().GetTimeZone() == morning)
+	{
+		healTimer.Update();
+		if (healTimer.IsTime())
+		{
+			hp++;
+			if (hp > maxHp)
+			{
+				hp = maxHp;
+			}
+			new HealParticle(new Vector2(position->x, position->y), 30);
+		}
+	}
 }

@@ -15,7 +15,6 @@ Clock::Clock(Vector2* position)
 	:GameObject(position, clock, false, 20, 0)
 {
 	instance = this;
-	this->position = position;
 	dayTimer = Timer(30.0f, true);
 	timeZoneTrigger = false;
 	day = 0;
@@ -26,11 +25,13 @@ Clock::~Clock()
 
 }
 
+//初期化
 void Clock::Initialize()
 {
 
 }
 
+//毎フレーム処理
 void Clock::Update()
 {
 	prevTimeZone = currentTimeZone;
@@ -54,6 +55,7 @@ void Clock::Update()
 	}
 }
 
+//描画処理
 void Clock::Draw()
 {
 	Display::Instance()->SetScreen(SkyColor_Screen);
@@ -66,6 +68,7 @@ void Clock::Draw()
 	DrawLine(position->x, position->y, clockHand.x, clockHand.y, GetColor(0, 0, 0));
 }
 
+//空の色の取得
 Color Clock::GetSkyColor()
 {
 	int colorIndex = (int)(dayTimer.GetRate() * skyColorLength);
@@ -88,26 +91,31 @@ Color Clock::GetSkyColor()
 	};
 }
 
+//空の描画
 void Clock::DrawSky()
 {
 	DrawBox(0, 0, Screen::WinWidth, Screen::WinHight,GetColor(GetSkyColor().r,GetSkyColor().g,GetSkyColor().b),TRUE);
 }
 
+//時間の取得
 float Clock::GetTime()
 {
 	return dayTimer.GetRate() * 24;
 }
 
+//時間帯の取得
 TimeZone Clock::GetTimeZone()
 {
 	return timeZone;
 }
 
+//時間帯が切り替わった瞬間の取得
 bool Clock::TimeZoneTrigger()
 {
 	return prevTimeZone != currentTimeZone;
 }
 
+//経過日数
 int Clock::GetElapsedTime()
 {
 	return day;

@@ -9,14 +9,12 @@
 PutBullet::PutBullet(Vector2 *position)
 	:GameObject(position, player_bullet, true)
 {
-	//position = new Vector2(position->x, position->y);
 	Vector2 mouse = Controller::Instance()->DirectionCoordinate();
 	velocity->x = mouse.x - this->position->x;
 	velocity->y = mouse.y - this->position->y;
 	velocity->Normalize();
 	size = 10;
 	speed = 0.2f;
-	idelTimer = Timer(0.1f, false);
 	attack = 1;
 }
 
@@ -25,10 +23,12 @@ PutBullet::~PutBullet()
 {
 }
 
+//初期化
 void PutBullet::Initialize()
 {
 }
 
+//毎フレーム処理
 void PutBullet::Update()
 {
 	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE) || Controller::Instance()->GetKey(PAD_INPUT_7))
@@ -45,36 +45,26 @@ void PutBullet::Update()
 	{
 		isDead = true;
 	}
-	if (idel)
-	{
-		idelTimer.Update();
-		if (idelTimer.IsTime())
-		{
-			idel = false;
-		}
-	}
 }
 
+//描画処理
 void PutBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle((int)(position->x), (int)(position->y), 5, GetColor(135, 206, 250), 0);
 }
 
+//ヒット時処理
 void PutBullet::Hit(GameObject * obj)
 {
 	if (obj->GetType() == enemy ||
 		obj->GetType() == enemy_bullet)
 	{
-		if (!idel)
-		{
-			idel = true;
-			idelTimer.Reset();
-			obj->Damege(attack);
-		}
+		obj->Damege(attack);
 	}
 }
 
+//ダメージ計算
 void PutBullet::Damege(int attack)
 {
 	if (speed <= 1.0f)

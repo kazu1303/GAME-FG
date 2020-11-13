@@ -2,9 +2,10 @@
 #include "ParticleManager.h"
 #include "DxLib.h"
 
-Particle::Particle(Vector2* position,int maxhp,float maxscale)
+Particle::Particle(Vector2* position)
 {
 	this->position = new Vector2(position->x,position->y);
+	delete position;
 	velocity = new Vector2(0, 0);
 	hp = GetRand(maxhp) + maxhp / 2;
 	this->maxscale = maxscale;

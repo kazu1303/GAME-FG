@@ -4,9 +4,6 @@
 
 #include "GameObject.h"
 
-
-
-
 //オブジェクトを管理するクラス
 class GameObjectManager
 {
@@ -38,7 +35,5 @@ public:
 	bool GameClear();
 	//クリアしたか
 	bool ClearFlag();
-
-
 	~GameObjectManager();
 };

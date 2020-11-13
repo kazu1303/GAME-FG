@@ -62,6 +62,7 @@ void Display::DrawScreen()
 	DrawGraph(0, 0, screens[PlayerBullet_Screen], true);
 	DrawGraph(0, 0, screens[PlayerBattery_Screen], true);
 	DrawGraph(0, 0, screens[Enemy_Screen], true);
-	DrawGraph(0, 0, screens[SkyColor_Screen], true);
+	DrawGraph(0, 0, screens[SkyColor_Screen], true);	
+	DrawGraph(0, 0, screens[Particle_Screen], true);
 	DrawGraph(0, 0, screens[UI_Screen], true);
 }

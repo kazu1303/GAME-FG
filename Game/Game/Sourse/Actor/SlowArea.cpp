@@ -7,7 +7,7 @@
 SlowArea::SlowArea(Vector2 *position)
 	:GameObject(position,slow_area,true)
 {
-	deadTimer = Timer(3.0f, false);
+	deadTimer = Timer(4.0f, false);
 	size = 0;
 }
 
@@ -16,13 +16,15 @@ SlowArea::~SlowArea()
 {
 }
 
+//初期化
 void SlowArea::Initialize()
 {
 }
 
+//毎フレーム処理
 void SlowArea::Update()
 {
-	if (size < 100)
+	if (size < 150)
 	{
 		size += 4;
 	}
@@ -33,12 +35,17 @@ void SlowArea::Update()
 	}
 }
 
+//描画処理
 void SlowArea::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 255, 255), 0);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 120);
+	DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 255, 255), 1);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 
+//ヒット時処理
 void SlowArea::Hit(GameObject * obj)
 {
 	if (obj->GetType() == enemy)

@@ -3,7 +3,6 @@
 
 #include "Vector2.h"
 
-
 enum Direction
 {
 	Top,
@@ -29,11 +28,10 @@ class GameObject
 protected:
 	Vector2* position = new Vector2(0,0);//座標
 	Vector2* velocity = new Vector2(0,0);//移動量
-	Vector2* otherPos = new Vector2(0,0);//主にプレイヤーの座標
 	float size;
 	float angle;//実際の角度、描画の際の角度
 	int hp;//体力
-	int attack;
+	int attack;//攻撃力
 	float defaultSpeed, speed;
     bool isDead;//死亡真偽
 	bool entity;//当たり判定真偽
@@ -63,11 +61,9 @@ public:
 	virtual bool EntityObject();
 	//オブジェクトの座標を返す
 	Vector2* GetPos();
-	//主にプレイヤーの座標を設定する用
-	virtual void SetPlayerPos(Vector2* position,CharaType type);
-
+	//ダメージ計算
 	virtual void Damege(int attack);
-
+	//スピード変化
 	virtual void SpeedDown(int percentage);
 };
 

@@ -8,6 +8,7 @@ using namespace std;
 GameObject::GameObject(Vector2* position, CharaType type, bool entity, float scale, int hp,string name)
 {
 	this->position = new Vector2(position->x,position->y);
+	delete position;
 	this->type = type;
 	this->entity = entity;
 	isDead = false;
@@ -146,22 +147,13 @@ Vector2* GameObject::GetPos()
 	return position;
 }
 
-//主にプレイヤーの座標を設定する用
-void GameObject::SetPlayerPos(Vector2* position, CharaType type)
-{
-	//プレイヤーの座標だけ保存
-	if (type == player)
-	{
-		otherPos = new Vector2(position->x, position->y);
-	}
-
-}
-
+//ダメージ計算
 void GameObject::Damege(int attack)
 {
 	hp -= attack;
 }
 
+//スピード計算
 void GameObject::SpeedDown(int percentage)
 {
 	speed = defaultSpeed / percentage;

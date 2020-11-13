@@ -6,16 +6,18 @@ class PutBullet :
 	public GameObject
 {
 private :
-	float speed;
-	Timer idelTimer;
-	bool idel;
 public:
 	PutBullet(Vector2 *position);
 	~PutBullet();
+	//初期化処理
 	void Initialize()override;
+	//毎フレーム処理
 	void Update()override;
+	//描画処理
 	void Draw()override;
+	//ヒット時処理
 	void Hit(GameObject *obj)override;
+	//ダメージ計算
 	void Damege(int attack)override;
 };
 

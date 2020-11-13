@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Screen.h"
 #include "GameObjectManager.h"
+#include "ParticleManager.h"
 #include "MousePointer.h"
 #include "Util.h"
 #include "Enemy1.h"
@@ -47,6 +48,7 @@ void GamePlay::Update()
 	}
 
 	GameObjectManager::Instance()->Update();
+	ParticleManager::Instance()->Update();
 	if (Clock::Instance().GetElapsedTime() == 0)
 	{
 		if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
@@ -90,11 +92,11 @@ void GamePlay::Update()
 
 		if (Clock::Instance().GetTimeZone() == morning)
 		{
-			new Enemy1(&spawnPoint, 1);
+			new Enemy1(new Vector2(spawnPoint.x, spawnPoint.y), 1);
 		}
 		else if (Clock::Instance().GetTimeZone() == night)
 		{
-			new Enemy1(&spawnPoint, 2);
+			new Enemy1(new Vector2(spawnPoint.x, spawnPoint.y), 2);
 		}		
 	}
 	if (enemy2Summon.IsTime())
@@ -107,11 +109,11 @@ void GamePlay::Update()
 
 		if (Clock::Instance().GetTimeZone() == morning)
 		{
-			new Enemy2(&spawnPoint, 1);
+			new Enemy2(new Vector2(spawnPoint.x,spawnPoint.y), 1);
 		}
 		else if (Clock::Instance().GetTimeZone() == night)
 		{
-			new Enemy2(&spawnPoint, 1);
+			new Enemy2(new Vector2(spawnPoint.x, spawnPoint.y), 1);
 		}
 	}
 	////“G‚Ì¶¬
@@ -140,6 +142,7 @@ void GamePlay::Draw()
 	DrawString(0, 0, "play", GetColor(255, 255, 255));
 	GameObjectManager::Instance()->Draw();
 	MousePointer::Instance()->Draw();
+	ParticleManager::Instance()->Draw();
 }
 
 //ŽŸ‚ÌƒV[ƒ“

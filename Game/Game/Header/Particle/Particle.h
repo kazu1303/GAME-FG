@@ -1,6 +1,6 @@
 #pragma once
 #include "Vector2.h"
-
+#include "Timer.h"
 
 //パーティクルの親クラス
 class Particle
@@ -10,9 +10,10 @@ protected:
 	Vector2* velocity;//移動量
 	int hp,maxhp;//現在のhp,最大のhp
 	float scale,maxscale,addScale;//現在の大きさ、最大の大きさ、大きくなる比率
+	Timer deadTimer;
 	bool isDead;//死亡真偽
 public:
-	Particle(Vector2* position,int maxhp, float scale);
+	Particle(Vector2* position);
 	~Particle();
 	//死亡真偽
 	bool IsDead();

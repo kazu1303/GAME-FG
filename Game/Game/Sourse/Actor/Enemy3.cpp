@@ -9,7 +9,7 @@ Enemy3::Enemy3(Vector2 *position,int hp)
 {
 	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
 	size = 40;
-	defaultSpeed = 1.5f;
+	defaultSpeed = 1.0f;
 	speed = defaultSpeed;
 }
 
@@ -18,10 +18,12 @@ Enemy3::~Enemy3()
 {
 }
 
+//初期化
 void Enemy3::Initialize()
 {
 }
 
+//毎フレーム処理
 void Enemy3::Update()
 {
 	position->x += velocity->x * speed;
@@ -30,6 +32,7 @@ void Enemy3::Update()
 	Enemy::Update();
 }
 
+//描画処理
 void Enemy3::Draw()
 {
 	float r = size / 2;
@@ -50,6 +53,7 @@ void Enemy3::Draw()
 	//DrawBox(position->x + r * cos(angle), position->y + r * -sin(angle), position->x + r * cos(radian2), position->y + r * -sin(radian2),GetColor(255, 255, 255), 0);
 }
 
+//ヒット時処理
 void Enemy3::Hit(GameObject * obj)
 {
 	Enemy::Hit(obj);

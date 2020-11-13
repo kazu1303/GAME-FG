@@ -22,10 +22,12 @@ Enemy2::~Enemy2()
 {
 }
 
+//初期化
 void Enemy2::Initialize()
 {
 }
 
+//毎フレーム処理
 void Enemy2::Update()
 {
 	float lengthX = position->x - Screen::WinWidth / 2;
@@ -69,7 +71,7 @@ void Enemy2::Update()
 			bulletTimer.Update();
 			if (bulletTimer.IsTime())
 			{
-				new EnemyBullet(position);
+				new EnemyBullet(new Vector2(position->x,position->y));
 			}
 		}
 	}
@@ -78,6 +80,7 @@ void Enemy2::Update()
 	Enemy::Update();
 }
 
+//描画処理
 void Enemy2::Draw()
 {
 	float r = size / 2;
@@ -101,6 +104,7 @@ void Enemy2::Draw()
 	DrawLine((int)(position->x + r * cos(radian5 + rotateRadian)), (int)(position->y + r * -sin(radian5 + rotateRadian)), (int)(position->x + r * cos(angle + rotateRadian)), (int)(position->y + r * -sin(angle + rotateRadian)), GetColor(255, 255, 255));
 }
 
+//ヒット時処理
 void Enemy2::Hit(GameObject * obj)
 {
 	Enemy::Hit(obj);

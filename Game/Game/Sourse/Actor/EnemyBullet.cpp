@@ -19,26 +19,31 @@ EnemyBullet::~EnemyBullet()
 {
 }
 
+//‰Šú‰»
 void EnemyBullet::Initialize()
 {
 }
 
+//–ˆƒtƒŒ[ƒ€ˆ—
 void EnemyBullet::Update()
 {
 	position->x += velocity->x * speed;
 	position->y += velocity->y * speed;
-	if (hp <= 0)
+	int deadHp = 0;
+	if (hp <= deadHp)
 	{
 		isDead = true;
 	}
 }
 
+//•`‰æˆ—
 void EnemyBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle((int)(position->x), (int)(position->y), 5, GetColor(255, 255, 255), 0);
 }
 
+//ƒqƒbƒgŽžˆ—
 void EnemyBullet::Hit(GameObject * obj)
 {
 	if (obj->GetType() == player)

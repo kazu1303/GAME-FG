@@ -48,14 +48,14 @@ void GameObjectManager::Update()
 	gameObjects.insert(gameObjects.end(), addgameObjects.begin(), addgameObjects.end());
 	addgameObjects.clear();
 
-	//アップデート
-	for (auto obj1 : gameObjects)
-	{
-		for (auto obj2 : gameObjects)
-		{
-			obj1->SetPlayerPos(obj2->GetPos(), obj2->GetType());
-		}
-	}
+	////アップデート
+	//for (auto obj1 : gameObjects)
+	//{
+	//	for (auto obj2 : gameObjects)
+	//	{
+	//		obj1->SetPlayerPos(obj2->GetPos(), obj2->GetType());
+	//	}
+	//}
 	//キャラクターの毎フレーム処理
 	for (auto itr : gameObjects)
 	{

@@ -8,7 +8,6 @@
 PlayerBullet::PlayerBullet(Vector2 *position)
 	:GameObject(position,player_bullet,true)
 {
-	//position = new Vector2(position->x, position->y);
 	Vector2 mouse = Controller::Instance()->DirectionCoordinate();
 	velocity->x = mouse.x - this->position->x;
 	velocity->y = mouse.y - this->position->y;
@@ -23,10 +22,12 @@ PlayerBullet::~PlayerBullet()
 
 }
 
+//‰Šú‰»
 void PlayerBullet::Initialize()
 {
 }
 
+//–ˆƒtƒŒ[ƒ€ˆ—
 void PlayerBullet::Update()
 {
 	float speed = 10;
@@ -42,6 +43,7 @@ void PlayerBullet::Update()
 	}
 }
 
+//ƒqƒbƒgŽžˆ—
 void PlayerBullet::Hit(GameObject * obj)
 {
 	if (obj->GetType() == enemy ||
@@ -55,6 +57,7 @@ void PlayerBullet::Hit(GameObject * obj)
 	}
 }
 
+//•`‰æˆ—
 void PlayerBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);

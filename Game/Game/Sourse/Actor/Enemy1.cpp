@@ -18,10 +18,12 @@ Enemy1::~Enemy1()
 {
 }
 
+//初期化
 void Enemy1::Initialize()
 {
 }
 
+//毎フレーム処理
 void Enemy1::Update()
 {
 	position->x += velocity->x * speed;
@@ -30,6 +32,7 @@ void Enemy1::Update()
 	Enemy::Update();
 }
 
+//描画処理
 void Enemy1::Draw()
 {
 
@@ -42,6 +45,7 @@ void Enemy1::Draw()
 	DrawTriangle((int)(position->x + r * cos(angle + rotateRadian)), (int)(position->y + r * -sin(angle + rotateRadian)), (int)(position->x + r * cos(radian2 + rotateRadian)), (int)(position->y + r * -sin(radian2 + rotateRadian)), (int)(position->x + r * cos(radian3 + rotateRadian)), (int)(position->y + r * -sin(radian3 + rotateRadian)), GetColor(255, 255, 255), 0);
 }
 
+//ヒット時処理
 void Enemy1::Hit(GameObject * obj)
 {
 	Enemy::Hit(obj);
