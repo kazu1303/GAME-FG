@@ -11,10 +11,15 @@ public:
 	static KeyBoard* Instance();
 	KeyBoard();
 	~KeyBoard();
+	//キーの更新
 	void GetKeyState();
+	//毎フレーム処理
 	void Update();
+	//押しているか
 	static bool IsHitKey(int KeyCoad);
+	//押した瞬間か
 	static bool GetKeyTrigger(int KeyCoad);
-	static bool GetKeyDown(int KeyCoad);
+	//離した瞬間か
+	static bool GetKeyRelease(int KeyCoad);
 };
 

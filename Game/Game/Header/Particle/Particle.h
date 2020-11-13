@@ -10,7 +10,7 @@ protected:
 	Vector2* velocity;//ˆÚ“®—Ê
 	int hp,maxhp;//Œ»İ‚Ìhp,Å‘å‚Ìhp
 	float scale,maxscale,addScale;//Œ»İ‚Ì‘å‚«‚³AÅ‘å‚Ì‘å‚«‚³A‘å‚«‚­‚È‚é”ä—¦
-	Timer deadTimer;
+	Timer deadTimer;//Á‚¦‚éŠÔ
 	bool isDead;//€–S^‹U
 public:
 	Particle(Vector2* position);

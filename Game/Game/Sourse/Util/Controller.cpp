@@ -28,6 +28,7 @@ Controller * Controller::Instance()
 	return instance;
 }
 
+//毎フレーム処理
 void Controller::Update()
 {
 	prev = current;
@@ -59,11 +60,13 @@ void Controller::Update()
 	}
 }
 
+//スティックの倒した方向の取得
 Vector2 Controller::DirectionCoordinate()
 {
 	return direction;
 }
 
+//入力したキーの取得
 bool Controller::GetKey(int key)
 {
 	int num = Util::Index(key) - 4;
@@ -74,6 +77,7 @@ bool Controller::GetKey(int key)
 	return false;
 }
 
+//描画処理
 void Controller::Draw()
 {
 	DrawString(100, 400, std::to_string(direction.x).c_str(), GetColor(255, 255, 255));

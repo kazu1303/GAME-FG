@@ -20,11 +20,13 @@ KeyBoard::~KeyBoard()
 {
 }
 
+//キー入力の更新
 void KeyBoard::GetKeyState()
 {
 	GetHitKeyStateAll(currentKey);
 }
 
+//prev更新
 void KeyBoard::Update()
 {
 
@@ -34,6 +36,7 @@ void KeyBoard::Update()
 	}
 }
 
+//押しているか
 bool KeyBoard::IsHitKey(int KeyCoad)
 {
 	if (currentKey[KeyCoad] == 1)
@@ -43,6 +46,7 @@ bool KeyBoard::IsHitKey(int KeyCoad)
 	return false;
 }
 
+//押した瞬間か
 bool KeyBoard::GetKeyTrigger(int KeyCoad)
 {
 	if (prevKey[KeyCoad] == 0 &&
@@ -53,7 +57,8 @@ bool KeyBoard::GetKeyTrigger(int KeyCoad)
 	return false;
 }
 
-bool KeyBoard::GetKeyDown(int KeyCoad)
+//離した瞬間か
+bool KeyBoard::GetKeyRelease(int KeyCoad)
 {
 	if (prevKey[KeyCoad] == 1 &&
 		currentKey[KeyCoad] == 0)

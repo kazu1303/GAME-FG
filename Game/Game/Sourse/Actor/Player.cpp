@@ -26,11 +26,13 @@ Player::~Player()
 {
 }
 
+//‰Šú‰»
 void Player::Initialize()
 {
 
 }
 
+//–ˆƒtƒŒ[ƒ€ˆ—
 void Player::Update()
 {
 	if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
@@ -52,6 +54,7 @@ void Player::Update()
 
 }
 
+//•`‰æˆ—
 void Player::Draw()
 {
 	Display::Instance()->SetScreen(Player_Screen);
@@ -66,6 +69,7 @@ void Player::Draw()
 	//BulletIcon(Vector2(68, 700), "X", "", GetColor(255, 255, 255), maxSlowBullet);
 }
 
+//ƒqƒbƒgˆ—
 void Player::Hit(GameObject * obj)
 {
 	if (obj->GetType() == enemy ||
@@ -75,6 +79,7 @@ void Player::Hit(GameObject * obj)
 	}
 }
 
+//’e”­Ëˆ—
 void Player::Firing()
 {
 	if (Controller::Instance()->GetKey(PAD_INPUT_4))
@@ -93,6 +98,7 @@ void Player::Firing()
 	}
 }
 
+//PutBullet”­Ëˆ—
 void Player::FiringPutBullet()
 {
 	if (putBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_8))))
@@ -103,6 +109,7 @@ void Player::FiringPutBullet()
 	}
 }
 
+//SlowBullet”­Ëˆ—
 void Player::FiringSlowBullet()
 {
 	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_1))))
@@ -113,6 +120,7 @@ void Player::FiringSlowBullet()
 	}
 }
 
+//–C‘ä‚Ì•`‰æ
 void Player::BatteryDraw()
 {
 	DrawCircle((int)(position->x), (int)(position->y), size / 2 -15, GetColor(255, 255, 255), 1);
@@ -124,6 +132,7 @@ void Player::BatteryDraw()
 	DrawTriangle((int)(position->x), (int)(position->y), (int)(position->x + r * cos(radian1)), (int)(position->y + r * -sin(radian1)), (int)(position->x + r * cos(radian2)), (int)(position->y + r * -sin(radian2)), GetColor(255, 255, 255), 1);
 }
 
+//‘Ì—ÍƒQ[ƒW‚Ì•`‰æ
 void Player::DrawDamageGauge()
 {
 	if (hp < 0)
@@ -139,6 +148,7 @@ void Player::DrawDamageGauge()
 	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
 }
 
+//’eƒAƒCƒRƒ“‚Ì•`‰æ
 void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Color, int num)
 {
 	int length = key.length();
@@ -154,7 +164,8 @@ void Player::BulletIcon(Vector2 pos, std::string key, std::string name, int Colo
 	//DrawString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, std::to_string(num).c_str(), GetColor(255, 255, 255));
 	DrawFormatString(pos.x + iconSize / 2 + 15, pos.y + iconSize / 2, GetColor(255, 255, 255), "%2d", num);
 }
-
+	
+//‰ñ•œˆ—
 void Player::Heal()
 {
 	if (Clock::Instance().GetTimeZone() == morning)

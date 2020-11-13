@@ -14,10 +14,12 @@ GreenPlus::~GreenPlus()
 {
 }
 
+//‰Šú‰»
 void GreenPlus::Initialize()
 {
 }
 
+//–ˆƒtƒŒ[ƒ€ˆ—
 void GreenPlus::Update()
 {
 	deadTimer.Update();
@@ -28,6 +30,7 @@ void GreenPlus::Update()
 	}
 }
 
+//•`‰æˆ—
 void GreenPlus::Draw()
 {
 	Display::Instance()->SetScreen(Particle_Screen);

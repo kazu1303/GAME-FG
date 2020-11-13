@@ -9,8 +9,11 @@ public:
 	MousePointer();
 	~MousePointer();
 	static MousePointer* Instance();
+	//–ˆƒtƒŒ[ƒ€ˆ—
 	void Update();
+	//À•W‚Ìæ“¾
 	Vector2 GetPosition();
+	//•`‰æˆ—
 	void Draw();
 };
 

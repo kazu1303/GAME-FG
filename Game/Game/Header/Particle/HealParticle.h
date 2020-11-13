@@ -4,7 +4,7 @@ class HealParticle :
 	public Particle
 {
 private:
-	float range;
+	float range;//”ÍˆÍ
 public:
 	HealParticle(Vector2 *position,float range);
 	~HealParticle();

@@ -24,8 +24,6 @@ GameObject::~GameObject()
 	position = nullptr;
 	delete velocity;
 	velocity = nullptr;
-	delete otherPos;
-	otherPos = nullptr;
 }
 
 //‰Šú‰»ˆ—

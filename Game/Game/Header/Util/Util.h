@@ -13,7 +13,7 @@ public:
 	static float LengthTry(float length1, float length2);
 	//”ä—¦‚Ìæ“¾
 	static float Ratio(float value1, float value2);
-
+	//æ”‚Ìæ“¾
 	static int Index(float num);
 };
 

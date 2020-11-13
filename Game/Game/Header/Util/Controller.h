@@ -12,9 +12,12 @@ public:
 	Controller();
 	~Controller();
 	static Controller* Instance();
+	//毎フレーム処理
 	void Update();
+	//スティックを倒している方向
 	Vector2 DirectionCoordinate();
 	bool GetKey(int key);
+
 	void Draw();
 };
 

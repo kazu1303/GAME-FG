@@ -15,10 +15,12 @@ HealParticle::~HealParticle()
 {
 }
 
+//‰Šú‰»
 void HealParticle::Initialize()
 {
 }
 
+//–ˆƒtƒŒ[ƒ€ˆ—
 void HealParticle::Update()
 {
 	deadTimer.Update();
@@ -32,8 +34,7 @@ void HealParticle::Update()
 	}
 }
 
+//•`‰æˆ—
 void HealParticle::Draw()
 {
-	//Display::Instance()->SetScreen(Particle_Screen);
-	//DrawString(position->x, position->y, "+", GetColor(0, 255, 0));
 }
