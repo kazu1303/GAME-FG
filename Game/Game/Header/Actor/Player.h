@@ -14,6 +14,7 @@ private:
 	int slowBulletNum;//slowBullet‚Ì”
 	int putBulletNum;//putBullet‚Ì”
 	int maxHp = 10;//‘Ì—Í
+	bool operation;
 public:
 	Player(Vector2 *position);
 	~Player();

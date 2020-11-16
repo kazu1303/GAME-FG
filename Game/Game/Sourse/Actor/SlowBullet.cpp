@@ -5,12 +5,11 @@
 #include "Controller.h"
 
 
-SlowBullet::SlowBullet(Vector2 *position)
+SlowBullet::SlowBullet(Vector2 *position, float radian)
 	:GameObject(position,slow_bullet,true)
 {
-	Vector2 mouse = Controller::Instance()->DirectionCoordinate();
-	velocity->x = mouse.x - this->position->x;
-	velocity->y = mouse.y - this->position->y;
+	velocity->x = cos(radian);
+	velocity->y = -sin(radian);
 	velocity->Normalize();
 	size = 10;
 	attack = 0;

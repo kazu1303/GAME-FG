@@ -6,7 +6,7 @@ class PlayerBullet :
 	public GameObject
 {
 public:
-	PlayerBullet(Vector2 *position);
+	PlayerBullet(Vector2 *position, float radian);
 	~PlayerBullet();
 	//‰Šú‰»
 	void Initialize()override;

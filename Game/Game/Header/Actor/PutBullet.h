@@ -7,7 +7,7 @@ class PutBullet :
 {
 private :
 public:
-	PutBullet(Vector2 *position);
+	PutBullet(Vector2 *position, float radian);
 	~PutBullet();
 	//‰Šú‰»ˆ—
 	void Initialize()override;

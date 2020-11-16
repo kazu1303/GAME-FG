@@ -8,7 +8,7 @@ class SlowBullet :
 private:
 	Timer deadTimer;//Á‚¦‚éŠÔ
 public:
-	SlowBullet(Vector2 *position);
+	SlowBullet(Vector2 *position,float radian);
 	~SlowBullet();
 	//‰Šú‰»
 	void Initialize()override;
