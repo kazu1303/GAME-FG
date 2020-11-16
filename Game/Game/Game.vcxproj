@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Particle\PlusBullet.cpp" />
     <ClCompile Include="Sourse\Particle\GreenPlus.cpp" />
     <ClCompile Include="Sourse\Particle\HealParticle.cpp" />
     <ClCompile Include="Sourse\Actor\Player.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="Header\Actor\SlowBullet.h" />
     <ClInclude Include="Header\Actor\SlowArea.h" />
     <ClInclude Include="Header\Particle\HealParticle.h" />
+    <ClInclude Include="Header\Particle\PlusBullet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

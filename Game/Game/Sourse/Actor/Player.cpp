@@ -11,6 +11,7 @@
 #include "Clock.h"
 #include "Controller.h"
 #include "HealParticle.h"
+#include "PlusBullet.h"
 
 
 Player::Player(Vector2 *position)
@@ -41,6 +42,7 @@ void Player::Update()
 		putBulletNum = MaxBullet;
 		slowBulletNum = MaxBullet;
 		healTimer.Reset();
+		new PlusBullet(new Vector2(position->x, position->y));
 	}
 	angle = atan2(position->x - Controller::Instance()->DirectionCoordinate().x, position->y - Controller::Instance()->DirectionCoordinate().y);
 	Heal();

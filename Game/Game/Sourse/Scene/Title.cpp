@@ -9,6 +9,7 @@
 #include "Controller.h"
 
 
+
 Title::Title()
 {
 	isEnd = false;
@@ -36,6 +37,11 @@ void Title::Update()
 	if (Controller::Instance()->GetKey(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
+	}
+	ParticleManager::Instance()->Update();
+	if (KeyBoard::GetKeyTrigger(KEY_INPUT_A))
+	{
+
 	}
 }
 
