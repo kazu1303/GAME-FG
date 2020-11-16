@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sourse\Particle\DeadParticle.cpp" />
     <ClCompile Include="Sourse\Particle\PlusBullet.cpp" />
     <ClCompile Include="Sourse\Particle\GreenPlus.cpp" />
     <ClCompile Include="Sourse\Particle\HealParticle.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Sourse\Util\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Particle\DeadParticle.h" />
     <ClInclude Include="Header\Particle\GreenPlus.h" />
     <ClInclude Include="Header\Util\Controller.h" />
     <ClInclude Include="Header\Actor\EnemyBullet.h" />
