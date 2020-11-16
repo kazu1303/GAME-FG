@@ -37,7 +37,7 @@ void SlowBullet::Update()
 	if (deadTimer.IsTime())
 	{
 		isDead = true;
-		new SlowArea(position);
+		new SlowArea(new Vector2(position->x, position->y));
 	}
 }
 
@@ -54,6 +54,6 @@ void SlowBullet::Hit(GameObject * obj)
 	if (obj->GetType() == enemy)
 	{
 		isDead = true;
-		new SlowArea(position);
+		new SlowArea(new Vector2(position->x,position->y));
 	}
 }

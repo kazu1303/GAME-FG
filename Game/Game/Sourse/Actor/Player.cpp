@@ -20,6 +20,8 @@ Player::Player(Vector2 *position)
 	bulletTimer = Timer(0.1f, true);
 	healTimer = Timer(3.0f, true);
 	size = 60;
+	putBulletNum = 10;
+	slowBulletNum = 10;
 }
 
 
@@ -84,7 +86,7 @@ void Player::Hit(GameObject * obj)
 //’e”­ŽËˆ—
 void Player::Firing()
 {
-	if (Controller::Instance()->GetKey(PAD_INPUT_4))
+	if (Controller::Instance()->GetKey(PAD_INPUT_2))
 	{
 		bulletTimer.Update();
 		if (bulletTimer.IsTime())
@@ -103,7 +105,7 @@ void Player::Firing()
 //PutBullet”­ŽËˆ—
 void Player::FiringPutBullet()
 {
-	if (putBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_8))))
+	if (putBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_6))))
 	{
 		float r = 30;
 		new PutBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
@@ -114,7 +116,7 @@ void Player::FiringPutBullet()
 //SlowBullet”­ŽËˆ—
 void Player::FiringSlowBullet()
 {
-	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_1))))
+	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_3))))
 	{
 		float r = 30;
 		new SlowBullet(new Vector2(position->x + r * cos(angle + Util::AngleToRadian(90)), position->y + r * -sin(angle + Util::AngleToRadian(90))));
