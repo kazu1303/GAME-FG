@@ -20,6 +20,8 @@ Player::Player(Vector2 *position)
 {
 	bulletTimer = Timer(0.1f, true);
 	healTimer = Timer(3.0f, true);
+	damegeTimer = Timer(1.0f,false);
+	damegeTimer.Max();
 	size = 60;
 	putBulletNum = 10;
 	slowBulletNum = 1;
@@ -73,14 +75,24 @@ void Player::Update()
 	{
 		isDead = true;
 	}
-
+	if (!damegeTimer.IsTime())
+	{
+		damegeTimer.Update();
+	}
 }
 
 //•`‰æˆ—
 void Player::Draw()
 {
 	Display::Instance()->SetScreen(Player_Screen);
+	if (!damegeTimer.IsTime())
+	{
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 160);
+		DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 0, 0), 1);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 100);
+	}
 	DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 255, 255), 0);
+
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
 	DrawDamageGauge();
@@ -98,6 +110,12 @@ void Player::Hit(GameObject * obj)
 		obj->GetType() == enemy_bullet)
 	{
 		obj->Damege(500);
+		damegeTimer.Reset();
+		if (damegeTimer.IsTime())
+		{
+			damegeTimer.Update();
+		}
+
 	}
 }
 

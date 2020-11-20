@@ -15,6 +15,7 @@ private:
 	int putBulletNum;//putBullet‚Ì”
 	int maxHp = 10;//‘Ì—Í
 	bool operation;
+	Timer damegeTimer;
 public:
 	Player(Vector2 *position);
 	~Player();
