@@ -49,7 +49,7 @@ void Enemy::Update()
 	if (hp <= 0)
 	{
 		isDead = true;
-		for (int i = 0; i < 40; i++)
+		for (int i = 0; i < 100; i++)
 		{
 			new DeadParticle(new Vector2(position->x, position->y));
 		}

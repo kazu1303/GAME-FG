@@ -37,5 +37,13 @@ void DeadParticle::Update()
 void DeadParticle::Draw()
 {
 	Display::Instance()->SetScreen(Particle_Screen);
-	DrawCircle(position->x, position->y,3.0f ,GetColor(255, 255, 255));
+	SetDrawBright(255, 30, 0);
+	SetDrawBlendMode(DX_BLENDMODE_ADD, 150 * (1 - deadTimer.GetRate()));
+	DrawCircle(position->x, position->y, 4.0f ,GetColor(255, 255, 255));
+	SetDrawBlendMode(DX_BLENDMODE_ADD, 175 * (1 - deadTimer.GetRate()));
+	DrawCircle(position->x, position->y, 3.0f, GetColor(255, 255, 255));
+	SetDrawBlendMode(DX_BLENDMODE_ADD, 200 * (1 - deadTimer.GetRate()));
+	DrawCircle(position->x, position->y, 2.0f, GetColor(255, 255, 255));
+	SetDrawBright(255, 255, 255);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
