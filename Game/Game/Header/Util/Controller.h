@@ -16,7 +16,8 @@ public:
 	void Update();
 	//スティックを倒している方向
 	Vector2 DirectionCoordinate();
-	bool GetKey(int key);
+	bool GetButtonTrigger(int key);
+	bool GetButton(int key);
 
 	void Draw();
 };

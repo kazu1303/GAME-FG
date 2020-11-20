@@ -66,8 +66,18 @@ Vector2 Controller::DirectionCoordinate()
 	return direction;
 }
 
+bool Controller::GetButton(int key)
+{
+	int num = Util::Index(key) - 4;
+	if (currentbutton[num])
+	{
+		return true;
+	}
+	return false;
+}
+
 //“ü—Í‚µ‚½ƒL[‚Ìæ“¾
-bool Controller::GetKey(int key)
+bool Controller::GetButtonTrigger(int key)
 {
 	int num = Util::Index(key) - 4;
 	if (currentbutton[num] && !prevbutton[num])

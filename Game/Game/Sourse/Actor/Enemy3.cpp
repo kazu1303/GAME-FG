@@ -7,9 +7,9 @@
 Enemy3::Enemy3(Vector2 *position,int hp)
 	:Enemy(position,45,1,hp)
 {
-	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
+	angle = atan2(Screen::WinWidth / 2 - this->position->x, Screen::WinHight / 2 - this->position->y) + Util::AngleToRadian(-90);
 	size = 40;
-	defaultSpeed = 1.0f;
+	defaultSpeed = 0.5f;
 	speed = defaultSpeed;
 }
 

@@ -7,7 +7,7 @@
 SlowArea::SlowArea(Vector2 *position)
 	:GameObject(position,slow_area,true)
 {
-	deadTimer = Timer(4.0f, false);
+	deadTimer = Timer(6.0f, false);
 	size = 0;
 }
 
@@ -24,9 +24,9 @@ void SlowArea::Initialize()
 //–ˆƒtƒŒ[ƒ€ˆ—
 void SlowArea::Update()
 {
-	if (size < 150)
+	if (size < 550)
 	{
-		size += 4;
+		size += 10;
 	}
 	deadTimer.Update();
 	if (deadTimer.IsTime())
@@ -50,6 +50,6 @@ void SlowArea::Hit(GameObject * obj)
 {
 	if (obj->GetType() == enemy)
 	{
-		obj->SpeedDown(5);
+		obj->SpeedDown(5.0f);
 	}
 }

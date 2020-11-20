@@ -27,7 +27,7 @@ GamePlay::~GamePlay()
 void GamePlay::Initialize()
 {
 	isEnd = false;
-	enemy1Summon = Timer(0.8f, true);
+	enemy1Summon = Timer(1.5f, true);
 	enemy2Summon = Timer(1.5f, true);
 	enemy3Summon = Timer(2.0f, true);
 	player = new Player(new Vector2((float)(Screen::WinWidth / 2), (float)(Screen::WinHight / 2)));
@@ -42,7 +42,7 @@ void GamePlay::Update()
 	{
 		isEnd = true;
 	}
-	if (Clock::Instance().GetElapsedTime() >= 2)
+	if (Clock::Instance().GetElapsedTime() >= 3)
 	{
 		isEnd = true;
 	}
@@ -53,32 +53,45 @@ void GamePlay::Update()
 	{
 		if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
 		{
-			enemy1Summon.Resetting(0.8f);
+			enemy1Summon.Resetting(1.0f);
 		}
 		else if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 		{
-			enemy1Summon.Resetting(0.6f);
+			enemy1Summon.Resetting(1.5f);
 		}
 	}
 	if (Clock::Instance().GetElapsedTime() == 1)
 	{
 		if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
 		{
-			enemy1Summon.Resetting(1.5f);
+			enemy1Summon.Resetting(1.0f);
+			enemy3Summon.Resetting(3.0f);
 		}
 		else if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 		{
-			enemy1Summon.Resetting(1.2f);
+			enemy1Summon.Resetting(1.5f);
+			enemy3Summon.Resetting(6.0f);
+			enemy3Summon.Max();
 		}
+		enemy3Summon.Update();
+	}
+	if (Clock::Instance().GetElapsedTime() == 2)
+	{
 		if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
 		{
-			enemy2Summon.Resetting(5.0f);
+			enemy1Summon.Resetting(1.0f);
+			enemy2Summon.Resetting(4.0f);
+			enemy3Summon.Resetting(3.0f);
 		}
 		else if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 		{
-			enemy2Summon.Resetting(3.5f);
+			enemy1Summon.Resetting(1.5f);
+			enemy2Summon.Resetting(8.0f);
+			enemy3Summon.Resetting(6.0f);
+			enemy2Summon.Max();
 		}
 		enemy2Summon.Update();
+		enemy3Summon.Update();
 	}
 	enemy1Summon.Update();
 	//ìGÇÃê∂ê¨
@@ -97,7 +110,7 @@ void GamePlay::Update()
 		else if (Clock::Instance().GetTimeZone() == night)
 		{
 			new Enemy1(new Vector2(spawnPoint.x, spawnPoint.y), 2);
-		}		
+		}
 	}
 	if (enemy2Summon.IsTime())
 	{
@@ -109,31 +122,31 @@ void GamePlay::Update()
 
 		if (Clock::Instance().GetTimeZone() == morning)
 		{
-			new Enemy2(new Vector2(spawnPoint.x,spawnPoint.y), 1);
+			new Enemy2(new Vector2(spawnPoint.x, spawnPoint.y), 1);
 		}
 		else if (Clock::Instance().GetTimeZone() == night)
 		{
 			new Enemy2(new Vector2(spawnPoint.x, spawnPoint.y), 1);
 		}
 	}
-	////ìGÇÃê∂ê¨
-	//if (enemy3Summon.IsTime())
-	//{
-	//	//ìGÇ™èoåªÇ∑ÇÈï˚å¸ÇåàÇﬂÇÈ
-	//	float angle = (float)(GetRand(360));
-	//	float radian = Util::AngleToRadian(angle);
-	//	float spawnLength = Screen::WinWidth;
-	//	Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+	//ìGÇÃê∂ê¨
+	if (enemy3Summon.IsTime())
+	{
+		//ìGÇ™èoåªÇ∑ÇÈï˚å¸ÇåàÇﬂÇÈ
+		float angle = (float)(GetRand(360));
+		float radian = Util::AngleToRadian(angle);
+		float spawnLength = Screen::WinWidth;
+		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
 
-	//	if (Clock::Instance().GetTimeZone() == morning)
-	//	{
-	//		new Enemy3(&spawnPoint, 3);
-	//	}
-	//	else if (Clock::Instance().GetTimeZone() == night)
-	//	{
-	//		new Enemy3(&spawnPoint, 6);
-	//	}
-	//}
+		if (Clock::Instance().GetTimeZone() == morning)
+		{
+			new Enemy3(new Vector2(spawnPoint.x, spawnPoint.y), 2);
+		}
+		else if (Clock::Instance().GetTimeZone() == night)
+		{
+			new Enemy3(new Vector2(spawnPoint.x, spawnPoint.y), 4);
+		}
+	}
 }
 
 //ï`âÊèàóù

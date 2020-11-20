@@ -8,8 +8,8 @@
 Enemy2::Enemy2(Vector2 *position,int hp)
 	:Enemy(position,36,1.0f,hp)
 {
-	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
-	posAngle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(90);
+	angle = atan2(Screen::WinWidth / 2 - this->position->x, Screen::WinHight / 2 - this->position->y) + Util::AngleToRadian(-90);
+	posAngle = atan2(Screen::WinWidth / 2 - this->position->x, Screen::WinHight / 2 - this->position->y) + Util::AngleToRadian(90);
 	size = 40;
 	defaultSpeed = 3;
 	speed = defaultSpeed;

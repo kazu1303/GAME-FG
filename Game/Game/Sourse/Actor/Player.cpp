@@ -12,6 +12,7 @@
 #include "Controller.h"
 #include "HealParticle.h"
 #include "PlusBullet.h"
+#include "SlowArea.h"
 
 
 Player::Player(Vector2 *position)
@@ -21,8 +22,8 @@ Player::Player(Vector2 *position)
 	healTimer = Timer(3.0f, true);
 	size = 60;
 	putBulletNum = 10;
-	slowBulletNum = 10;
-	operation = false;
+	slowBulletNum = 1;
+	operation = true;
 }
 
 
@@ -51,7 +52,7 @@ void Player::Update()
 	{
 		int MaxBullet = 10;
 		putBulletNum = MaxBullet;
-		slowBulletNum = MaxBullet;
+		slowBulletNum = 1;
 		healTimer.Reset();
 		new PlusBullet(new Vector2(position->x, position->y));
 	}
@@ -103,7 +104,7 @@ void Player::Hit(GameObject * obj)
 //’e”­ŽËˆ—
 void Player::Firing()
 {
-	if (Controller::Instance()->GetKey(PAD_INPUT_4) || (GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
+	if (Controller::Instance()->GetButton(PAD_INPUT_4) || (GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
 	{
 		bulletTimer.Update();
 		if (bulletTimer.IsTime())
@@ -122,7 +123,7 @@ void Player::Firing()
 //PutBullet”­ŽËˆ—
 void Player::FiringPutBullet()
 {
-	if (putBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetKey(PAD_INPUT_8))))
+	if (putBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_8))))
 	{
 		float r = 30;
 		new PutBullet(new Vector2(position->x + r * cos(angle), position->y + r * -sin(angle)),angle);
@@ -133,10 +134,10 @@ void Player::FiringPutBullet()
 //SlowBullet”­ŽËˆ—
 void Player::FiringSlowBullet()
 {
-	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetKey(PAD_INPUT_1))))
+	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_1))))
 	{
 		float r = 30;
-		new SlowBullet(new Vector2(position->x + r * cos(angle), position->y + r * -sin(angle)),angle);
+		new SlowArea(new Vector2(position->x, position->y));
 		slowBulletNum--;
 	}
 }

@@ -27,7 +27,7 @@ void GameOver::Initialize()
 void GameOver::Update()
 {
 	//ŽŸ‚ÌƒV[ƒ“‚Ö‚Ì•ÏXˆ—
-	if (Controller::Instance()->GetKey(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
+	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
 	}

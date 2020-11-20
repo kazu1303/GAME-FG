@@ -11,7 +11,7 @@ PlayerBullet::PlayerBullet(Vector2 *position, float radian)
 	velocity->x = cos(radian);
 	velocity->y = -sin(radian);
 	velocity->Normalize();
-	size = 10;
+	size = 20;
 	attack = 1;
 }
 
@@ -60,5 +60,5 @@ void PlayerBullet::Hit(GameObject * obj)
 void PlayerBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
-	DrawCircle((int)(position->x), (int)(position->y), 5, GetColor(255, 255, 255), 0);
+	DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 255, 255), 0);
 }
