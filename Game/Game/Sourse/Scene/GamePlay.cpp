@@ -26,6 +26,8 @@ GamePlay::~GamePlay()
 //‰Šú‰»ˆ—
 void GamePlay::Initialize()
 {
+	GameObjectManager::Instance()->Initialize();
+	ParticleManager::Instance()->Initialize();
 	isEnd = false;
 	enemy1Summon = Timer(1.5f, true);
 	enemy2Summon = Timer(1.5f, true);
@@ -165,7 +167,7 @@ Scene GamePlay::Next()
 	{
 		return gameClear;
 	}
-	return gameOver;
+	return gameClear;
 }
 
 //Œ»İ‚ÌƒV[ƒ“

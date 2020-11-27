@@ -61,6 +61,9 @@ void Title::Draw()
 	DrawString(100, 220, "デフォルト：キーボード、１キー：キーボード、２キー：コントローラー　切り替え", GetColor(255, 255, 255));
 	DrawBox(90, 90, 760, 250, GetColor(255, 0, 0),0);
 	MousePointer::Instance()->Draw();
+	DrawCircle(353, 707, 10, GetColor(0, 255, 0));
+	DrawString(330, 700, "start", GetColor(255, 255, 255));
+	DrawString(400, 700, "プレイ", GetColor(255, 255, 255));
 }
 
 //次のシーン
