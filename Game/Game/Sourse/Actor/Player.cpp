@@ -98,7 +98,7 @@ void Player::Draw()
 	DrawDamageGauge();
 	Display::Instance()->SetScreen(UI_Screen);
 	BulletIcon(Vector2(632, 0), "ZR", "“ÁŽê’e‚P", GetColor(255, 255, 255), putBulletNum);
-	BulletIcon(Vector2(700, 0), "X", "“ÁŽê’e‚Q", GetColor(255, 255, 255), slowBulletNum);
+	BulletIcon(Vector2(700, 0), "X", "slowarea", GetColor(255, 255, 255), slowBulletNum);
 	//BulletIcon(Vector2(0, 700),"ZR", "", GetColor(135, 206, 250), maxPutBullet);
 	//BulletIcon(Vector2(68, 700), "X", "", GetColor(255, 255, 255), maxSlowBullet);
 }

@@ -59,7 +59,15 @@ void PutBullet::Hit(GameObject * obj)
 	if (obj->GetType() == enemy ||
 		obj->GetType() == enemy_bullet)
 	{
-		obj->Damege(attack);
+		if (speed <= 1.0f)
+		{
+			obj->Damege(attack);
+		}
+		else
+		{
+			float dead = 100;
+			obj->Damege(dead);
+		}
 	}
 }
 
