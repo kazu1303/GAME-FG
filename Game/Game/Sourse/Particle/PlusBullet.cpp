@@ -33,5 +33,5 @@ void PlusBullet::Draw()
 	DrawString(position->x, position->y, "+", GetColor(255, 255, 255));
 	DrawCircle((int)(position->x + 13), (int)(position->y), 5, GetColor(135, 206, 250), 0);
 	DrawCircle((int)(position->x + 13), (int)(position->y + 10), 5, GetColor(255, 255, 255), 0);
-	DrawString(position->x + 20, position->y, "Å~10", GetColor(255, 255, 255));
+	//DrawString(position->x + 20, position->y, "Å~10", GetColor(255, 255, 255));
 }
