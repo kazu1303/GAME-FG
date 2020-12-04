@@ -19,5 +19,6 @@ public:
 	void Hit(GameObject *obj)override;
 	//ダメージ計算
 	void Damege(int attack)override;
+	void DrawIcon();
 };
 

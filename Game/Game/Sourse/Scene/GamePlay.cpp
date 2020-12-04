@@ -67,12 +67,12 @@ void GamePlay::Update()
 		if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
 		{
 			enemy1Summon.Resetting(1.0f);
-			enemy3Summon.Resetting(3.0f);
+			enemy3Summon.Resetting(4.0f);
 		}
 		else if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 		{
 			enemy1Summon.Resetting(1.5f);
-			enemy3Summon.Resetting(6.0f);
+			enemy3Summon.Resetting(8.0f);
 			enemy3Summon.Max();
 		}
 		enemy3Summon.Update();
@@ -82,14 +82,14 @@ void GamePlay::Update()
 		if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == night)
 		{
 			enemy1Summon.Resetting(1.0f);
-			enemy2Summon.Resetting(4.0f);
-			enemy3Summon.Resetting(3.0f);
+			enemy2Summon.Resetting(5.0f);
+			enemy3Summon.Resetting(4.0f);
 		}
 		else if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 		{
 			enemy1Summon.Resetting(1.5f);
-			enemy2Summon.Resetting(8.0f);
-			enemy3Summon.Resetting(6.0f);
+			enemy2Summon.Resetting(10.0f);
+			enemy3Summon.Resetting(8.0f);
 			enemy2Summon.Max();
 		}
 		enemy2Summon.Update();

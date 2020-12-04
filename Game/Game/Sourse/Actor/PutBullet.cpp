@@ -51,6 +51,10 @@ void PutBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
 	DrawCircle((int)(position->x), (int)(position->y), 5, GetColor(135, 206, 250), 0);
+	if (speed <= 1.0f)
+	{
+		DrawIcon();
+	}
 }
 
 //ƒqƒbƒgŽžˆ—
@@ -82,4 +86,10 @@ void PutBullet::Damege(int attack)
 			isDead = true;
 		}
 	}
+}
+
+void PutBullet::DrawIcon()
+{
+	DrawBox(632, 68, 632 + 68, 68 + 20, GetColor(255, 255, 255), 0);
+	DrawString(660, 70, "LT", GetColor(255, 255, 255));
 }
