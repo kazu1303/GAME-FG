@@ -4,6 +4,7 @@
 #include "Display.h"
 #include "DxLib.h"
 #include "EnemyBullet.h"
+#include "SceneManager.h"
 
 Enemy2::Enemy2(Vector2 *position,int hp)
 	:Enemy(position,36,1.0f,hp)
@@ -44,14 +45,14 @@ void Enemy2::Update()
 		{
 			if (!firing && 0 == GetRand(500))
 			{
+				velocity->x = Screen::WinWidth / 2 - this->position->x;
+				velocity->y = Screen::WinHight / 2 - this->position->y;
+				velocity->Normalize();
 				firing = true;
 			}
 
 			if (firing)
 			{
-				velocity->x = Screen::WinWidth / 2 - this->position->x;
-				velocity->y = Screen::WinHight / 2 - this->position->y;
-				velocity->Normalize();
 				position->x += velocity->x * speed;
 				position->y += velocity->y * speed;
 			}
@@ -60,7 +61,6 @@ void Enemy2::Update()
 				posAngle += Util::AngleToRadian(1);
 				position->x = Screen::WinWidth / 2 + length * cos(posAngle);
 				position->y = Screen::WinHight / 2 + length * -sin(posAngle);
-
 			}
 		}
 		else if (Clock::Instance().GetTimeZone() == night && !firing)
@@ -75,7 +75,11 @@ void Enemy2::Update()
 			}
 		}
 	}
-
+	//float length = sqrtf((Screen::WinWidth - position->x) * (Screen::WinWidth - position->x) + (Screen::WinHight - position->y) * (Screen::WinHight - position->y));
+	if (length <= 5)
+	{
+		//isDead = true;
+	}
 	speed = defaultSpeed;
 	Enemy::Update();
 }
@@ -84,7 +88,11 @@ void Enemy2::Update()
 void Enemy2::Draw()
 {
 	float r = size / 2;
-	angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
+	if (!firing)
+	{
+		angle = atan2(Screen::WinWidth / 2 - position->x, Screen::WinHight / 2 - position->y) + Util::AngleToRadian(-90);
+	}
+
 	//float radian1 = Util::AngleToRadian(angle);
 	float radian2 = angle + Util::AngleToRadian(72);
 	float radian3 = angle + Util::AngleToRadian(144);

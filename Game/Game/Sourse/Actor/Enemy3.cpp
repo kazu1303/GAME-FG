@@ -4,6 +4,7 @@
 #include "Display.h"
 #include "DxLib.h"
 
+
 Enemy3::Enemy3(Vector2 *position,int hp)
 	:Enemy(position,45,1,hp)
 {

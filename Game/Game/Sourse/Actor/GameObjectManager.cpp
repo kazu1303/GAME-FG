@@ -1,4 +1,5 @@
 #include "GameObjectManager.h"
+#include "SceneManager.h"
 #include "Clock.h"
 
 using namespace std;
@@ -76,6 +77,20 @@ void GameObjectManager::Update()
 		else
 		{
 			itr++;
+		}
+	}
+	if (SceneManager::Instance()->CurrentScene() == gameClear)
+	{
+		for (auto itr = gameObjects.begin(); itr != gameObjects.end(); )
+		{
+			if ((*itr)->GetType() == enemy)
+			{
+				itr = gameObjects.erase(itr);
+			}
+			else
+			{
+				itr++;
+			}
 		}
 	}
 

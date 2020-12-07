@@ -17,7 +17,7 @@ protected:
 	bool hitSlow = false;	
 public:
 	Enemy(Vector2 *position, float maxRotate = 45.0f,float transTime = 2.0f, int hp = 1);
-	~Enemy();
+	virtual ~Enemy();
 	//‰Šú‰»
 	virtual void Initialize()override = 0;
 	//–ˆƒtƒŒ[ƒ€ˆ—

@@ -1,11 +1,14 @@
 #pragma once
 #include "GameScene.h"
+#include "Timer.h"
 
 class GameOver :
 	public GameScene
 {
 private:
-	bool push;
+	Timer enemy1Summon;//ê∂ê¨ä‘äu
+	Timer enemy2Summon;//ê∂ê¨ä‘äu
+	Timer enemy3Summon;//ê∂ê¨ä‘äu
 public:
 	GameOver();
 	~GameOver();

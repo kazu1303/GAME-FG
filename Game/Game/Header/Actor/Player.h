@@ -11,6 +11,8 @@ class Player :
 private:
 	Timer bulletTimer;//’e”­Ë‚ÌŠÔŠu
 	Timer healTimer;//‰ñ•œ‚ÌŠÔŠu
+	Timer deadTimer;
+	Timer quakeTimer;
 	int slowBulletNum;//slowBullet‚Ì”
 	int putBulletNum;//putBullet‚Ì”
 	int maxHp = 10;//‘Ì—Í
@@ -41,5 +43,9 @@ public:
 	void BulletIcon(Vector2 pos,std::string key, std::string name, int Color, int num);
 	//‰ñ•œˆ—
 	void Heal();
+
+	void DrawDead();
+
+	int GetHp();
 };
 

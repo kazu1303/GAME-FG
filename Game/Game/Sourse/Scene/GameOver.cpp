@@ -1,14 +1,21 @@
 #include "GameOver.h"
-//#include "Screen.h"
+#include "Screen.h"
 #include "DxLib.h"
 //#include "Renderer.h"
 #include "KeyBoard.h"
 #include "Controller.h"
+#include "GameObjectManager.h"
+#include "Clock.h"
+#include "Enemy1.h"
+#include "Enemy2.h"
+#include "Enemy3.h"
+#include "Util.h"
 
 GameOver::GameOver()
 {
-	isEnd = false;
-	push = true;
+	enemy1Summon = Timer(3.5f, true);
+	enemy2Summon = Timer(6.5f, true);
+	enemy3Summon = Timer(8.0f, true);
 }
 
 
@@ -19,7 +26,6 @@ GameOver::~GameOver()
 //‰Šú‰»ˆ—
 void GameOver::Initialize()
 {
-	push = true;
 	isEnd = false;
 }
 
@@ -31,6 +37,64 @@ void GameOver::Update()
 	{
 		isEnd = true;
 	}
+	enemy1Summon.Update();
+	enemy2Summon.Update();
+	enemy3Summon.Update();
+
+	//“G‚Ì¶¬
+	if (enemy1Summon.IsTime())
+	{
+		//“G‚ªoŒ»‚·‚é•ûŒü‚ðŒˆ‚ß‚é
+		float angle = (float)(GetRand(360));
+		float radian = Util::AngleToRadian(angle);
+		float spawnLength = (float)Screen::WinWidth / 1.7f;
+		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+
+		if (Clock::Instance().GetTimeZone() == morning)
+		{
+			new Enemy1(new Vector2(spawnPoint.x, spawnPoint.y), 1);
+		}
+		else if (Clock::Instance().GetTimeZone() == night)
+		{
+			new Enemy1(new Vector2(spawnPoint.x, spawnPoint.y), 2);
+		}
+	}
+	if (enemy2Summon.IsTime())
+	{
+		//“G‚ªoŒ»‚·‚é•ûŒü‚ðŒˆ‚ß‚é
+		float angle = (float)(GetRand(360));
+		float radian = Util::AngleToRadian(angle);
+		float spawnLength = (float)Screen::WinWidth / 1.7f;
+		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+
+		if (Clock::Instance().GetTimeZone() == morning)
+		{
+			new Enemy2(new Vector2(spawnPoint.x, spawnPoint.y), 1);
+		}
+		else if (Clock::Instance().GetTimeZone() == night)
+		{
+			new Enemy2(new Vector2(spawnPoint.x, spawnPoint.y), 1);
+		}
+	}
+	//“G‚Ì¶¬
+	if (enemy3Summon.IsTime())
+	{
+		//“G‚ªoŒ»‚·‚é•ûŒü‚ðŒˆ‚ß‚é
+		float angle = (float)(GetRand(360));
+		float radian = Util::AngleToRadian(angle);
+		float spawnLength = (float)Screen::WinWidth / 1.7f;
+		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
+
+		if (Clock::Instance().GetTimeZone() == morning)
+		{
+			new Enemy3(new Vector2(spawnPoint.x, spawnPoint.y), 2);
+		}
+		else if (Clock::Instance().GetTimeZone() == night)
+		{
+			new Enemy3(new Vector2(spawnPoint.x, spawnPoint.y), 4);
+		}
+	}
+	GameObjectManager::Instance()->Update();
 }
 
 //•`‰æˆ—
@@ -38,6 +102,7 @@ void GameOver::Draw()
 {
 	//Renderer::Instance()->DrawTexture1("gameover", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight / 2.0f)), 0.0f, 6.0f);
 	//Renderer::Instance()->DrawTexture1("enter", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight - 200.0f)), 0);
+	GameObjectManager::Instance()->Draw();
 	DrawString(300, 400, "GameOver", GetColor(255, 255, 255));
 	//DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
 	DrawCircle(153, 707, 10, GetColor(0, 255, 0));

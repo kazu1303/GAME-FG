@@ -18,6 +18,10 @@ Enemy::Enemy(Vector2* position,float maxRotate, float transTime, int hp)
 
 Enemy::~Enemy()
 {
+	for (int i = 0; i < 100; i++)
+	{
+		new DeadParticle(new Vector2(position->x, position->y));
+	}
 }
 
 //void Enemy::Initialize()
@@ -49,10 +53,14 @@ void Enemy::Update()
 	if (hp <= 0)
 	{
 		isDead = true;
-		for (int i = 0; i < 100; i++)
-		{
-			new DeadParticle(new Vector2(position->x, position->y));
-		}
+
+	}
+	float lengthX = position->x - Screen::WinWidth / 2;
+	float lengthY = position->y - Screen::WinHight / 2;
+	float length = sqrtf(lengthX * lengthX + lengthY * lengthY);
+	if (length >= 600)
+	{
+		isDead = true;
 	}
 }
 

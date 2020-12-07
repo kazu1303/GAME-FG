@@ -13,6 +13,8 @@
 #include "HealParticle.h"
 #include "PlusBullet.h"
 #include "SlowArea.h"
+#include "DeadParticle.h"
+#include "SceneManager.h"
 
 
 Player::Player(Vector2 *position)
@@ -21,11 +23,14 @@ Player::Player(Vector2 *position)
 	bulletTimer = Timer(0.1f, true);
 	healTimer = Timer(3.0f, true);
 	damegeTimer = Timer(1.0f,false);
+	deadTimer = Timer(2.0f, false);
+	quakeTimer = Timer(0.01f, true);
 	damegeTimer.Max();
 	size = 60;
 	putBulletNum = 10;
 	slowBulletNum = 1;
 	operation = true;
+	velocity->x = 1;
 }
 
 
@@ -66,14 +71,21 @@ void Player::Update()
 	{
 		angle = atan2(position->x - MousePointer::Instance()->GetPosition().x, position->y - MousePointer::Instance()->GetPosition().y) + Util::AngleToRadian(90);
 	}
-
-	Heal();
-	Firing();
-	FiringPutBullet();
-	FiringSlowBullet();
-	if (hp <= 0)
+	if (hp > 0)
 	{
-		isDead = true;
+		Heal();
+		Firing();
+		FiringPutBullet();
+		FiringSlowBullet();
+	}
+	else
+	{
+		DrawDead();
+	}
+
+	if (isDead)
+	{
+
 	}
 	if (!damegeTimer.IsTime())
 	{
@@ -95,10 +107,15 @@ void Player::Draw()
 
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
 	BatteryDraw();
-	DrawDamageGauge();
-	Display::Instance()->SetScreen(UI_Screen);
-	BulletIcon(Vector2(632, 0), "RT", "ŠÑ’Ê’e", GetColor(255, 255, 255), putBulletNum);
-	BulletIcon(Vector2(700, 0), "X", "’x”ÍˆÍ", GetColor(255, 255, 255), slowBulletNum);
+	if (SceneManager::Instance()->CurrentScene() == gamePlay)
+	{
+
+		Display::Instance()->SetScreen(UI_Screen);
+		DrawDamageGauge();
+		BulletIcon(Vector2(632, 0), "RT", "ŠÑ’Ê’e", GetColor(255, 255, 255), putBulletNum);
+		BulletIcon(Vector2(700, 0), "X", "’x”ÍˆÍ", GetColor(255, 255, 255), slowBulletNum);
+	}
+
 	//BulletIcon(Vector2(0, 700),"ZR", "", GetColor(135, 206, 250), maxPutBullet);
 	//BulletIcon(Vector2(68, 700), "X", "", GetColor(255, 255, 255), maxSlowBullet);
 }
@@ -221,4 +238,28 @@ void Player::Heal()
 			new HealParticle(new Vector2(position->x, position->y), 30);
 		}
 	}
+}
+
+void Player::DrawDead()
+{
+	deadTimer.Update();
+	quakeTimer.Update();
+	if (deadTimer.IsTime())
+	{
+		isDead = true;
+	}
+	if (quakeTimer.IsTime())
+	{
+		velocity->x *= -1;
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		new DeadParticle(new Vector2(position->x, position->y));
+	}
+	position->x += velocity->x;
+}
+
+int Player::GetHp()
+{
+	return hp;
 }

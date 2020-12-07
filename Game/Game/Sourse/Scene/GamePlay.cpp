@@ -102,7 +102,7 @@ void GamePlay::Update()
 		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
 		float angle = (float)(GetRand(360));
 		float radian = Util::AngleToRadian(angle);
-		float spawnLength = Screen::WinWidth;
+		float spawnLength = (float)Screen::WinWidth / 1.7f;
 		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
 
 		if (Clock::Instance().GetTimeZone() == morning)
@@ -119,7 +119,7 @@ void GamePlay::Update()
 		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
 		float angle = (float)(GetRand(360));
 		float radian = Util::AngleToRadian(angle);
-		float spawnLength = Screen::WinWidth;
+		float spawnLength = (float)Screen::WinWidth / 1.7f;
 		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
 
 		if (Clock::Instance().GetTimeZone() == morning)
@@ -137,7 +137,7 @@ void GamePlay::Update()
 		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
 		float angle = (float)(GetRand(360));
 		float radian = Util::AngleToRadian(angle);
-		float spawnLength = Screen::WinWidth;
+		float spawnLength = (float)Screen::WinWidth / 1.7f;
 		Vector2 spawnPoint = Vector2((sin(radian) * spawnLength) + (Screen::WinWidth / 2), (cos(radian) * spawnLength) + (Screen::WinHight / 2));
 
 		if (Clock::Instance().GetTimeZone() == morning)
