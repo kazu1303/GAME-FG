@@ -14,6 +14,8 @@ class GameScene
 {
 protected:
 	bool isEnd;
+	int pixelMFont;
+	int pixelMFont64;
 public:
 	GameScene();
 	~GameScene();

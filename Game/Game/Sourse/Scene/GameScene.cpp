@@ -1,7 +1,10 @@
 #include "GameScene.h"
+#include "DxLib.h"
 
 GameScene::GameScene()
 {
+	pixelMFont = LoadFontDataToHandle("Font/PixelMplus.dft", 0);
+	pixelMFont64 = LoadFontDataToHandle("Font/PixelMplus_64.dft", 0);
 }
 
 

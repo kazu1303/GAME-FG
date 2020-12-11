@@ -11,6 +11,8 @@ private:
 	GameObjectManager* gameObjectManager;
 	ParticleManager* particleManager;
 	bool push;
+	int defaultFont;
+	int titleFont;
 public:
 	Title();
 	~Title();
