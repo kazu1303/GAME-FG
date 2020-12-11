@@ -48,7 +48,6 @@ void GamePlay::Update()
 	{
 		isEnd = true;
 	}
-
 	GameObjectManager::Instance()->Update();
 	ParticleManager::Instance()->Update();
 	if (Clock::Instance().GetElapsedTime() == 0)

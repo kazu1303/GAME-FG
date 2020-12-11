@@ -6,11 +6,14 @@
 #include "Controller.h"
 #include "GameObjectManager.h"
 #include "ParticleManager.h"
+#include "Font.h"
+#include "Star.h"
+#include "Screen.h"
 
 GameClear::GameClear()
 {
 	isEnd = false;
-	push = true;
+	starTimer = Timer(0.1f, true);
 }
 
 
@@ -21,8 +24,8 @@ GameClear::~GameClear()
 //‰Šú‰»ˆ—
 void GameClear::Initialize()
 {
-	push = true;
 	isEnd = false;
+	GameObjectManager::Instance()->Initialize();
 }
 
 //–ˆƒtƒŒ[ƒ€ˆ—
@@ -35,6 +38,11 @@ void GameClear::Update()
 	}
 	GameObjectManager::Instance()->Update();
 	ParticleManager::Instance()->Update();
+	starTimer.Update();
+	if (starTimer.IsTime())
+	{
+		new Star(new Vector2(GetRand(Screen::WinWidth), GetRand(Screen::WinHight)));
+	}
 }
 
 //•`‰æˆ—
@@ -44,7 +52,7 @@ void GameClear::Draw()
 	//Renderer::Instance()->DrawTexture1("enter", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight - 200.0f)), 0);
 	GameObjectManager::Instance()->Draw();
 	ParticleManager::Instance()->Draw();
-	DrawString(300, 400, "GameClear", GetColor(255, 255, 255));
+	DrawStringToHandle(Screen::WinWidth / 2 - 16 * 9, Screen::WinHight / 2 - 32, "GameClear", GetColor(255, 255, 0), Font::pixelM64);
 	//DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
 	DrawCircle(353, 707, 10, GetColor(255, 0, 0));
 	DrawString(350, 700, "B", GetColor(255, 255, 255));

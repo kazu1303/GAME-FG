@@ -104,7 +104,7 @@ void GameOver::Draw()
 	//Renderer::Instance()->DrawTexture1("gameover", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight / 2.0f)), 0.0f, 6.0f);
 	//Renderer::Instance()->DrawTexture1("enter", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight - 200.0f)), 0);
 	GameObjectManager::Instance()->Draw();
-	DrawStringToHandle(300, 400, "GameOver", GetColor(255, 255, 255),Font::pixelM64);
+	DrawStringToHandle(Screen::WinWidth / 2 - 16 * 8, Screen::WinHight / 2 - 32, "GameOver", GetColor(75, 0, 130),Font::pixelM64);
 	//DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
 	DrawCircle(153, 707, 10, GetColor(0, 255, 0));
 	DrawString(150, 700, "A", GetColor(255, 255, 255));

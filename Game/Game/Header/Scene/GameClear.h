@@ -1,11 +1,12 @@
 #pragma once
 #include "GameScene.h"
+#include "Timer.h"
 
 class GameClear :
 	public GameScene
 {
 private:
-	bool push;
+	Timer starTimer;
 public:
 	GameClear();
 	~GameClear();
