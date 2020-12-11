@@ -32,7 +32,7 @@ void GameClear::Initialize()
 void GameClear::Update()
 {
 	//次のシーンへの変更処理
-	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
+	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
 	}
@@ -54,8 +54,8 @@ void GameClear::Draw()
 	ParticleManager::Instance()->Draw();
 	DrawStringToHandle(Screen::WinWidth / 2 - 16 * 9, Screen::WinHight / 2 - 32, "GameClear", GetColor(255, 255, 0), Font::pixelM64);
 	//DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
-	DrawCircle(353, 707, 10, GetColor(255, 0, 0));
-	DrawString(350, 700, "B", GetColor(255, 255, 255));
+	//DrawCircle(353, 707, 10, GetColor(255, 0, 0));
+	DrawString(350, 700, "START", GetColor(255, 255, 255));
 	DrawString(400, 700, "タイトル", GetColor(255, 255, 255));
 }
 

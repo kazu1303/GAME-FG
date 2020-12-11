@@ -162,7 +162,7 @@ void GamePlay::Draw()
 //ŽŸ‚ÌƒV[ƒ“
 Scene GamePlay::Next()
 {
-	if (Clock::Instance().GetElapsedTime() >= 2)
+	if (Clock::Instance().GetElapsedTime() >= 3)
 	{
 		return gameClear;
 	}

@@ -34,7 +34,7 @@ void GameOver::Initialize()
 void GameOver::Update()
 {
 	//次のシーンへの変更処理
-	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_3) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
+	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_11) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
 	}
@@ -106,18 +106,18 @@ void GameOver::Draw()
 	GameObjectManager::Instance()->Draw();
 	DrawStringToHandle(Screen::WinWidth / 2 - 16 * 8, Screen::WinHight / 2 - 32, "GameOver", GetColor(75, 0, 130),Font::pixelM64);
 	//DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
-	DrawCircle(153, 707, 10, GetColor(0, 255, 0));
-	DrawString(150, 700, "A", GetColor(255, 255, 255));
+	//DrawCircle(153, 707, 10, GetColor(0, 255, 0));
+	DrawString(150, 700, "START", GetColor(255, 255, 255));
 	DrawStringToHandle(200, 700, "タイトル", GetColor(255, 255, 255),Font::pixelM16);
-	DrawCircle(403, 707, 10, GetColor(255, 0, 0));
-	DrawString(400, 700, "B", GetColor(255, 255, 255));
+	//DrawCircle(403, 707, 10, GetColor(255, 0, 0));
+	DrawString(400, 700, "BACK", GetColor(255, 255, 255));
 	DrawStringToHandle(450, 700, "リトライ", GetColor(255, 255, 255),Font::pixelM16);
 }
 
 //次のシーン
 Scene GameOver::Next()
 {
-	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4))
+	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_11))
 	{
 		return gamePlay;
 	}
