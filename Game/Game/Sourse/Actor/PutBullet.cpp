@@ -5,6 +5,7 @@
 #include "Display.h"
 #include "KeyBoard.h"
 #include "Controller.h"
+#include "SceneManager.h"
 
 PutBullet::PutBullet(Vector2 *position, float radian)
 	:GameObject(position, player_bullet, true)
@@ -90,6 +91,14 @@ void PutBullet::Damege(int attack)
 
 void PutBullet::DrawIcon()
 {
-	DrawBox(632, 68, 632 + 68, 68 + 20, GetColor(255, 255, 255), 0);
-	DrawString(660, 70, "LT", GetColor(255, 255, 255));
+	if (SceneManager::Instance()->CurrentScene() == title)
+	{
+		DrawBox(Screen::WinWidth / 2 - 64, Screen::WinHight / 2 + 108, Screen::WinWidth / 2 , Screen::WinHight / 2 + 108 + 20, GetColor(255, 255, 255), 0);
+		DrawString(Screen::WinWidth / 2 - 64 + 24, Screen::WinHight / 2 + 110, "LT", GetColor(255, 255, 255));
+	}
+	else if (SceneManager::Instance()->CurrentScene() == gamePlay)
+	{
+		DrawBox(632, 68, 632 + 68, 68 + 20, GetColor(255, 255, 255), 0);
+		DrawString(660, 70, "LT", GetColor(255, 255, 255));
+	}
 }

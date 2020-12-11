@@ -29,7 +29,7 @@ void TitleEnemy::Update()
 	float lengthX = position->x - Screen::WinWidth / 2;
 	float lengthY = position->y - Screen::WinHight / 2;
 	float length = sqrtf(lengthX * lengthX + lengthY * lengthY);
-	if (!(length <= 300))
+	if (length <= 250)
 	{
 		inversion = true;
 	}
@@ -41,8 +41,8 @@ void TitleEnemy::Update()
 	}
 	else
 	{
-		position->x += velocity->x * -speed;
-		position->y += velocity->y * -speed;
+		position->x += velocity->x * speed;
+		position->y += velocity->y * speed;
 		speed = defaultSpeed;
 	}
 	Enemy::Update();

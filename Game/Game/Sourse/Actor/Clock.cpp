@@ -59,13 +59,18 @@ void Clock::Update()
 //•`‰æˆ—
 void Clock::Draw()
 {
-	Display::Instance()->SetScreen(SkyColor_Screen);
-	SetDrawBlendMode(DX_BLENDMODE_ADD, 180);
-	DrawSky();
-	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-	Display::Instance()->SetScreen(UI_Screen);
 	if (SceneManager::Instance()->CurrentScene() == gamePlay)
 	{
+		Display::Instance()->SetScreen(SkyColor_Screen);
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 180);
+		DrawSky();
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	}
+
+
+	if (SceneManager::Instance()->CurrentScene() == gamePlay)
+	{
+		Display::Instance()->SetScreen(UI_Screen);
 		DrawCircle(position->x, position->y, 40, GetColor(255, 255, 255), 1);
 		DrawCircle(position->x, position->y, 40, GetColor(0, 0, 0), 0);
 		DrawLine(position->x, position->y, clockHand.x, clockHand.y, GetColor(0, 0, 0));
