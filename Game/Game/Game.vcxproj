@@ -165,7 +165,7 @@
     <ClCompile Include="Sourse\Util\Display.cpp" />
     <ClCompile Include="Sourse\Util\Timer.cpp" />
     <ClCompile Include="Sourse\Util\Util.cpp" />
-    <ClCompile Include="TitleEnemy.cpp" />
+    <ClCompile Include="Sourse\Actor\TitleEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Particle\DeadParticle.h" />
@@ -206,7 +206,7 @@
     <ClInclude Include="Header\Actor\SlowArea.h" />
     <ClInclude Include="Header\Particle\HealParticle.h" />
     <ClInclude Include="Header\Particle\PlusBullet.h" />
-    <ClInclude Include="TitleEnemy.h" />
+    <ClInclude Include="Header\Actor\TitleEnemy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

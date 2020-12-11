@@ -123,10 +123,10 @@
     <ClCompile Include="Sourse\Particle\DeadParticle.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="TitleEnemy.cpp">
+    <ClCompile Include="Sourse\Util\Font.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Sourse\Util\Font.cpp">
+    <ClCompile Include="Sourse\Actor\TitleEnemy.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -242,10 +242,10 @@
     <ClInclude Include="Header\Particle\DeadParticle.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="TitleEnemy.h">
+    <ClInclude Include="Header\Util\Font.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Util\Font.h">
+    <ClInclude Include="Header\Actor\TitleEnemy.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

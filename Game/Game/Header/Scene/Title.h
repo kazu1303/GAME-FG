@@ -2,7 +2,7 @@
 #include "GameScene.h"
 #include "GameObjectManager.h"
 #include "ParticleManager.h"
-
+#include "Timer.h"
 
 class Title :
 	public GameScene
@@ -10,6 +10,7 @@ class Title :
 private:
 	GameObjectManager* gameObjectManager;
 	ParticleManager* particleManager;
+	Timer titleEnemyTimer;
 	bool push;
 public:
 	Title();

@@ -56,6 +56,12 @@ void Player::Update()
 	{
 		operation = true;
 	}
+	if (SceneManager::Instance()->CurrentScene() == title)
+	{
+		int MaxBullet = 10;
+		putBulletNum = MaxBullet;
+		slowBulletNum = 1;
+	}
 	if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 	{
 		int MaxBullet = 10;
@@ -74,7 +80,10 @@ void Player::Update()
 	}
 	if (hp > 0)
 	{
-		Heal();
+		if (SceneManager::Instance()->CurrentScene() == gamePlay)
+		{
+			Heal();
+		}
 		Firing();
 		FiringPutBullet();
 		FiringSlowBullet();
@@ -110,11 +119,16 @@ void Player::Draw()
 	BatteryDraw();
 	if (SceneManager::Instance()->CurrentScene() == gamePlay)
 	{
-
 		Display::Instance()->SetScreen(UI_Screen);
 		DrawDamageGauge();
 		BulletIcon(Vector2(632, 0), "RT", "ŠÑ’Ê’e", GetColor(255, 255, 255), putBulletNum);
 		BulletIcon(Vector2(700, 0), "X", "’x”ÍˆÍ", GetColor(255, 255, 255), slowBulletNum);
+	}
+	if (SceneManager::Instance()->CurrentScene() == title)
+	{
+		Display::Instance()->SetScreen(UI_Screen);
+		BulletIcon(Vector2(Screen::WinWidth / 2- 64, Screen::WinHight / 2 + 40), "RT", "ŠÑ’Ê’e", GetColor(255, 255, 255), putBulletNum);
+		BulletIcon(Vector2(Screen::WinWidth / 2, Screen::WinHight / 2 + 40), "X", "’x”ÍˆÍ", GetColor(255, 255, 255), slowBulletNum);
 	}
 
 	//BulletIcon(Vector2(0, 700),"ZR", "", GetColor(135, 206, 250), maxPutBullet);
@@ -191,7 +205,7 @@ void Player::BatteryDraw()
 	r = 25;
 	//int f = GetFontSize();
 	//DrawLine(position->x, position->y, (int)(position->x + (r) * cos(angle)), (int)(position->y + (r) * -sin(angle)), GetColor(255, 0, 0));
-	if (SceneManager::Instance()->CurrentScene() == gamePlay)
+	if (SceneManager::Instance()->CurrentScene() == title)
 	{
 		DrawCircle((int)((position->x + r * cos(angle))), (int)((position->y + r * -sin(angle))), 8, GetColor(255, 0, 0));
 		DrawString((int)((position->x + r * cos(angle)) - 4), (int)((position->y + r * -sin(angle)) - 8), "B", GetColor(255, 255, 255));
