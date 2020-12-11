@@ -190,7 +190,7 @@ void Player::BatteryDraw()
 	r = 25;
 	//int f = GetFontSize();
 	//DrawLine(position->x, position->y, (int)(position->x + (r) * cos(angle)), (int)(position->y + (r) * -sin(angle)), GetColor(255, 0, 0));
-	if (SceneManager::Instance()->CurrentScene == gamePlay)
+	if (SceneManager::Instance()->CurrentScene() == gamePlay)
 	{
 		DrawCircle((int)((position->x + r * cos(angle))), (int)((position->y + r * -sin(angle))), 8, GetColor(255, 0, 0));
 		DrawString((int)((position->x + r * cos(angle)) - 4), (int)((position->y + r * -sin(angle)) - 8), "B", GetColor(255, 255, 255));
