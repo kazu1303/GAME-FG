@@ -133,6 +133,7 @@
     <ClCompile Include="Sourse\Particle\GreenPlus.cpp" />
     <ClCompile Include="Sourse\Particle\HealParticle.cpp" />
     <ClCompile Include="Sourse\Actor\Player.cpp" />
+    <ClCompile Include="Sourse\Scene\Title.cpp" />
     <ClCompile Include="Sourse\Util\Controller.cpp" />
     <ClCompile Include="Sourse\Actor\EnemyBullet.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy3.cpp" />
@@ -157,7 +158,6 @@
     <ClCompile Include="Sourse\Scene\GamePlay.cpp" />
     <ClCompile Include="Sourse\Scene\GameScene.cpp" />
     <ClCompile Include="Sourse\Scene\SceneManager.cpp" />
-    <ClCompile Include="Sourse\Scene\Title.cpp" />
     <ClCompile Include="Sourse\Sound\Sound.cpp" />
     <ClCompile Include="Sourse\Sound\Sounds.cpp" />
     <ClCompile Include="Sourse\Texture\Renderer.cpp" />
@@ -170,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="Header\Particle\DeadParticle.h" />
     <ClInclude Include="Header\Particle\GreenPlus.h" />
+    <ClInclude Include="Header\Scene\Title.h" />
     <ClInclude Include="Header\Util\Controller.h" />
     <ClInclude Include="Header\Actor\EnemyBullet.h" />
     <ClInclude Include="Header\Actor\Enemy.h" />
@@ -186,7 +187,6 @@
     <ClInclude Include="Header\Scene\GamePlay.h" />
     <ClInclude Include="Header\Scene\GameScene.h" />
     <ClInclude Include="Header\Scene\SceneManager.h" />
-    <ClInclude Include="Header\Scene\Title.h" />
     <ClInclude Include="Header\Sound\Sound.h" />
     <ClInclude Include="Header\Sound\Sounds.h" />
     <ClInclude Include="Header\Texture\Renderer.h" />
