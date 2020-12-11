@@ -167,7 +167,7 @@ Scene GamePlay::Next()
 	{
 		return gameClear;
 	}
-	return gameClear;
+	return gameOver;
 }
 
 //Œ»İ‚ÌƒV[ƒ“
