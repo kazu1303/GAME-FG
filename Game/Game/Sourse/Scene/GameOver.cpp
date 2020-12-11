@@ -108,10 +108,10 @@ void GameOver::Draw()
 	//DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
 	DrawCircle(153, 707, 10, GetColor(0, 255, 0));
 	DrawString(150, 700, "A", GetColor(255, 255, 255));
-	DrawStringToHandle(200, 700, "タイトル", GetColor(255, 255, 255),Font::pixelM);
+	DrawStringToHandle(200, 700, "タイトル", GetColor(255, 255, 255),Font::pixelM16);
 	DrawCircle(403, 707, 10, GetColor(255, 0, 0));
 	DrawString(400, 700, "B", GetColor(255, 255, 255));
-	DrawStringToHandle(450, 700, "リトライ", GetColor(255, 255, 255),Font::pixelM);
+	DrawStringToHandle(450, 700, "リトライ", GetColor(255, 255, 255),Font::pixelM16);
 }
 
 //次のシーン
