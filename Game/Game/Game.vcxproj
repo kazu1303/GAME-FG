@@ -144,6 +144,7 @@
     <ClCompile Include="Sourse\Actor\Enemy.cpp" />
     <ClCompile Include="Sourse\Actor\Enemy1.cpp" />
     <ClCompile Include="Sourse\Actor\PlayerBullet.cpp" />
+    <ClCompile Include="Sourse\Util\Font.cpp" />
     <ClCompile Include="Sourse\Util\MousePointer.cpp" />
     <ClCompile Include="Sourse\Util\KeyBoard.cpp" />
     <ClCompile Include="Sourse\Actor\GameObject.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Header\Texture\Renderer.h" />
     <ClInclude Include="Header\Texture\Textures.h" />
     <ClInclude Include="Header\Util\Display.h" />
+    <ClInclude Include="Header\Util\Font.h" />
     <ClInclude Include="Header\Util\Screen.h" />
     <ClInclude Include="Header\Util\Timer.h" />
     <ClInclude Include="Header\Util\Vector2.h" />

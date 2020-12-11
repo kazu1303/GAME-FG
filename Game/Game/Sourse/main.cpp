@@ -1,5 +1,4 @@
 #include "DxLib.h"
-#include "DxLib.h"
 #include "SceneManager.h"
 #include "GameObjectManager.h"
 #include "ParticleManager.h"
@@ -15,6 +14,7 @@
 #include "KeyBoard.h"
 #include "MousePointer.h"
 #include "Controller.h"
+#include "Font.h"
 
 //const int WinWidth = 800;
 //const int WinHight = 600;
@@ -53,6 +53,8 @@ int WINAPI WinMain(
 	    //エラーが出たらマイナス値を返して終了
 	    return -1;
     }
+
+	Font::LoadFont();
 	//レンダラー生成
 	Renderer* renderer;
 	renderer = new Renderer();

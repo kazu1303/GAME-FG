@@ -10,6 +10,7 @@
 #include "Enemy2.h"
 #include "Enemy3.h"
 #include "Util.h"
+#include "Font.h"
 
 GameOver::GameOver()
 {
@@ -103,14 +104,14 @@ void GameOver::Draw()
 	//Renderer::Instance()->DrawTexture1("gameover", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight / 2.0f)), 0.0f, 6.0f);
 	//Renderer::Instance()->DrawTexture1("enter", new Vector2((float)(Screen::WinWidth / 2.0f), (float)(Screen::WinHight - 200.0f)), 0);
 	GameObjectManager::Instance()->Draw();
-	DrawString(300, 400, "GameOver", GetColor(255, 255, 255));
+	DrawStringToHandle(300, 400, "GameOver", GetColor(255, 255, 255),Font::pixelM64);
 	//DrawString(330, 330, "Press Enter", GetColor(255, 255, 255));
 	DrawCircle(153, 707, 10, GetColor(0, 255, 0));
 	DrawString(150, 700, "A", GetColor(255, 255, 255));
-	DrawString(200, 700, "タイトル", GetColor(255, 255, 255));
+	DrawStringToHandle(200, 700, "タイトル", GetColor(255, 255, 255),Font::pixelM);
 	DrawCircle(403, 707, 10, GetColor(255, 0, 0));
 	DrawString(400, 700, "B", GetColor(255, 255, 255));
-	DrawString(450, 700, "リトライ", GetColor(255, 255, 255));
+	DrawStringToHandle(450, 700, "リトライ", GetColor(255, 255, 255),Font::pixelM);
 }
 
 //次のシーン
