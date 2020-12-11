@@ -122,7 +122,7 @@ void Player::Draw()
 		Display::Instance()->SetScreen(UI_Screen);
 		DrawDamageGauge();
 		BulletIcon(Vector2(632, 0), "RT", "ŠÑ’Ê’e", GetColor(255, 255, 255), putBulletNum);
-		BulletIcon(Vector2(700, 0), "X", "’x”ÍˆÍ", GetColor(255, 255, 255), slowBulletNum);
+		BulletIcon(Vector2(700, 0), "Y", "’x”ÍˆÍ", GetColor(255, 255, 255), slowBulletNum);
 	}
 	if (SceneManager::Instance()->CurrentScene() == title)
 	{
@@ -184,7 +184,7 @@ void Player::FiringPutBullet()
 //SlowBullet”­Ëˆ—
 void Player::FiringSlowBullet()
 {
-	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_1))))
+	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_2))))
 	{
 		float r = 30;
 		new SlowArea(new Vector2(position->x, position->y));
@@ -205,11 +205,11 @@ void Player::BatteryDraw()
 	r = 25;
 	//int f = GetFontSize();
 	//DrawLine(position->x, position->y, (int)(position->x + (r) * cos(angle)), (int)(position->y + (r) * -sin(angle)), GetColor(255, 0, 0));
-	if (SceneManager::Instance()->CurrentScene() == title)
+	/*if (SceneManager::Instance()->CurrentScene() == title)
 	{
 		DrawCircle((int)((position->x + r * cos(angle))), (int)((position->y + r * -sin(angle))), 8, GetColor(255, 0, 0));
 		DrawString((int)((position->x + r * cos(angle)) - 4), (int)((position->y + r * -sin(angle)) - 8), "B", GetColor(255, 255, 255));
-	}
+	}*/
 }
 
 //‘Ì—ÍƒQ[ƒW‚Ì•`‰æ

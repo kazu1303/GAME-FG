@@ -2,7 +2,7 @@
 
 #include "Vector2.h"
 #include "KeyBoard.h"
-#include"DxLib.h"
+#include "DxLib.h"
 #include "Sound.h"
 #include "Renderer.h"
 #include "MousePointer.h"
@@ -22,6 +22,7 @@ Title::Title()
 	isEnd = false;
 	gameObjectManager = new GameObjectManager();
 	particleManager = new ParticleManager();
+	buttonFont = CreateFontToHandle(NULL, 50, -1);
 }
 
 Title::~Title()
@@ -31,6 +32,7 @@ Title::~Title()
 //初期化処理
 void Title::Initialize()
 {
+	tutorial = B;
 	isEnd = false;
 	GameObjectManager::Instance()->Initialize();
 	ParticleManager::Instance()->Initialize();
@@ -38,16 +40,12 @@ void Title::Initialize()
 	new Player(new Vector2((float)(Screen::WinWidth / 2), (float)(Screen::WinHight / 2)));
 	new Clock(new Vector2(40.0f, 40.0f));
 	titleEnemyTimer = Timer(1.0f, true);
+	tutorialTimer = Timer(0.5f,false);
 }
 
 //毎フレーム処理
 void Title::Update()
 {
-	//次のシーンへの変更処理
-	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
-	{
-		isEnd = true;
-	}
 	ParticleManager::Instance()->Update();
 	GameObjectManager::Instance()->Update();
 	titleEnemyTimer.Update();
@@ -67,9 +65,28 @@ void Title::Update()
 			new TitleEnemy(new Vector2(spawnPoint.x, spawnPoint.y));
 		}
 	}
-	if (KeyBoard::GetKeyTrigger(KEY_INPUT_A))
+	switch (tutorial)
 	{
-
+	case B:
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4))tutorial++;
+		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_RETURN))tutorial++;
+		break;
+	case Y:
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_2))tutorial++;
+		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_Z))tutorial++;
+		break;
+	case RT:
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_8))tutorial++;
+		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_X))tutorial++;
+		break;
+	case LT:
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_7))tutorial++;
+		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_C))tutorial++;
+		break;
+	case END:
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12))isEnd = true;
+	default:
+		break;
 	}
 }
 
@@ -80,19 +97,36 @@ void Title::Draw()
 	ParticleManager::Instance()->Draw();
 	Display::Instance()->SetScreen(UI_Screen);
 	DrawStringToHandle(220, 100, "TimeBullet", GetColor(255, 255, 255), Font::pixelM64);
-	//DrawString(100, 330, "Press Enter", GetColor(255, 255, 255));
-	//DrawString(100, 100, "操作", GetColor(255, 255, 255));
-	//DrawString(100, 120, "B：弾の発射", GetColor(255, 255, 255));
-	//DrawString(100, 140, "RT：貫通弾の発射", GetColor(255, 255, 255));
-	//DrawString(100, 160, "LT：貫通弾の加速", GetColor(255, 255, 255));
-	//DrawString(100, 180, "X：遅範囲の発生", GetColor(255, 255, 255));
-	DrawString(Screen::WinWidth / 2 - 100, Screen::WinHight / 2 + 130, "特殊弾は朝になると補充されます", GetColor(255, 255, 255));
-	//DrawString(100, 220, "デフォルト：キーボード、１キー：キーボード、２キー：コントローラー　切り替え", GetColor(255, 255, 255));
-	//DrawBox(90, 90, 400, 230, GetColor(255, 0, 0),0);
+	DrawStringToHandle(Screen::WinWidth / 2 - 272, Screen::WinHight / 2 - 100, "左スティックで砲塔の回転ができます", GetColor(255, 255, 255), Font::pixelM32);
+	switch (tutorial)
+	{
+	case B:
+		DrawStringToHandle(Screen::WinWidth / 2 - 176, Screen::WinHight / 2 + 130, "Bで弾の発射ができます", GetColor(255, 255, 255), Font::pixelM32);
+		DrawCircle(Screen::WinWidth / 2, Screen::WinHight / 2 + 250, 30, GetColor(255, 0, 0));
+		DrawStringToHandle(Screen::WinWidth / 2 - 13, Screen::WinHight / 2 + 225, "B", GetColor(255, 255, 255),buttonFont);
+		break;
+	case Y:
+		DrawStringToHandle(Screen::WinWidth / 2 - 288, Screen::WinHight / 2 + 130, "Yで敵を遅くするエリアを発生させます", GetColor(255, 255, 255), Font::pixelM32);
+		DrawCircle(Screen::WinWidth / 2, Screen::WinHight / 2 + 250, 30, GetColor(255, 255, 0));
+		DrawStringToHandle(Screen::WinWidth / 2 - 13, Screen::WinHight / 2 + 225, "Y", GetColor(255, 255, 255), buttonFont);
+		break;
+	case RT:
+		DrawStringToHandle(Screen::WinWidth / 2 - 160, Screen::WinHight / 2 + 130, "RTで貫通弾を発射して", GetColor(255, 255, 255),Font::pixelM32);
+		DrawBox(Screen::WinWidth / 2 - 30, Screen::WinHight / 2 + 225, Screen::WinWidth / 2 + 30, Screen::WinHight / 2 + 275, GetColor(255, 255, 255),FALSE);
+		DrawStringToHandle(Screen::WinWidth / 2 - 25, Screen::WinHight / 2 + 225, "RT", GetColor(255, 255, 255), buttonFont);
+		break;
+	case LT:
+		DrawStringToHandle(Screen::WinWidth / 2 - 224, Screen::WinHight / 2 + 130, "LTで貫通弾の加速ができます", GetColor(255, 255, 255),Font::pixelM32);
+		DrawBox(Screen::WinWidth / 2 - 30, Screen::WinHight / 2 + 225, Screen::WinWidth / 2 + 30, Screen::WinHight / 2 + 275, GetColor(255, 255, 255), FALSE);
+		DrawStringToHandle(Screen::WinWidth / 2 - 25, Screen::WinHight / 2 + 225, "LT", GetColor(255, 255, 255), buttonFont);
+		break;
+	case END:
+		DrawStringToHandle(Screen::WinWidth / 2 - 80, Screen::WinHight / 2 + 225, "PUSH START", GetColor(255, 255, 255), Font::pixelM32);
+		break;
+	default:
+		break;
+	}
 	MousePointer::Instance()->Draw();
-	DrawCircle(353, 707, 10, GetColor(255, 0, 0));
-	DrawString(350, 700, "B", GetColor(255, 255, 255));
-	DrawString(400, 700, "プレイ", GetColor(255, 255, 255));
 }
 
 //次のシーン

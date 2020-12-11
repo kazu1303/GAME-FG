@@ -12,6 +12,17 @@ private:
 	ParticleManager* particleManager;
 	Timer titleEnemyTimer;
 	bool push;
+	enum Tutorial
+	{
+		B,
+		Y,
+		RT,
+		LT,
+		END,
+	};
+	Timer tutorialTimer;
+	int tutorial;
+	int buttonFont;
 public:
 	Title();
 	~Title();
