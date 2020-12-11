@@ -27,7 +27,7 @@ Title::~Title()
 {
 }
 
-//‰Šú‰»ˆ—
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void Title::Initialize()
 {
 	isEnd = false;
@@ -39,10 +39,10 @@ void Title::Initialize()
 	titleEnemyTimer = Timer(1.0f, true);
 }
 
-//–ˆƒtƒŒ[ƒ€ˆ—
+//ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void Title::Update()
 {
-	//Ÿ‚ÌƒV[ƒ“‚Ö‚Ì•ÏXˆ—
+	//ï¿½ï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½ï¿½Ö‚Ì•ÏXï¿½ï¿½ï¿½ï¿½
 	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
@@ -52,7 +52,7 @@ void Title::Update()
 	titleEnemyTimer.Update();
 	if (titleEnemyTimer.IsTime())
 	{
-		//“G‚ªoŒ»‚·‚é•ûŒü‚ğŒˆ‚ß‚é
+		//ï¿½Gï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 		float angle = (float)(GetRand(360));
 		float radian = Util::AngleToRadian(angle);
 		float spawnLength = (float)Screen::WinWidth / 1.7f;
@@ -73,7 +73,7 @@ void Title::Update()
 	}
 }
 
-//•`‰æˆ—
+//ï¿½`ï¿½æˆï¿½ï¿½
 void Title::Draw()
 {
 	GameObjectManager::Instance()->Draw();
@@ -81,27 +81,27 @@ void Title::Draw()
 	Display::Instance()->SetScreen(UI_Screen);
 	DrawStringToHandle(220, 100, "TimeBullet", GetColor(255, 255, 255),Font::pixelM64);
 	//DrawStringToHandle(100, 330, "Press Enter", GetColor(255, 255, 255));
-	//DrawStringToHandle(100, 100, "‘€ì", GetColor(255, 255, 255),Font::pixelM);
-	//DrawStringToHandle(100, 120, "BF’e‚Ì”­Ë", GetColor(255, 255, 255),Font::pixelM);
-	//DrawStringToHandle(100, 140, "RTFŠÑ’Ê’e‚Ì”­Ë", GetColor(255, 255, 255),Font::pixelM);
-	//DrawStringToHandle(100, 160, "LTFŠÑ’Ê’e‚Ì‰Á‘¬", GetColor(255, 255, 255),Font::pixelM);
-	//DrawStringToHandle(100, 180, "XF’x”ÍˆÍ‚Ì”­¶", GetColor(255, 255, 255),Font::pixelM);
-	DrawStringToHandle(Screen::WinWidth / 2 - 100, Screen::WinHight / 2 + 130, "“Áê’e‚Í’©‚É‚È‚é‚Æ•â[‚³‚ê‚Ü‚·", GetColor(255, 255, 255),Font::pixelM);
-	//DrawString(100, 220, "ƒfƒtƒHƒ‹ƒgFƒL[ƒ{[ƒhA‚PƒL[FƒL[ƒ{[ƒhA‚QƒL[FƒRƒ“ƒgƒ[ƒ‰[@Ø‚è‘Ö‚¦", GetColor(255, 255, 255));
+	//DrawStringToHandle(100, 100, "ï¿½ï¿½ï¿½ï¿½", GetColor(255, 255, 255),Font::pixelM);
+	//DrawStringToHandle(100, 120, "Bï¿½Fï¿½eï¿½Ì”ï¿½ï¿½ï¿½", GetColor(255, 255, 255),Font::pixelM);
+	//DrawStringToHandle(100, 140, "RTï¿½Fï¿½Ñ’Ê’eï¿½Ì”ï¿½ï¿½ï¿½", GetColor(255, 255, 255),Font::pixelM);
+	//DrawStringToHandle(100, 160, "LTï¿½Fï¿½Ñ’Ê’eï¿½Ì‰ï¿½ï¿½ï¿½", GetColor(255, 255, 255),Font::pixelM);
+	//DrawStringToHandle(100, 180, "Xï¿½Fï¿½xï¿½ÍˆÍ‚Ì”ï¿½ï¿½ï¿½", GetColor(255, 255, 255),Font::pixelM);
+	DrawStringToHandle(Screen::WinWidth / 2 - 100, Screen::WinHight / 2 + 130, "ï¿½ï¿½ï¿½ï¿½eï¿½Í’ï¿½ï¿½É‚È‚ï¿½Æ•ï¿½[ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½", GetColor(255, 255, 255),Font::pixelM);
+	//DrawString(100, 220, "ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Fï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Aï¿½Pï¿½Lï¿½[ï¿½Fï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Aï¿½Qï¿½Lï¿½[ï¿½Fï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½@ï¿½Ø‚ï¿½Ö‚ï¿½", GetColor(255, 255, 255));
 	//DrawBox(90, 90, 400, 230, GetColor(255, 0, 0),0);
 	MousePointer::Instance()->Draw();
 	DrawCircle(353, 707, 10, GetColor(255, 0, 0));
 	DrawString(350, 700, "B", GetColor(255, 255, 255));
-	DrawStringToHandle(400, 700, "ƒvƒŒƒC", GetColor(255, 255, 255),Font::pixelM);
+	DrawStringToHandle(400, 700, "ï¿½vï¿½ï¿½ï¿½C", GetColor(255, 255, 255),Font::pixelM16);
 }
 
-//Ÿ‚ÌƒV[ƒ“
+//ï¿½ï¿½ï¿½ÌƒVï¿½[ï¿½ï¿½
 Scene Title::Next()
 {
 	return gamePlay;
 }
 
-//Œ»İ‚ÌƒV[ƒ“
+//ï¿½ï¿½ï¿½İ‚ÌƒVï¿½[ï¿½ï¿½
 Scene Title::CurrentScene()
 {
 	return title;
