@@ -16,7 +16,7 @@ public:
 	//読み込む音楽の数だけロード
 	void Load();
 	//SEのロード
-	void LoadSE(std::string assetname, std::string failPath, std::string Path = "");
+	void LoadSE(std::string assetname, std::string filePath, std::string Path = "");
 	//ロードしたSEをmapに保存
 	void LoadSE(std::string assetname, int sound);
 	//SEを流す
@@ -24,7 +24,7 @@ public:
 	//SEが流れているか調べている
 	bool CkeckSEPlay(std::string name);
 	//BGMを流す
-	void PlayBGM(std::string name, std::string Path = "Content/Sound/");
+	void PlayBGM(std::string name, std::string Path = "Sound/");
 	//BGMが流れているか調べる
 	bool CkeckBGMPlay();
 	//BGMを止める
@@ -34,10 +34,10 @@ public:
 //読み込む音楽の数だけロード
 inline void Sound::Load()
 {
-	//for (int i = 0; i < 0; i++)
-	//{
-	//	LoadSE(Sounds::SEDate[i][0], Sounds::SEDate[i][1], "Content/Sound/");
-	//}
+	for (int i = 0; i < 2; i++)
+	{
+		LoadSE(Sounds::SEDate[i][0], Sounds::SEDate[i][1], "Sound/");
+	}
 }
 
 

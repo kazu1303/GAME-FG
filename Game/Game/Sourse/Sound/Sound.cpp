@@ -23,9 +23,9 @@ Sound * Sound::Instance()
 }
 
 //SEÇÃÉçÅ[Éh
-void Sound::LoadSE(string assetName, string failPath,string Path)
+void Sound::LoadSE(string assetName, string filePath,string Path)
 {
-	string fName = Path + assetName + failPath;
+	string fName = Path + assetName + "." + filePath;
 	LoadSE(assetName, LoadSoundMem(fName.c_str()));
 }
 

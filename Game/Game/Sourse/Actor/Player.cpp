@@ -15,6 +15,7 @@
 #include "SlowArea.h"
 #include "DeadParticle.h"
 #include "SceneManager.h"
+#include "Sound.h"
 
 
 Player::Player(Vector2 *position)
@@ -144,7 +145,7 @@ void Player::Firing()
 		bulletTimer.Update();
 		if (bulletTimer.IsTime())
 		{
-			//Sound::Instance()->PlaySE("firing");
+			Sound::Instance()->PlaySE("gun");
 			float r = 30;
 			new PlayerBullet(new Vector2(position->x + r * cos(angle), position->y + r * -sin(angle)),angle);
 		}
