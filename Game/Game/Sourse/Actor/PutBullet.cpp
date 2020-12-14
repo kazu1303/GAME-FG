@@ -14,7 +14,7 @@ PutBullet::PutBullet(Vector2 *position, float radian)
 	velocity->x = cos(radian);
 	velocity->y = -sin(radian);
 	velocity->Normalize();
-	size = 10;
+	size = 20;
 	speed = 0.2f;
 	attack = 1;
 }
@@ -53,7 +53,7 @@ void PutBullet::Update()
 void PutBullet::Draw()
 {
 	Display::Instance()->SetScreen(PlayerBullet_Screen);
-	DrawCircle((int)(position->x), (int)(position->y), 5, GetColor(135, 206, 250), 0);
+	DrawCircle((int)(position->x), (int)(position->y), size/2, GetColor(135, 206, 250), 0);
 	if (speed <= 1.0f)
 	{
 		DrawIcon();
