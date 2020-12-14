@@ -11,6 +11,7 @@
 #include "Enemy2.h"
 #include "Enemy3.h"
 #include "Clock.h"
+#include "Sound.h"
 
 
 
@@ -34,6 +35,7 @@ void GamePlay::Initialize()
 	enemy3Summon = Timer(2.0f, true);
 	player = new Player(new Vector2((float)(Screen::WinWidth / 2), (float)(Screen::WinHight / 2)));
 	new Clock(new Vector2(40.0f, 40.0f));
+	Sound::Instance()->PlayBGM("gameplay.mp3");
 }
 
 //毎フレーム処理
@@ -162,6 +164,7 @@ void GamePlay::Draw()
 //次のシーン
 Scene GamePlay::Next()
 {
+	Sound::Instance()->StopBGM();
 	if (Clock::Instance().GetElapsedTime() >= 3)
 	{
 		return gameClear;

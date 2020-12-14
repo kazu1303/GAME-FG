@@ -36,7 +36,7 @@ void Title::Initialize()
 	isEnd = false;
 	GameObjectManager::Instance()->Initialize();
 	ParticleManager::Instance()->Initialize();
-	Sound::Instance()->PlayBGM("fight.mp3");
+	Sound::Instance()->PlayBGM("title.mp3");
 	new Player(new Vector2((float)(Screen::WinWidth / 2), (float)(Screen::WinHight / 2)));
 	new Clock(new Vector2(40.0f, 40.0f));
 	titleEnemyTimer = Timer(1.0f, true);
@@ -153,6 +153,7 @@ void Title::Draw()
 //ŽŸ‚ÌƒV[ƒ“
 Scene Title::Next()
 {
+	Sound::Instance()->StopBGM();
 	return gamePlay;
 }
 
