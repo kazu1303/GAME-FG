@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "DeadParticle.h"
 #include "Sound.h"
+#include "SceneManager.h"
 
 
 Enemy::Enemy(Vector2* position,float maxRotate, float transTime, int hp)
@@ -19,7 +20,10 @@ Enemy::Enemy(Vector2* position,float maxRotate, float transTime, int hp)
 
 Enemy::~Enemy()
 {
-	Sound::Instance()->PlaySE("destroy");
+	if (SceneManager::Instance()->CurrentScene() == gamePlay)
+	{
+		Sound::Instance()->PlaySE("destroy");
+	}
 	for (int i = 0; i < 100; i++)
 	{
 		new DeadParticle(new Vector2(position->x, position->y));

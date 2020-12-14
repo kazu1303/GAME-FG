@@ -65,8 +65,10 @@ void Player::Update()
 	if (Clock::Instance().TimeZoneTrigger() && Clock::Instance().GetTimeZone() == morning)
 	{
 		int MaxBullet = 10;
+
 		putBulletNum = MaxBullet;
 		slowBulletNum = 1;
+		Sound::Instance()->PlaySE("decision49");
 		healTimer.Reset();
 		new PlusBullet(new Vector2(position->x, position->y));
 	}
@@ -261,6 +263,7 @@ void Player::Heal()
 				hp = maxHp;
 			}
 			new HealParticle(new Vector2(position->x, position->y), 30);
+			Sound::Instance()->PlaySE("magic-cure4");
 		}
 	}
 }

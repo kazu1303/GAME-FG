@@ -10,4 +10,6 @@ std::vector<std::pair<std::string, std::string>> Sounds::SEDate =
 	{"put_short", "wav"},
 	{"put_long", "wav"},
 	{"destroy", "wav"},
+    {"decision49","wav"},
+    {"magic-cure4","wav"},
 };
