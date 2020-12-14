@@ -38,7 +38,7 @@ void GameOver::Update()
 	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_11) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
-		Sound::Instance()->PlayBGM("decide");
+		Sound::Instance()->PlaySE("decide");
 	}
 	enemy1Summon.Update();
 	enemy2Summon.Update();

@@ -36,7 +36,7 @@ void GameClear::Update()
 	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
-		Sound::Instance()->PlayBGM("decide");
+		Sound::Instance()->PlaySE("decide");
 	}
 	GameObjectManager::Instance()->Update();
 	ParticleManager::Instance()->Update();
