@@ -27,6 +27,7 @@ void GameClear::Initialize()
 {
 	isEnd = false;
 	GameObjectManager::Instance()->Initialize();
+	Sound::Instance()->PlayBGM("ending.mp3");
 }
 
 //毎フレーム処理
@@ -64,6 +65,7 @@ void GameClear::Draw()
 //次のシーン
 Scene GameClear::Next()
 {
+	Sound::Instance()->StopBGM();
 	return title;
 }
 

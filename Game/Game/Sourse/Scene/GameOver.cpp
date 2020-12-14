@@ -29,6 +29,7 @@ GameOver::~GameOver()
 void GameOver::Initialize()
 {
 	isEnd = false;
+	Sound::Instance()->PlayBGM("gameover.mp3");
 }
 
 //毎フレーム処理
@@ -119,6 +120,7 @@ void GameOver::Draw()
 //次のシーン
 Scene GameOver::Next()
 {
+	Sound::Instance()->StopBGM();
 	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_11))
 	{
 		return gamePlay;
