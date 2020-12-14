@@ -144,6 +144,10 @@ void Player::Hit(GameObject * obj)
 		obj->GetType() == enemy_bullet)
 	{
 		obj->Damege(500);
+		if (!Sound::Instance()->CkeckSEPlay("punch-stop1"))
+		{
+			Sound::Instance()->PlaySE("punch-stop1");
+		}
 		damegeTimer.Reset();
 		if (damegeTimer.IsTime())
 		{
@@ -285,6 +289,11 @@ void Player::DrawDead()
 		new DeadParticle(new Vector2(position->x, position->y));
 	}
 	position->x += velocity->x;
+	if (!Sound::Instance()->CkeckSEPlay("explode2"))
+	{
+		Sound::Instance()->PlaySE("explode2");
+	}
+	//Sound::Instance()->PlaySE("explode2");
 }
 
 int Player::GetHp()
