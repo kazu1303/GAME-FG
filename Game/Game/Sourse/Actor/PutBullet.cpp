@@ -6,6 +6,7 @@
 #include "KeyBoard.h"
 #include "Controller.h"
 #include "SceneManager.h"
+#include "Sound.h"
 
 PutBullet::PutBullet(Vector2 *position, float radian)
 	:GameObject(position, player_bullet, true)
@@ -33,6 +34,7 @@ void PutBullet::Update()
 {
 	if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_SPACE) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_7))
 	{
+		Sound::Instance()->PlaySE("put_long");
 		speed = 20;
 	}
 

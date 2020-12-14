@@ -175,6 +175,7 @@ void Player::FiringPutBullet()
 {
 	if (putBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_Z) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_8))))
 	{
+		Sound::Instance()->PlaySE("put_short");
 		float r = 30;
 		new PutBullet(new Vector2(position->x + r * cos(angle), position->y + r * -sin(angle)),angle);
 		putBulletNum--;
@@ -186,6 +187,7 @@ void Player::FiringSlowBullet()
 {
 	if (slowBulletNum > 0 && ((KeyBoard::GetKeyTrigger(KEY_INPUT_X) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_2))))
 	{
+		Sound::Instance()->PlaySE("slow");
 		float r = 30;
 		new SlowArea(new Vector2(position->x, position->y));
 		slowBulletNum--;
