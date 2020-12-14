@@ -34,9 +34,9 @@ public:
 //“Ç‚İ‚Ş‰¹Šy‚Ì”‚¾‚¯ƒ[ƒh
 inline void Sound::Load()
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < Sounds::SEDate.size(); i++)
 	{
-		LoadSE(Sounds::SEDate[i][0], Sounds::SEDate[i][1], "Sound/");
+		LoadSE(Sounds::SEDate[i].first, Sounds::SEDate[i].second, "Sound/");
 	}
 }
 

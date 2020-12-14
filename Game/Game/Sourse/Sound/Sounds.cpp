@@ -1,10 +1,9 @@
 #include "Sounds.h"
 
 //ì«Ç›çûÇﬁSE
-std::string Sounds::SEDate[][2] = 
+std::vector<std::pair<std::string, std::string>> Sounds::SEDate =
 {
 	{"decide","wav"},
 	{"gun", "wav"},
 	{"success","wav"},
-
 };
