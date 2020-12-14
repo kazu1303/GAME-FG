@@ -68,25 +68,41 @@ void Title::Update()
 	switch (tutorial)
 	{
 	case B:
-		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4))tutorial++;
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_4))
+		{
+			Sound::Instance()->PlaySE("success");
+			tutorial++;
+		}
 		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_RETURN))tutorial++;
 		break;
 	case Y:
-		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_2))tutorial++;
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_2))
+		{
+			Sound::Instance()->PlaySE("success");
+			tutorial++;
+		}
 		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_Z))tutorial++;
 		break;
 	case RT:
-		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_8))tutorial++;
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_8))
+		{
+			Sound::Instance()->PlaySE("success");
+			tutorial++;
+		}
 		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_X))tutorial++;
 		break;
 	case LT:
-		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_7))tutorial++;
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_7))
+		{
+			Sound::Instance()->PlaySE("success");
+			tutorial++;
+		}
 		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_C))tutorial++;
 		break;
 	case END:
 		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12))
 		{
-			Sound::Instance()->PlayBGM("decide");
+			Sound::Instance()->PlaySE("decide");
 			isEnd = true;
 		}
 	default:
