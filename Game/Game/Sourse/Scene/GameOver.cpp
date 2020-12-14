@@ -11,6 +11,7 @@
 #include "Enemy3.h"
 #include "Util.h"
 #include "Font.h"
+#include "Sound.h"
 
 GameOver::GameOver()
 {
@@ -37,6 +38,7 @@ void GameOver::Update()
 	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_11) || Controller::Instance()->GetButtonTrigger(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
+		Sound::Instance()->PlayBGM("decide");
 	}
 	enemy1Summon.Update();
 	enemy2Summon.Update();

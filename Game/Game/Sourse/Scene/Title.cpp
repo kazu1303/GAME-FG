@@ -84,7 +84,11 @@ void Title::Update()
 		//if (KeyBoard::Instance()->GetKeyTrigger(KEY_INPUT_C))tutorial++;
 		break;
 	case END:
-		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12))isEnd = true;
+		if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12))
+		{
+			Sound::Instance()->PlayBGM("decide");
+			isEnd = true;
+		}
 	default:
 		break;
 	}
@@ -122,6 +126,7 @@ void Title::Draw()
 		break;
 	case END:
 		DrawStringToHandle(Screen::WinWidth / 2 - 80, Screen::WinHight / 2 + 225, "PUSH START", GetColor(255, 255, 255), Font::pixelM32);
+
 		break;
 	default:
 		break;

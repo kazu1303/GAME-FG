@@ -9,6 +9,7 @@
 #include "Font.h"
 #include "Star.h"
 #include "Screen.h"
+#include "Sound.h"
 
 GameClear::GameClear()
 {
@@ -35,6 +36,7 @@ void GameClear::Update()
 	if (Controller::Instance()->GetButtonTrigger(PAD_INPUT_12) || KeyBoard::GetKeyTrigger(KEY_INPUT_RETURN))
 	{
 		isEnd = true;
+		Sound::Instance()->PlayBGM("decide");
 	}
 	GameObjectManager::Instance()->Update();
 	ParticleManager::Instance()->Update();
