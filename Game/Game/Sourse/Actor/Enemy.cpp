@@ -64,7 +64,7 @@ void Enemy::Update()
 	float lengthX = position->x - Screen::WinWidth / 2;
 	float lengthY = position->y - Screen::WinHight / 2;
 	float length = sqrtf(lengthX * lengthX + lengthY * lengthY);
-	if (length >= 600)
+	if (length >= Screen::WinHight)
 	{
 		isDead = true;
 	}
