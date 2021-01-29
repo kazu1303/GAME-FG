@@ -13,6 +13,7 @@
 #include "Clock.h"
 #include "Sound.h"
 #include "Font.h"
+#include "Display.h"
 
 
 
@@ -160,6 +161,7 @@ void GamePlay::Draw()
 	GameObjectManager::Instance()->Draw();
 	MousePointer::Instance()->Draw();
 	ParticleManager::Instance()->Draw();
+	Display::Instance()->SetScreen(UI_Screen);
 	DrawStringToHandle(Screen::WinWidth - 150, Screen::WinHight - 64, std::to_string(Clock::Instance().GetElapsedTime() + 1).c_str(), GetColor(255, 255, 255), Font::pixelM64);
 	DrawStringToHandle(Screen::WinWidth - 100, Screen::WinHight - 64, "Day", GetColor(255, 255, 255), Font::pixelM64);
 }
@@ -168,7 +170,7 @@ void GamePlay::Draw()
 Scene GamePlay::Next()
 {
 	Sound::Instance()->StopBGM();
-	if (Clock::Instance().GetElapsedTime() >= 3)
+	if (Clock::Instance().GetElapsedTime() >= 3 && player->GetHp() > 0)
 	{
 		return gameClear;
 	}

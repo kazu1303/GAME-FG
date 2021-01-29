@@ -226,13 +226,15 @@ void Player::DrawDamageGauge()
 		hp = 0;
 	}
 	Display::Instance()->SetScreen(UI_Screen);
-	float gaugesizex = 238;
-	int gaugesizey = 68;
-	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex - 50), 10, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(255, 255, 255), 1);
-	float rate = hp / 10.0f;
-	float currentGaugesizex = gaugesizex * 2 * rate;
-	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex - 50), 10, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
-	DrawStringToHandle((int)(Screen::WinWidth / 2 - gaugesizex - 45), 40, "HP", GetColor(255, 255, 255), Font::pixelM32);
+	Vector2 gaugePos = Vector2(96, 10);
+	float gaugesizex = 526;
+	int gaugesizey = 58;
+	DrawBox((int)(gaugePos.x), gaugePos.y, (int)(gaugePos.x + gaugesizex), gaugePos.y + gaugesizey, GetColor(255, 255, 255), 1);
+	float rate = (float)(hp) / 10.0f;
+	//if (hp == 0)rate = 0;
+	float currentGaugesizex = gaugesizex * rate;
+	DrawBox((int)(gaugePos.x), gaugePos.y, (int)(gaugePos.x + currentGaugesizex), gaugePos.y + gaugesizey, GetColor(0, 255, 127), 1);
+	DrawStringToHandle((int)(100), 40, "HP", GetColor(255, 255, 255), Font::pixelM32);
 }
 
 //’eƒAƒCƒRƒ“‚Ì•`‰æ
