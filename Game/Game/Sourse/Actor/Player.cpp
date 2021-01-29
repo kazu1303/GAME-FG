@@ -16,6 +16,7 @@
 #include "DeadParticle.h"
 #include "SceneManager.h"
 #include "Sound.h"
+#include "Font.h"
 
 
 Player::Player(Vector2 *position)
@@ -26,12 +27,14 @@ Player::Player(Vector2 *position)
 	damegeTimer = Timer(1.0f,false);
 	deadTimer = Timer(2.0f, false);
 	quakeTimer = Timer(0.01f, true);
+	blinkingTimer = Timer(0.05f, true);
 	damegeTimer.Max();
 	size = 60;
 	putBulletNum = 10;
 	slowBulletNum = 1;
 	operation = true;
 	velocity->x = 1;
+	drawDamageEffect = false;
 }
 
 
@@ -109,12 +112,7 @@ void Player::Update()
 void Player::Draw()
 {
 	Display::Instance()->SetScreen(Player_Screen);
-	if (!damegeTimer.IsTime())
-	{
-		SetDrawBlendMode(DX_BLENDMODE_ADD, 160);
-		DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 0, 0), 1);
-		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 100);
-	}
+	DrawDamageEffect();
 	DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 255, 255), 0);
 
 	Display::Instance()->SetScreen(PlayerBattery_Screen);
@@ -228,12 +226,13 @@ void Player::DrawDamageGauge()
 		hp = 0;
 	}
 	Display::Instance()->SetScreen(UI_Screen);
-	float gaugesizex = 248;
+	float gaugesizex = 238;
 	int gaugesizey = 68;
-	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(255, 255, 255), 1);
+	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex - 50), 10, (int)(Screen::WinWidth / 2 + gaugesizex), gaugesizey, GetColor(255, 255, 255), 1);
 	float rate = hp / 10.0f;
 	float currentGaugesizex = gaugesizex * 2 * rate;
-	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex), 0, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
+	DrawBox((int)(Screen::WinWidth / 2 - gaugesizex - 50), 10, (int)(Screen::WinWidth / 2 - gaugesizex + currentGaugesizex), gaugesizey, GetColor(0, 255, 127), 1);
+	DrawStringToHandle((int)(Screen::WinWidth / 2 - gaugesizex - 45), 40, "HP", GetColor(255, 255, 255), Font::pixelM32);
 }
 
 //’eƒAƒCƒRƒ“‚Ì•`‰æ
@@ -294,6 +293,24 @@ void Player::DrawDead()
 		Sound::Instance()->PlaySE("explode2");
 	}
 	//Sound::Instance()->PlaySE("explode2");
+}
+
+void Player::DrawDamageEffect()
+{
+	if (!damegeTimer.IsTime())
+	{
+		blinkingTimer.Update();
+		if (blinkingTimer.IsTime())
+		{
+			drawDamageEffect = !drawDamageEffect;
+		}
+		if (drawDamageEffect)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ADD, 200);
+			DrawCircle((int)(position->x), (int)(position->y), size / 2, GetColor(255, 0, 0), 1);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 100);
+		}
+	}
 }
 
 int Player::GetHp()

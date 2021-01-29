@@ -18,6 +18,8 @@ private:
 	int maxHp = 10;//‘Ì—Í
 	bool operation;
 	Timer damegeTimer;
+	bool drawDamageEffect;
+	Timer blinkingTimer;
 public:
 	Player(Vector2 *position);
 	~Player();
@@ -45,6 +47,8 @@ public:
 	void Heal();
 
 	void DrawDead();
+
+	void DrawDamageEffect();
 
 	int GetHp();
 };

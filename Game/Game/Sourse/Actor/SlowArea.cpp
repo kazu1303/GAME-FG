@@ -24,14 +24,23 @@ void SlowArea::Initialize()
 //–ˆƒtƒŒ[ƒ€ˆ—
 void SlowArea::Update()
 {
-	if (size < 550)
-	{
-		size += 10;
-	}
+
 	deadTimer.Update();
 	if (deadTimer.IsTime())
 	{
-		isDead = true;
+		size -= 20;
+		if (size <= 0)
+		{
+			isDead = true;
+		}
+
+	}
+	else
+	{
+		if (size < 550)
+		{
+			size += 10;
+		}
 	}
 }
 

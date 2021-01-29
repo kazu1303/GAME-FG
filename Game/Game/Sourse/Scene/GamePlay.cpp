@@ -12,6 +12,7 @@
 #include "Enemy3.h"
 #include "Clock.h"
 #include "Sound.h"
+#include "Font.h"
 
 
 
@@ -155,10 +156,12 @@ void GamePlay::Update()
 //ï`âÊèàóù
 void GamePlay::Draw()
 {
-	DrawString(0, 0, "play", GetColor(255, 255, 255));
+	//DrawString(0, 0, "play", GetColor(255, 255, 255));
 	GameObjectManager::Instance()->Draw();
 	MousePointer::Instance()->Draw();
 	ParticleManager::Instance()->Draw();
+	DrawStringToHandle(Screen::WinWidth - 150, Screen::WinHight - 64, std::to_string(Clock::Instance().GetElapsedTime() + 1).c_str(), GetColor(255, 255, 255), Font::pixelM64);
+	DrawStringToHandle(Screen::WinWidth - 100, Screen::WinHight - 64, "Day", GetColor(255, 255, 255), Font::pixelM64);
 }
 
 //éüÇÃÉVÅ[Éì
